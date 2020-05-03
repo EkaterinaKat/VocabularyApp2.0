@@ -1,0 +1,87 @@
+.root{
+    -fx-background-color: #CCFF99;
+}
+
+.scroll-pane{
+    -fx-background: #CCFF99;
+}
+
+.scroll-bar .track-background {
+ -fx-background-color: #006400;
+ -fx-background-radius: 2em;
+}
+
+.scroll-bar .thumb {
+ -fx-background-color: #CCFF99;
+}
+
+.button {
+    -fx-background-color: #006400;
+    -fx-text-fill: #7CFC00;
+    -fx-font-weight: bold;
+}
+
+.button:hover {
+    -fx-background-color: #7CFC00;
+    -fx-text-fill: #006400;
+}
+
+.label{
+    -fx-text-fill: #006400;
+    -fx-font-weight: bold;
+}
+
+.check-box{
+    -fx-text-fill: #006400;
+    -fx-font-weight: bold;
+}
+
+#okBtn{
+    -fx-background-color: #CCFF99;
+}
+
+#okBtn:hover{
+    -fx-background-color: #7CFC00;
+}
+
+#notOkBtn{
+    -fx-background-color: #CCFF99;
+}
+
+#notOkBtn:hover{
+    -fx-background-color: #C14242;
+}
+
+#wordLabel{
+    -fx-font-weight: bold;
+    -fx-font-size: 40 px;
+}
+
+.table-view .column-header {
+    -fx-background-color: #006400;
+}
+
+.table-view .column-header .label{
+    -fx-text-fill: #7CFC00;
+}
+
+.table-view .table-cell{
+    -fx-text-fill: #006400;
+}
+
+.table-view .table-row-cell:hover:filled{
+    -fx-background-color: #A0FF42;
+    -fx-font-weight: bold;
+}
+
+.increment-button, .decrement-button {
+    -fx-background-color: transparent;
+    -fx-border-color: transparent;
+}
+
+
+
+
+
+
+
