@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?scenebuilder-stylesheet /css/style?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import java.net.URL?>
+<BorderPane xmlns="http://javafx.com/javafx"
+            xmlns:fx="http://javafx.com/fxml"
+            fx:controller="com.katyshevtseva.vocabularyapp.controller.MainController">
+
+    <stylesheets>
+        <URL value="@/com/katyshevtseva/vocabularyapp/res/css/main_style.css"/>
+    </stylesheets>
+
+    <top>
+        <HBox>
+
+            <Button text="Add word list" onMouseClicked="#createWordList" styleClass="topBtn">
+                <HBox.margin>
+                    <Insets bottom="25" left="40" right="10" top="20"/>
+                </HBox.margin>
+            </Button>
+
+            <Button text="Learn words" onMouseClicked="#learnWords" styleClass="topBtn">
+                <HBox.margin>
+                    <Insets bottom="25" left="10" right="10" top="20"/>
+                </HBox.margin>
+            </Button>
+
+            <Button text="Search word" onMouseClicked="#searchWord" styleClass="topBtn">
+                <HBox.margin>
+                    <Insets bottom="25" left="10" right="10" top="20"/>
+                </HBox.margin>
+            </Button>
+        </HBox>
+    </top>
+
+    <center>
+        <ScrollPane fx:id="scrollPane" styleClass="edge-to-edge">
+
+        </ScrollPane>
+    </center>
+
+    <left>
+        <Pane prefWidth="30"/>
+    </left>
+
+    <bottom>
+        <Button text="About" onMouseClicked="#about" fx:id="aboutBtn" BorderPane.alignment="BOTTOM_RIGHT">
+            <BorderPane.margin>
+                <Insets bottom="10" left="10" right="25" top="10"/>
+            </BorderPane.margin>
+        </Button>
+    </bottom>
+
+</BorderPane>
