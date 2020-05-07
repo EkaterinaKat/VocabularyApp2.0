@@ -22,7 +22,7 @@ public class Constants {
     public static final String WORDS_LEARNING_WINDOW_TITLE = "Words learning";
     public static final String LEVELS_CHOICE_WINDOW_TITLE = "Choose levels to learn";
 
-    public static final String EMPTY_TEXT_FIELD_WARNING = "Text field is empty";
+    public static final String EMPTY_TEXT_FIELD_WARNING = "Text field is empty"; //todo может эти константы вообще не нужны
     public static final String EMPTY_LISTS_WARNING = "Chosen lists are empty";
     public static final String WORD_INPUT_WARNING = "Both fields must be filled in";
 
