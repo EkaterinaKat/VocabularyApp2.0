@@ -3,6 +3,7 @@ package com.katyshevtseva.vocabularyapp.controller;
 import com.katyshevtseva.vocabularyapp.model.DataBase;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.ScrollPane;
 import javafx.scene.control.Tooltip;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
@@ -15,12 +16,23 @@ import java.util.List;
 import static com.katyshevtseva.vocabularyapp.utils.Constants.*;
 
 class CatalogueTuner {
+    private static CatalogueTuner instance;
     private DataBase dataBase;
     private GridPane catalogueTable;
     private List<String> catalogue;
+    private ScrollPane cataloguePlacement;
 
-    CatalogueTuner(DataBase dataBase) {
+    public static void create(DataBase dataBase, ScrollPane cataloguePlacement) {
+        instance = new CatalogueTuner(dataBase, cataloguePlacement);
+    }
+
+    public static CatalogueTuner getInstance() {
+        return instance;
+    }
+
+    private CatalogueTuner(DataBase dataBase, ScrollPane cataloguePlacement) {
         this.dataBase = dataBase;
+        this.cataloguePlacement = cataloguePlacement;
         catalogueTable = createAndTuneCatalogueTable();
     }
 
@@ -33,7 +45,11 @@ class CatalogueTuner {
         return catalogueTable;
     }
 
-    public GridPane getUpdatedCatalogueTable() {
+    public void updateCatalogue() {
+        cataloguePlacement.setContent(getUpdatedCatalogueTable());
+    }
+
+    private GridPane getUpdatedCatalogueTable() {
         updateCatalogueTable();
         return catalogueTable;
     }

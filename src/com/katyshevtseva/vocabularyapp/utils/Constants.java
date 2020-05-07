@@ -1,6 +1,10 @@
 package com.katyshevtseva.vocabularyapp.utils;
 
 public class Constants {
+
+    private Constants() {
+    }
+
     public static final String FXML_PATH = "/com/katyshevtseva/vocabularyapp/res/fxml/";
     public static final String IMAGES_PATH = "/com/katyshevtseva/vocabularyapp/res/images/";
 

@@ -38,7 +38,7 @@
     </top>
 
     <center>
-        <ScrollPane fx:id="scrollPane" styleClass="edge-to-edge">
+        <ScrollPane fx:id="cataloguePlacement" styleClass="edge-to-edge">
 
         </ScrollPane>
     </center>

@@ -10,9 +10,8 @@ import javafx.stage.Stage;
 
 public class MainController extends Application {
     private DataBase dataBase;
-    private CatalogueTuner catalogueTuner;  //todo warning
     @FXML
-    public ScrollPane scrollPane;
+    public ScrollPane cataloguePlacement;
 
     @Override
     public void start(Stage primaryStage) {
@@ -28,8 +27,8 @@ public class MainController extends Application {
     @FXML
     public void initialize() {
         dataBase = JDBCDataBase.getInstance();
-        catalogueTuner = new CatalogueTuner(dataBase);
-        scrollPane.setContent(catalogueTuner.getUpdatedCatalogueTable());
+        CatalogueTuner.create(dataBase, cataloguePlacement);
+        CatalogueTuner.getInstance().updateCatalogue();
     }
 
     public void createWordList() {

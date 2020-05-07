@@ -14,7 +14,7 @@ import static com.katyshevtseva.vocabularyapp.utils.Constants.*;
 import static com.katyshevtseva.vocabularyapp.utils.Constants.FXML_PATH;
 
 public class WindowCreator {
-    private static WindowCreator instance = new WindowCreator();
+    private static final WindowCreator instance = new WindowCreator();
 
     public static WindowCreator getInstance() {
         return instance;

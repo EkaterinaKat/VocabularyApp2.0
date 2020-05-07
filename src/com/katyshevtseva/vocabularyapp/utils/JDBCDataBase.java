@@ -8,7 +8,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class JDBCDataBase implements DataBase {
-    private static JDBCDataBase instance = new JDBCDataBase();
+    private static final JDBCDataBase instance = new JDBCDataBase();
     private Connection connection;
     private Statement stmt;
 
