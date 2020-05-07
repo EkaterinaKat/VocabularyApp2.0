@@ -43,8 +43,8 @@ public class Constants {
     public static final int LEVELS_CHOICE_WINDOW_HEIGHT = 450;
     public static final int LEVELS_CHOICE_WINDOW_WIDTH = 400;
 
-    public static final int LISTS_TABLE_WIDTH = 440;
-    public static final int LISTS_TABLE_V_GAP = 15;
+    public static final int CATALOGUE_TABLE_WIDTH = 440;
+    public static final int CATALOGUE_TABLE_V_GAP = 15;
     public static final int LIST_DELETION_ICON_SIZE = 15;
     public static final int BIG_LOGO_SIZE = 130;
 

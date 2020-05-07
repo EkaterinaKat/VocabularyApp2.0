@@ -53,14 +53,19 @@ public class JDBCDataBase implements DataBase {
         return tableName;
     }
 
-    public List<String> getCatalogue() throws SQLException {
+    @Override
+    public List<String> getCatalogue() {
         List<String> catalogue = new ArrayList<>();
         String sql = "SELECT * FROM catalogue";
         ResultSet rs;
-        rs = stmt.executeQuery(sql);
-        while (rs.next()) { //листаем строчки таблички
-            String s = rs.getString(1);
-            catalogue.add(s);
+        try {
+            rs = stmt.executeQuery(sql);
+            while (rs.next()) {
+                String s = rs.getString(1);
+                catalogue.add(s);
+            }
+        } catch (SQLException e) {
+            createCatalogue();
         }
         return catalogue;
     }
@@ -175,11 +180,7 @@ public class JDBCDataBase implements DataBase {
 
         //достаем из каталога имена списков
         List<String> listNames = null;
-        try {
-            listNames = getCatalogue();
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
+        listNames = getCatalogue();
 
         //для каждого списка находим имя таблицы и если в ней есть слово начинающееся с входящей строки то кладем это слово в лист
         for (String listName : listNames) {

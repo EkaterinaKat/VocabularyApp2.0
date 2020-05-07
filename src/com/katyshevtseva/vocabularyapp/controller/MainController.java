@@ -4,15 +4,18 @@ import com.katyshevtseva.vocabularyapp.model.DataBase;
 import com.katyshevtseva.vocabularyapp.utils.JDBCDataBase;
 import com.katyshevtseva.vocabularyapp.utils.WindowCreator;
 import javafx.application.Application;
-import javafx.scene.input.MouseEvent;
+import javafx.fxml.FXML;
+import javafx.scene.control.ScrollPane;
 import javafx.stage.Stage;
 
 public class MainController extends Application {
     private DataBase dataBase;
+    private CatalogueTuner catalogueTuner;  //todo warning
+    @FXML
+    public ScrollPane scrollPane;
 
     @Override
-    public void start(Stage primaryStage) throws Exception {
-        dataBase = JDBCDataBase.getInstance();
+    public void start(Stage primaryStage) {
         WindowCreator.getInstance().createMainWindow();
     }
 
@@ -22,15 +25,22 @@ public class MainController extends Application {
         JDBCDataBase.getInstance().disconnect();
     }
 
-    public void createWordList(MouseEvent mouseEvent) {
+    @FXML
+    public void initialize() {
+        dataBase = JDBCDataBase.getInstance();
+        catalogueTuner = new CatalogueTuner(dataBase);
+        scrollPane.setContent(catalogueTuner.getUpdatedCatalogueTable());
     }
 
-    public void learnWords(MouseEvent mouseEvent) {
+    public void createWordList() {
     }
 
-    public void searchWord(MouseEvent mouseEvent) {
+    public void learnWords() {
     }
 
-    public void about(MouseEvent mouseEvent) {
+    public void searchWord() {
+    }
+
+    public void about() {
     }
 }
