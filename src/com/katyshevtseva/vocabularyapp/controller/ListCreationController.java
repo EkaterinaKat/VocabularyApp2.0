@@ -6,7 +6,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
-public class WordListCreator {
+public class ListCreationController {
     @FXML
     public Button okButton;
     @FXML

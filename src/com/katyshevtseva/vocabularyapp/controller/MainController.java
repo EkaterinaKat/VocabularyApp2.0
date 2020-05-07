@@ -36,7 +36,7 @@ public class MainController extends Application {
     }
 
     public void createWordList() {
-        WordListCreator.createWordList();
+        ListCreationController.createWordList();
     }
 
     public void learnWords() {
