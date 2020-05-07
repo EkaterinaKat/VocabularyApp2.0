@@ -6,4 +6,6 @@ public interface DataBase {
 
     List<String> getCatalogue();
 
+    void createList(String listName);
+
 }

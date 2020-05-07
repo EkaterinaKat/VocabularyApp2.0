@@ -101,7 +101,8 @@ public class JDBCDataBase implements DataBase {
         }
     }
 
-    public void addList(String listName) {
+    @Override
+    public void createList(String listName) {
         //добавляем в каталог строчку с именем списка
         String sql1 = String.format("INSERT INTO catalogue (listName)\n" +
                 "VALUES(\"%s\")", listName);

@@ -11,7 +11,6 @@ import javafx.stage.Stage;
 import java.io.IOException;
 
 import static com.katyshevtseva.vocabularyapp.utils.Constants.*;
-import static com.katyshevtseva.vocabularyapp.utils.Constants.FXML_PATH;
 
 public class WindowCreator {
     private static final WindowCreator instance = new WindowCreator();
@@ -29,7 +28,12 @@ public class WindowCreator {
         stage.show();
     }
 
-    public void createModalWindow(String fxmlName, String title, int width, int height, boolean stretchable) {
+    public void createWordListCreationWindow() {
+        createModalWindow("list_creation.fxml",
+                LIST_CREATION_WINDOW_TITLE, LIST_CREATION_WINDOW_WIDTH, LIST_CREATION_WINDOW_HEIGHT, false);
+    }
+
+    private void createModalWindow(String fxmlName, String title, int width, int height, boolean stretchable) {
         Stage stage = getStage(fxmlName, title, width, height, stretchable);
         stage.initModality(Modality.APPLICATION_MODAL);
         stage.show();

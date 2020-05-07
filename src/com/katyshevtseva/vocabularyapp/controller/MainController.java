@@ -9,7 +9,7 @@ import javafx.scene.control.ScrollPane;
 import javafx.stage.Stage;
 
 public class MainController extends Application {
-    private DataBase dataBase;
+    private static DataBase dataBase;
     @FXML
     public ScrollPane cataloguePlacement;
 
@@ -31,7 +31,12 @@ public class MainController extends Application {
         CatalogueTuner.getInstance().updateCatalogue();
     }
 
+    public static DataBase getDataBase() {
+        return dataBase;
+    }
+
     public void createWordList() {
+        WordListCreator.createWordList();
     }
 
     public void learnWords() {

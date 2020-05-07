@@ -31,7 +31,7 @@ class CatalogueTuner {
     }
 
     private CatalogueTuner(DataBase dataBase, ScrollPane cataloguePlacement) {
-        this.dataBase = dataBase;
+        this.dataBase = dataBase; //todo ну теперь то мы можем получить бд и не передавая ее через аргументы
         this.cataloguePlacement = cataloguePlacement;
         catalogueTable = createAndTuneCatalogueTable();
     }
