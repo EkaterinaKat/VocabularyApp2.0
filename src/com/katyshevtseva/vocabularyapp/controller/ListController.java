@@ -35,7 +35,7 @@ public class ListController {
     @FXML
     public Button addWordButton;
 
-    public static void showWordList(String listToShow) {
+    static void showWordList(String listToShow) {
         listName = listToShow;
         WindowCreator.getInstance().createListWindow(listName);
     }
@@ -62,14 +62,14 @@ public class ListController {
             row.setOnMouseClicked(event -> {
                 if (event.getClickCount() == 2 && (!row.isEmpty())) {
                     Entry chosenEntry = row.getItem();
-                    createClickOnWordWindow(chosenEntry);
+                    //WordChangeController.changeWord(entry);
                 }
             });
             return row;
         });
     }
 
-    private void updateTable() {
+    void updateTable() {
         List<Entry> list = MainController.getDataBase().getList(listName);
         ObservableList<Entry> words = FXCollections.observableArrayList();
         words.addAll(list);
@@ -86,11 +86,10 @@ public class ListController {
     }
 
     public void addWordButtonListener() {
-
+        WordAddingController.addWord(this);
     }
 
-    private void createClickOnWordWindow(Entry entry) {
-
+    String getListName() {
+        return listName;
     }
-
 }

@@ -22,6 +22,7 @@ public class Constants {
     public static final String WARNING_WINDOW_TITLE = "Warning";
     public static final String WORDS_LEARNING_WINDOW_TITLE = "Words learning";
     public static final String LEVELS_CHOICE_WINDOW_TITLE = "Choose levels to learn";
+    public static final String WORD_INPUT_WINDOW_TITLE = "Add word";
 
     public static final String EMPTY_TEXT_FIELD_WARNING = "Text field is empty"; //todo может эти константы вообще не нужны
     public static final String EMPTY_LISTS_WARNING = "Chosen lists are empty";
@@ -47,6 +48,10 @@ public class Constants {
     public static final int WORDS_LEARNING_WINDOW_WIDTH = 550;
     public static final int LEVELS_CHOICE_WINDOW_HEIGHT = 450;
     public static final int LEVELS_CHOICE_WINDOW_WIDTH = 400;
+    public static final int WORD_INPUT_WINDOW_HEIGHT = 200;
+    public static final int WORD_INPUT_WINDOW_WIDTH = 350;
+    public static final int WORD_CHANGE_WINDOW_HEIGHT = 220;
+    public static final int WORD_CHANGE_WINDOW_WIDTH = 350;
 
     public static final int CATALOGUE_TABLE_WIDTH = 440;
     public static final int CATALOGUE_TABLE_V_GAP = 15;

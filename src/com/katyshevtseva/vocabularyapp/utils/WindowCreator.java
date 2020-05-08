@@ -33,14 +33,24 @@ public class WindowCreator {
                 LIST_CREATION_WINDOW_TITLE, LIST_CREATION_WINDOW_WIDTH, LIST_CREATION_WINDOW_HEIGHT, false);
     }
 
-    public void createListDeletionWindow(){
+    public void createListDeletionWindow() {
         createModalWindow("list_deletion.fxml",
                 LIST_DELETION_WINDOW_TITLE, LIST_DELETION_WINDOW_WIDTH, LIST_DELETION_WINDOW_HEIGHT, false);
     }
 
-    public void createListWindow(String listName){
-        WindowCreator.getInstance().createModalWindow("list.fxml",
+    public void createListWindow(String listName) {
+        createModalWindow("list.fxml",
                 listName, WORD_LIST_WINDOW_WIDTH, WORD_LIST_WINDOW_HEIGHT, true);
+    }
+
+    public void createWordInputWindow() {
+        createModalWindow("word_input.fxml",
+                WORD_INPUT_WINDOW_TITLE, WORD_INPUT_WINDOW_WIDTH, WORD_INPUT_WINDOW_HEIGHT, false);
+    }
+
+    public void createWordChangeWindow(String word) {
+        WindowCreator.getInstance().createModalWindow("word_change.fxml",
+                word, WORD_CHANGE_WINDOW_WIDTH, WORD_CHANGE_WINDOW_HEIGHT, false);
     }
 
     private void createModalWindow(String fxmlName, String title, int width, int height, boolean stretchable) {

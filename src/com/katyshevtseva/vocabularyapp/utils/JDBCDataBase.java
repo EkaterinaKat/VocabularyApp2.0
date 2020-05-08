@@ -7,7 +7,7 @@ import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
-public class JDBCDataBase implements DataBase {
+public class JDBCDataBase implements DataBase { //todo переименовать в jdbc
     private static final JDBCDataBase instance = new JDBCDataBase();
     private Connection connection;
     private Statement stmt;
@@ -91,6 +91,7 @@ public class JDBCDataBase implements DataBase {
         return listOfEntries;
     }
 
+    @Override
     public void addWord(String listName, String word, String translation) {
         String tableName = getTableNameByListName(listName);
         String sql = String.format("INSERT INTO %s (word, translation, level)\n" +
