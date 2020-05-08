@@ -75,8 +75,8 @@ class CatalogueTuner {
     private ImageView getListDeletionIcon() {  //todo мб когда-нибудь вынесем это в утилитные методы
         Image image = new Image(IMAGES_PATH + LIST_DELETION_IMAGE_NAME);
         ImageView imageViewWithRedCross = new ImageView(image);
-        imageViewWithRedCross.setFitHeight(LIST_DELETION_ICON_SIZE);
-        imageViewWithRedCross.setFitWidth(LIST_DELETION_ICON_SIZE);
+        imageViewWithRedCross.setFitHeight(BUTTON_IMAGE_SIZE);
+        imageViewWithRedCross.setFitWidth(BUTTON_IMAGE_SIZE);
         return imageViewWithRedCross;
     }
 
@@ -86,8 +86,7 @@ class CatalogueTuner {
     }
 
     private void openWordList(int listIndex) {
-//        WordListController.nameOfList = catalogue.get(listIndex);
-//        WindowCreator.getInstance().createModalWindow("word_list_sample.fxml",
-//                catalogue.get(listIndex), WORD_LIST_WINDOW_WIDTH, WORD_LIST_WINDOW_HEIGHT, true);
+        String listName = catalogue.get(listIndex);
+        ListController.showWordList(listName);
     }
 }

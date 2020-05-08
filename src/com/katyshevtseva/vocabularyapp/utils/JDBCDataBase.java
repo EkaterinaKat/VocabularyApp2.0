@@ -70,7 +70,8 @@ public class JDBCDataBase implements DataBase {
         return catalogue;
     }
 
-    public List<Entry> getListOfPairs(String listName) {
+    @Override
+    public List<Entry> getList(String listName) {
         String tableName = getTableNameByListName(listName);
         List<Entry> listOfEntries = new ArrayList<>();
         String sql2 = String.format("SELECT word, translation, level, help FROM %s", tableName);

@@ -26,14 +26,14 @@ public class ListDeletionController {
         imageView.setImage(image);
     }
 
-    public void delete() {
+    public void deleteButtonListener() {
         MainController.getDataBase().deleteList(listToDelete);
         CatalogueTuner.getInstance().updateCatalogue();
         Stage stage = (Stage) imageView.getScene().getWindow();  //todo было бы здорово создать утилитный закрывающий метод
         stage.close();
     }
 
-    public void cancel() {
+    public void cancelButtonListener() {
         Stage stage = (Stage) imageView.getScene().getWindow();
         stage.close();
     }

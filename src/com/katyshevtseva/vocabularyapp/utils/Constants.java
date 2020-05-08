@@ -11,6 +11,7 @@ public class Constants {
     public static final String LOGO_IMAGE_NAME = "logo.png";
     public static final String LIST_DELETION_IMAGE_NAME = "red_cross.png";
     public static final String QUESTION_IMAGE_NAME = "question.png";
+    public static final String PLUS_IMAGE_NAME = "plus.png";
 
     public static final String MAIN_WINDOW_TITLE = "Vocabulary";
     public static final String LIST_CREATION_WINDOW_TITLE = "Add list";
@@ -49,7 +50,7 @@ public class Constants {
 
     public static final int CATALOGUE_TABLE_WIDTH = 440;
     public static final int CATALOGUE_TABLE_V_GAP = 15;
-    public static final int LIST_DELETION_ICON_SIZE = 15;
+    public static final int BUTTON_IMAGE_SIZE = 15;
     public static final int BIG_LOGO_SIZE = 130;
 
     public static final String ABOUT_TEXT = " Developer: Katyshevtseva Ekaterina\n Programming language: Java SE 8" +

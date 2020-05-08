@@ -38,6 +38,11 @@ public class WindowCreator {
                 LIST_DELETION_WINDOW_TITLE, LIST_DELETION_WINDOW_WIDTH, LIST_DELETION_WINDOW_HEIGHT, false);
     }
 
+    public void createListWindow(String listName){
+        WindowCreator.getInstance().createModalWindow("list.fxml",
+                listName, WORD_LIST_WINDOW_WIDTH, WORD_LIST_WINDOW_HEIGHT, true);
+    }
+
     private void createModalWindow(String fxmlName, String title, int width, int height, boolean stretchable) {
         Stage stage = getStage(fxmlName, title, width, height, stretchable);
         stage.initModality(Modality.APPLICATION_MODAL);

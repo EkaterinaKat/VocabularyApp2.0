@@ -1,0 +1,27 @@
+<?scenebuilder-stylesheet /css/style?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.BorderPane?>
+<?import java.net.URL?>
+<BorderPane fx:controller="com.katyshevtseva.vocabularyapp.controller.ListController" xmlns:fx="http://javafx.com/fxml">
+
+    <stylesheets>
+        <URL value="@/com/katyshevtseva/vocabularyapp/res/css/style.css"/>
+    </stylesheets>
+
+    <top>
+        <Button text="Add word" onMouseClicked="#addWordButtonListener" fx:id="addWordButton"/>
+    </top>
+
+    <center>
+        <TableView fx:id="table" layoutX="12.0" layoutY="62.0" >
+            <columns>
+                <TableColumn prefWidth="60" text="№" fx:id="countColumn"/>
+                <TableColumn prefWidth="200" text="word" fx:id="wordColumn"/>
+                <TableColumn prefWidth="360" text="translation" fx:id="translationColumn" />
+                <TableColumn text="level" fx:id="levelColumn"/>
+                <TableColumn prefWidth="650" text="help"  fx:id="helpColumn" />
+            </columns>
+        </TableView>
+    </center>
+
+</BorderPane>

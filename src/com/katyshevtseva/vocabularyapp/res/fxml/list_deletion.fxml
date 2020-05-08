@@ -30,12 +30,12 @@
     <bottom>
         <AnchorPane>
             <HBox AnchorPane.rightAnchor="120" AnchorPane.leftAnchor="120">
-                <Button text="Yes" onMouseClicked="#delete">
+                <Button text="Yes" onMouseClicked="#deleteButtonListener">
                     <HBox.margin>
                         <Insets bottom="25" left="20" right="20" top="20"/>
                     </HBox.margin>
                 </Button>
-                <Button text="No" onMouseClicked="#cancel">
+                <Button text="No" onMouseClicked="#cancelButtonListener">
                     <HBox.margin>
                         <Insets bottom="25" left="20" right="20" top="20"/>
                     </HBox.margin>
