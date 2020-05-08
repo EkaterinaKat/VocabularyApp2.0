@@ -50,8 +50,8 @@ public class Constants {
     public static final int LEVELS_CHOICE_WINDOW_WIDTH = 400;
     public static final int WORD_INPUT_WINDOW_HEIGHT = 200;
     public static final int WORD_INPUT_WINDOW_WIDTH = 350;
-    public static final int WORD_CHANGE_WINDOW_HEIGHT = 220;
-    public static final int WORD_CHANGE_WINDOW_WIDTH = 350;
+    public static final int WORD_CHANGE_WINDOW_HEIGHT = 450;
+    public static final int WORD_CHANGE_WINDOW_WIDTH = 400;
 
     public static final int CATALOGUE_TABLE_WIDTH = 440;
     public static final int CATALOGUE_TABLE_V_GAP = 15;

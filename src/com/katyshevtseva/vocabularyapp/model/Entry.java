@@ -30,4 +30,8 @@ public class Entry {
     public String getListName() {
         return listName;
     }
+
+    public String getHelp() {
+        return help;
+    }
 }
