@@ -28,9 +28,14 @@ public class WindowCreator {
         stage.show();
     }
 
-    public void createWordListCreationWindow() {
+    public void createListCreationWindow() {
         createModalWindow("list_creation.fxml",
                 LIST_CREATION_WINDOW_TITLE, LIST_CREATION_WINDOW_WIDTH, LIST_CREATION_WINDOW_HEIGHT, false);
+    }
+
+    public void createListDeletionWindow(){
+        createModalWindow("list_deletion.fxml",
+                LIST_DELETION_WINDOW_TITLE, LIST_DELETION_WINDOW_WIDTH, LIST_DELETION_WINDOW_HEIGHT, false);
     }
 
     private void createModalWindow(String fxmlName, String title, int width, int height, boolean stretchable) {

@@ -8,4 +8,6 @@ public interface DataBase {
 
     void createList(String listName);
 
+    void deleteList(String listToDelete);
+
 }

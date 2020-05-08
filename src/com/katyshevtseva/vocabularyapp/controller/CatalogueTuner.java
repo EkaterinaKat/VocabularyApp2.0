@@ -56,6 +56,7 @@ class CatalogueTuner {
 
     private void updateCatalogueTable() {
         catalogue = dataBase.getCatalogue();
+        catalogueTable.getChildren().clear();
         for (int listIndex = 0; listIndex < catalogue.size(); listIndex++) {
             tuneCatalogueTableRow(listIndex);
         }
@@ -65,13 +66,8 @@ class CatalogueTuner {
         Label label = new Label(catalogue.get(listIndex));
         Button deleteBtn = new Button("", getListDeletionIcon());
         deleteBtn.setTooltip(new Tooltip("delete list"));
-        int finalListIndex = listIndex;  //todo warning
-        label.addEventHandler(MouseEvent.MOUSE_CLICKED, mouseEvent -> { //todo warning
-            openWordListWindow(finalListIndex);
-        });
-        deleteBtn.addEventHandler(MouseEvent.MOUSE_CLICKED, mouseEvent -> { //todo warning
-            openListDeletionWindow(finalListIndex);
-        });
+        label.addEventHandler(MouseEvent.MOUSE_CLICKED, mouseEvent -> openWordList(listIndex));
+        deleteBtn.addEventHandler(MouseEvent.MOUSE_CLICKED, mouseEvent -> deleteList(listIndex));
         catalogueTable.add(label, 0, listIndex);
         catalogueTable.add(deleteBtn, 1, listIndex);
     }
@@ -84,15 +80,13 @@ class CatalogueTuner {
         return imageViewWithRedCross;
     }
 
-    private void openListDeletionWindow(int listIndex) {
-//        RemoveListController.mainController = this;  //todo
-//        RemoveListController.listName = catalogue.get(listIndex);
-//        WindowCreator.getInstance().createModalWindow("remove_list_sample.fxml",
-//                LIST_DELETION_WINDOW_TITLE, LIST_DELETION_WINDOW_WIDTH, LIST_DELETION_WINDOW_HEIGHT, false);
+    private void deleteList(int listIndex) {
+        String listToDelete = catalogue.get(listIndex);
+        ListDeletionController.deleteWordList(listToDelete);
     }
 
-    private void openWordListWindow(int listIndex) {
-//        WordListController.nameOfList = catalogue.get(listIndex); //todo
+    private void openWordList(int listIndex) {
+//        WordListController.nameOfList = catalogue.get(listIndex);
 //        WindowCreator.getInstance().createModalWindow("word_list_sample.fxml",
 //                catalogue.get(listIndex), WORD_LIST_WINDOW_WIDTH, WORD_LIST_WINDOW_HEIGHT, true);
     }

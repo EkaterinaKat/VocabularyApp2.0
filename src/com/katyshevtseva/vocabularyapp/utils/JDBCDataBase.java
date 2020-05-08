@@ -150,7 +150,8 @@ public class JDBCDataBase implements DataBase {
         }
     }
 
-    public void removeList(String listName) {
+    @Override
+    public void deleteList(String listName) {
         String tableName = getTableNameByListName(listName);
         String sql1 = String.format("DROP TABLE %s", tableName); //удаление таблицы
         String sql2 = String.format("DELETE FROM catalogue\n" +

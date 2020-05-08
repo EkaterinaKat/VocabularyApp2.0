@@ -13,7 +13,7 @@ public class ListCreationController {
     private TextField nameInputField;
 
     public static void createWordList() {
-        WindowCreator.getInstance().createWordListCreationWindow();
+        WindowCreator.getInstance().createListCreationWindow();
     }
 
     @FXML
