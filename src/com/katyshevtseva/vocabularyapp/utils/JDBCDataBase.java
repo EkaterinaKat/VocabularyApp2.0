@@ -220,6 +220,7 @@ public class JDBCDataBase implements DataBase { //todo переименоват�
         }
     }
 
+    @Override
     public void deleteWord(Entry entry) {
         String tableName = getTableNameByListName(entry.getListName());
         String sql = String.format("DELETE FROM %s WHERE word=\"%s\" AND translation = \"%s\" " +

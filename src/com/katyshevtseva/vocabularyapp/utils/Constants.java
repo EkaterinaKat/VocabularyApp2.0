@@ -23,6 +23,7 @@ public class Constants {
     public static final String WORDS_LEARNING_WINDOW_TITLE = "Words learning";
     public static final String LEVELS_CHOICE_WINDOW_TITLE = "Choose levels to learn";
     public static final String WORD_INPUT_WINDOW_TITLE = "Add word";
+    public static final String WORD_DELETION_WINDOW_TITLE = "Delete word";
 
     public static final String EMPTY_TEXT_FIELD_WARNING = "Text field is empty"; //todo может эти константы вообще не нужны
     public static final String EMPTY_LISTS_WARNING = "Chosen lists are empty";
@@ -30,7 +31,7 @@ public class Constants {
 
     public static final int MAIN_WINDOW_HEIGHT = 500;
     public static final int MAIN_WINDOW_WIDTH = 550;
-    public static final int LIST_DELETION_WINDOW_HEIGHT = 200;
+    public static final int LIST_DELETION_WINDOW_HEIGHT = 200;  //todo мб объеденить это с WORD_DELETION_WINDOW_HEIGHT
     public static final int LIST_DELETION_WINDOW_WIDTH = 450;
     public static final int WORD_LIST_WINDOW_HEIGHT = 900;
     public static final int WORD_LIST_WINDOW_WIDTH = 1330;
@@ -52,6 +53,8 @@ public class Constants {
     public static final int WORD_INPUT_WINDOW_WIDTH = 350;
     public static final int WORD_CHANGE_WINDOW_HEIGHT = 450;
     public static final int WORD_CHANGE_WINDOW_WIDTH = 400;
+    public static final int WORD_DELETION_WINDOW_HEIGHT = 200;
+    public static final int WORD_DELETION_WINDOW_WIDTH = 450;
 
     public static final int CATALOGUE_TABLE_WIDTH = 440;
     public static final int CATALOGUE_TABLE_V_GAP = 15;

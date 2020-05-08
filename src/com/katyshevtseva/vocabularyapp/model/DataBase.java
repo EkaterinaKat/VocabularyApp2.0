@@ -14,4 +14,6 @@ public interface DataBase {
 
     void addWord(String listName, String word, String translation);
 
+    void deleteWord(Entry entry);
+
 }

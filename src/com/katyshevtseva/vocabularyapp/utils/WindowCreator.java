@@ -49,8 +49,13 @@ public class WindowCreator {
     }
 
     public void createWordChangeWindow(String word) {
-        WindowCreator.getInstance().createModalWindow("word_change.fxml",
+        createModalWindow("word_change.fxml",
                 word, WORD_CHANGE_WINDOW_WIDTH, WORD_CHANGE_WINDOW_HEIGHT, false);
+    }
+
+    public void createWordDeletionWindow() {
+        createModalWindow("word_deletion.fxml",
+                WORD_DELETION_WINDOW_TITLE, WORD_DELETION_WINDOW_WIDTH, WORD_DELETION_WINDOW_HEIGHT, false);
     }
 
     private void createModalWindow(String fxmlName, String title, int width, int height, boolean stretchable) {

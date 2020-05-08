@@ -62,7 +62,7 @@ public class ListController {
             row.setOnMouseClicked(event -> {
                 if (event.getClickCount() == 2 && (!row.isEmpty())) {
                     Entry chosenEntry = row.getItem();
-                    WordChangeController.changeWord(chosenEntry);
+                    WordChangeController.changeWord(chosenEntry, this);
                 }
             });
             return row;
