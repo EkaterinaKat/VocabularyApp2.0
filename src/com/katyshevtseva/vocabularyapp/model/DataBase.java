@@ -16,4 +16,8 @@ public interface DataBase {
 
     void deleteWord(Entry entry);
 
+    void editEntry(Entry entry, String word, String translation);
+
+    void editHelp(Entry entry, String help);
+
 }

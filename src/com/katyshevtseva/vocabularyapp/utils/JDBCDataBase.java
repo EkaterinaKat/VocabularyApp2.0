@@ -70,6 +70,19 @@ public class JDBCDataBase implements DataBase { //todo переименоват�
         return catalogue;
     }
 
+    private void createCatalogue() {
+        String sql = "CREATE TABLE catalogue (\n" +
+                "listName STRING,\n" +
+                "id INTEGER PRIMARY KEY AUTOINCREMENT,\n" +
+                "tableName STRING\n" +
+                ");\n";
+        try {
+            stmt.executeUpdate(sql);
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+
     @Override
     public List<Entry> getList(String listName) {
         String tableName = getTableNameByListName(listName);
@@ -208,7 +221,8 @@ public class JDBCDataBase implements DataBase { //todo переименоват�
         return resultList;
     }
 
-    public void editWord(Entry entry, String newWord, String newTranslation) {
+    @Override
+    public void editEntry(Entry entry, String newWord, String newTranslation) {
         String tableName = getTableNameByListName(entry.getListName());
         String sql = String.format("UPDATE %s \n" +
                 "\t   SET word = \"%s\", translation = \"%s\" \n" +
@@ -232,24 +246,12 @@ public class JDBCDataBase implements DataBase { //todo переименоват�
         }
     }
 
-    public void addHelp(Entry entry, String newHelp) {
+    @Override
+    public void editHelp(Entry entry, String newHelp) {
         String tableName = getTableNameByListName(entry.getListName());
         String sql = String.format("UPDATE %s \n" +
                 "\t   SET help = \"%s\" \n" +
                 "\t   WHERE word = \"%s\"", tableName, newHelp, entry.getWord());
-        try {
-            stmt.executeUpdate(sql);
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-    }
-
-    public void createCatalogue() {
-        String sql = "CREATE TABLE catalogue (\n" +
-                "listName STRING,\n" +
-                "id INTEGER PRIMARY KEY AUTOINCREMENT,\n" +
-                "tableName STRING\n" +
-                ");\n";
         try {
             stmt.executeUpdate(sql);
         } catch (SQLException e) {
