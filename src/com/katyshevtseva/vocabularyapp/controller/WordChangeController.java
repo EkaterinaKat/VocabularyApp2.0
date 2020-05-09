@@ -46,23 +46,18 @@ public class WordChangeController {
         return wordTextField.getText().trim().equals("") || translationTextField.getText().trim().equals("");
     }
 
-    public void deleteButtonListener() { //todo сделать красной эту кнопку
+    public void deleteButtonListener() {
         WordDeletionController.deleteWord(this);
     }
 
     public void doneButtonListener() {
         //todo эта строка должна быть первее второй иначе хелп может не сохраниться. надо над этим подумать
         //todo будь у записи id всё было бы лучше
-        if (!helpTextAreaEmpty())
-            MainController.getDataBase().editHelp(entry, helpTextArea.getText().trim());
+        MainController.getDataBase().editHelp(entry, helpTextArea.getText().trim());
         MainController.getDataBase().editEntry(entry, wordTextField.getText().trim(), translationTextField.getText().trim());
         listController.updateTable();
         Stage stage = (Stage) wordTextField.getScene().getWindow();
         stage.close();
-    }
-
-    private boolean helpTextAreaEmpty() {
-        return helpTextArea.getText().trim().equals("");
     }
 
     void deleteWord() {

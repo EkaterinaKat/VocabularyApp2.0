@@ -80,6 +80,10 @@
 }
 
 
+#wordDeletionButton:hover{
+    -fx-background-color: #C14242;
+    -fx-text-fill: #FFFFFF;
+}
 
 
 

@@ -28,7 +28,7 @@
     <Pane prefHeight="40"/>
 
     <GridPane alignment="CENTER">
-        <Button text="Delete word" onMouseClicked="#deleteButtonListener" prefWidth="130"
+        <Button text="Delete word" fx:id="wordDeletionButton" onMouseClicked="#deleteButtonListener" prefWidth="130"
                 GridPane.rowIndex="0" GridPane.columnIndex="0"/>
         <Pane GridPane.columnIndex="1" GridPane.rowIndex="0" prefWidth="50"/>
         <Button text="Done" fx:id="doneButton" onMouseClicked="#doneButtonListener" prefWidth="130"
