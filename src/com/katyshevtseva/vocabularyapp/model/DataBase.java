@@ -10,7 +10,7 @@ public interface DataBase {
 
     void deleteList(String listToDelete);
 
-    List<Entry> getList(String listName);
+    List<Entry> getEntriesByListName(String listName);
 
     void addWord(String listName, String word, String translation);
 

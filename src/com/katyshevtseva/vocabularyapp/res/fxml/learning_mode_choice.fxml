@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?scenebuilder-stylesheet /css/style?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.layout.*?>
+<?import java.net.URL?>
+<GridPane alignment="CENTER" xmlns="http://javafx.com/javafx"
+          xmlns:fx="http://javafx.com/fxml"
+          fx:controller="com.katyshevtseva.vocabularyapp.controller.learning.LearningModeChoiceController"
+          prefHeight="400.0" prefWidth="600.0">
+
+    <stylesheets>
+        <URL value="@/com/katyshevtseva/vocabularyapp/res/css/style.css"/>
+    </stylesheets>
+
+    <Button text="Russian To English" fx:id="button" onMouseClicked="#rusToEngButtonListener" prefWidth="120"
+            GridPane.rowIndex="0"/>
+    <Pane prefHeight="12" GridPane.rowIndex="1"/>
+    <Button text="English To Russian" onMouseClicked="#engToRusButtonListener" prefWidth="120" GridPane.rowIndex="2"/>
+    <Pane prefHeight="12" GridPane.rowIndex="3"/>
+    <Button text="Spelling" onMouseClicked="#spellingButtonListener" prefWidth="120" GridPane.rowIndex="4"/>
+
+</GridPane>

@@ -1,5 +1,6 @@
 package com.katyshevtseva.vocabularyapp.controller;
 
+import com.katyshevtseva.vocabularyapp.controller.learning.LearningTuner;
 import com.katyshevtseva.vocabularyapp.model.DataBase;
 import com.katyshevtseva.vocabularyapp.utils.JDBCDataBase;
 import com.katyshevtseva.vocabularyapp.utils.WindowCreator;
@@ -40,6 +41,7 @@ public class MainController extends Application {
     }
 
     public void learnWords() {
+        new LearningTuner().startTuning();
     }
 
     public void searchWord() {

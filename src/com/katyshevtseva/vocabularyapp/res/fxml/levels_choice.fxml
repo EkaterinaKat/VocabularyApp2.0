@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?scenebuilder-stylesheet /css/style?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.layout.*?>
+<?import java.net.URL?>
+<BorderPane xmlns="http://javafx.com/javafx"
+            xmlns:fx="http://javafx.com/fxml"
+            fx:controller="com.katyshevtseva.vocabularyapp.controller.learning.LevelsChoiceController"
+            prefHeight="400.0" prefWidth="600.0">
+
+    <stylesheets>
+        <URL value="@/com/katyshevtseva/vocabularyapp/res/css/style.css"/>
+    </stylesheets>
+
+    <top>
+        <Pane prefHeight="20"/>
+    </top>
+
+    <left>
+        <Pane prefWidth="25"/>
+    </left>
+
+    <right>
+        <Pane prefWidth="15"/>
+    </right>
+
+    <center>
+        <ScrollPane fx:id="scrollPane" styleClass="edge-to-edge">
+
+        </ScrollPane>
+    </center>
+
+    <bottom>
+        <GridPane alignment="CENTER">
+            <Pane prefHeight="10" GridPane.rowIndex="0"/>
+            <Button text="Done" fx:id="doneButton" onMouseClicked="#doneButtonListener" GridPane.rowIndex="1"/>
+            <Pane prefHeight="15" GridPane.rowIndex="2"/>
+        </GridPane>
+    </bottom>
+
+</BorderPane>
+
+
+
+
+
+
+
+

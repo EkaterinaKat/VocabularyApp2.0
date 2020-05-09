@@ -70,7 +70,7 @@ public class ListController {
     }
 
     void updateTable() {
-        List<Entry> list = MainController.getDataBase().getList(listName);
+        List<Entry> list = MainController.getDataBase().getEntriesByListName(listName);
         ObservableList<Entry> words = FXCollections.observableArrayList();
         words.addAll(list);
         table.setItems(words);

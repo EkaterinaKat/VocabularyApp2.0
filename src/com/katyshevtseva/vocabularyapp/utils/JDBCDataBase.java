@@ -84,7 +84,7 @@ public class JDBCDataBase implements DataBase { //todo переименоват�
     }
 
     @Override
-    public List<Entry> getList(String listName) {
+    public List<Entry> getEntriesByListName(String listName) {
         String tableName = getTableNameByListName(listName);
         List<Entry> listOfEntries = new ArrayList<>();
         String sql2 = String.format("SELECT word, translation, level, help FROM %s", tableName);
@@ -192,7 +192,7 @@ public class JDBCDataBase implements DataBase { //todo переименоват�
         }
     }
 
-    public List<Entry> getPairsForSearch(String inputString) {
+    public List<Entry> getEntriesForSearch(String inputString) {
         List<Entry> resultList = new ArrayList<>();
 
         //достаем из каталога имена списков

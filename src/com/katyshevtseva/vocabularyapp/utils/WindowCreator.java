@@ -58,6 +58,21 @@ public class WindowCreator {
                 WORD_DELETION_WINDOW_TITLE, WORD_DELETION_WINDOW_WIDTH, WORD_DELETION_WINDOW_HEIGHT, false);
     }
 
+    public void createLearningModeChoiceWindow() {
+        createModalWindow("learning_mode_choice.fxml",
+                MODE_CHOICE_WINDOW_TITLE, MODE_CHOICE_WINDOW_WIDTH, MODE_CHOICE_WINDOW_HEIGHT, false);
+    }
+
+    public void createListsChoiceWindow() {
+        createModalWindow("lists_choice.fxml",
+                LISTS_CHOICE_WINDOW_TITLE, CHOICE_WINDOW_WIDTH, CHOICE_WINDOW_HEIGHT, false);
+    }
+
+    public void createLevelsChoiceWindow() {
+        createModalWindow("levels_choice.fxml",
+                LEVELS_CHOICE_WINDOW_TITLE, CHOICE_WINDOW_WIDTH, CHOICE_WINDOW_HEIGHT, false);
+    }
+
     private void createModalWindow(String fxmlName, String title, int width, int height, boolean stretchable) {
         Stage stage = getStage(fxmlName, title, width, height, stretchable);
         stage.initModality(Modality.APPLICATION_MODAL);
