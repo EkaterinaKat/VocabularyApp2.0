@@ -36,19 +36,19 @@
     -fx-font-weight: bold;
 }
 
-#okBtn{
+#okButton{
     -fx-background-color: #CCFF99;
 }
 
-#okBtn:hover{
+#okButton:hover{
     -fx-background-color: #7CFC00;
 }
 
-#notOkBtn{
+#notOkButton{
     -fx-background-color: #CCFF99;
 }
 
-#notOkBtn:hover{
+#notOkButton:hover{
     -fx-background-color: #C14242;
 }
 

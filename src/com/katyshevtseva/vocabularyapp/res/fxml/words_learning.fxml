@@ -26,12 +26,12 @@
     <Pane prefHeight="7"/>
 
     <HBox alignment="CENTER">
-        <Button fx:id="okBtn" onMouseClicked="#okButtonListener">
+        <Button fx:id="okButton" onMouseClicked="#okButtonListener">
             <HBox.margin>
                 <Insets bottom="5" left="20" right="20" top="5"/>
             </HBox.margin>
         </Button>
-        <Button fx:id="notOkBtn" onMouseClicked="#notOkButtonListener">
+        <Button fx:id="notOkButton" onMouseClicked="#notOkButtonListener">
             <HBox.margin>
                 <Insets bottom="5" left="20" right="20" top="5"/>
             </HBox.margin>

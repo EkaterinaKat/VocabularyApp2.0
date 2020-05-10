@@ -1,12 +1,10 @@
 package com.katyshevtseva.vocabularyapp.controller;
 
-import com.katyshevtseva.vocabularyapp.model.DataBase;
+import com.katyshevtseva.vocabularyapp.utils.Utils;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.control.Tooltip;
-import javafx.scene.image.Image;
-import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.ColumnConstraints;
 import javafx.scene.layout.GridPane;
@@ -17,21 +15,19 @@ import static com.katyshevtseva.vocabularyapp.utils.Constants.*;
 
 class CatalogueTuner {
     private static CatalogueTuner instance;
-    private DataBase dataBase;
     private GridPane catalogueTable;
     private List<String> catalogue;
     private ScrollPane cataloguePlacement;
 
-    public static void create(DataBase dataBase, ScrollPane cataloguePlacement) {
-        instance = new CatalogueTuner(dataBase, cataloguePlacement);
+    static void create(ScrollPane cataloguePlacement) {
+        instance = new CatalogueTuner(cataloguePlacement);
     }
 
     public static CatalogueTuner getInstance() {
         return instance;
     }
 
-    private CatalogueTuner(DataBase dataBase, ScrollPane cataloguePlacement) {
-        this.dataBase = dataBase; //todo ну теперь то мы можем получить бд и не передавая ее через аргументы
+    private CatalogueTuner(ScrollPane cataloguePlacement) {
         this.cataloguePlacement = cataloguePlacement;
         catalogueTable = createAndTuneCatalogueTable();
     }
@@ -45,7 +41,7 @@ class CatalogueTuner {
         return catalogueTable;
     }
 
-    public void updateCatalogue() {
+    void updateCatalogue() {
         cataloguePlacement.setContent(getUpdatedCatalogueTable());
     }
 
@@ -55,7 +51,7 @@ class CatalogueTuner {
     }
 
     private void updateCatalogueTable() {
-        catalogue = dataBase.getCatalogue();
+        catalogue = MainController.getDataBase().getCatalogue();
         catalogueTable.getChildren().clear();
         for (int listIndex = 0; listIndex < catalogue.size(); listIndex++) {
             tuneCatalogueTableRow(listIndex);
@@ -64,20 +60,13 @@ class CatalogueTuner {
 
     private void tuneCatalogueTableRow(int listIndex) {
         Label label = new Label(catalogue.get(listIndex));
-        Button deleteBtn = new Button("", getListDeletionIcon());
-        deleteBtn.setTooltip(new Tooltip("delete list"));
+        Button deleteButton = new Button();
+        Utils.setImageOnButton(RED_CROSS_IMAGE_NAME, deleteButton, BUTTON_IMAGE_SIZE);
+        deleteButton.setTooltip(new Tooltip("delete list"));
         label.addEventHandler(MouseEvent.MOUSE_CLICKED, mouseEvent -> openWordList(listIndex));
-        deleteBtn.addEventHandler(MouseEvent.MOUSE_CLICKED, mouseEvent -> deleteList(listIndex));
+        deleteButton.addEventHandler(MouseEvent.MOUSE_CLICKED, mouseEvent -> deleteList(listIndex));
         catalogueTable.add(label, 0, listIndex);
-        catalogueTable.add(deleteBtn, 1, listIndex);
-    }
-
-    private ImageView getListDeletionIcon() {  //todo мб когда-нибудь вынесем это в утилитные методы
-        Image image = new Image(IMAGES_PATH + RED_CROSS_IMAGE_NAME);
-        ImageView imageViewWithRedCross = new ImageView(image);
-        imageViewWithRedCross.setFitHeight(BUTTON_IMAGE_SIZE);
-        imageViewWithRedCross.setFitWidth(BUTTON_IMAGE_SIZE);
-        return imageViewWithRedCross;
+        catalogueTable.add(deleteButton, 1, listIndex);
     }
 
     private void deleteList(int listIndex) {

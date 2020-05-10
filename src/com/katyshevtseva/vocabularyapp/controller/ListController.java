@@ -1,6 +1,7 @@
 package com.katyshevtseva.vocabularyapp.controller;
 
 import com.katyshevtseva.vocabularyapp.model.Entry;
+import com.katyshevtseva.vocabularyapp.utils.Utils;
 import com.katyshevtseva.vocabularyapp.utils.WindowCreator;
 import javafx.beans.property.ReadOnlyObjectWrapper;
 import javafx.collections.FXCollections;
@@ -11,12 +12,11 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableRow;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
-import javafx.scene.image.Image;
-import javafx.scene.image.ImageView;
 
 import java.util.List;
 
-import static com.katyshevtseva.vocabularyapp.utils.Constants.*;
+import static com.katyshevtseva.vocabularyapp.utils.Constants.BUTTON_IMAGE_SIZE;
+import static com.katyshevtseva.vocabularyapp.utils.Constants.PLUS_IMAGE_NAME;
 
 public class ListController {
     private static String listName;
@@ -45,7 +45,7 @@ public class ListController {
         tuneTable();
         setRowClickListener();
         updateTable();
-        addImageOnButton();
+        Utils.setImageOnButton(PLUS_IMAGE_NAME, addWordButton, BUTTON_IMAGE_SIZE);
     }
 
     private void tuneTable() {
@@ -74,15 +74,6 @@ public class ListController {
         ObservableList<Entry> words = FXCollections.observableArrayList();
         words.addAll(list);
         table.setItems(words);
-    }
-
-    private void addImageOnButton() {
-        //добавляем полюсик на кнопочку   //todo мб когда-нибудь вынесем это в утилитные методы
-        Image image = new Image(IMAGES_PATH + PLUS_IMAGE_NAME);
-        ImageView imageView = new ImageView(image);
-        imageView.setFitHeight(BUTTON_IMAGE_SIZE);
-        imageView.setFitWidth(BUTTON_IMAGE_SIZE);
-        addWordButton.graphicProperty().setValue(imageView);
     }
 
     public void addWordButtonListener() {

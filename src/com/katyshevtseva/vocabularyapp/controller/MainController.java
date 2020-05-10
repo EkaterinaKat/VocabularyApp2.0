@@ -28,7 +28,7 @@ public class MainController extends Application {
     @FXML
     public void initialize() {
         dataBase = JDBCDataBase.getInstance();
-        CatalogueTuner.create(dataBase, cataloguePlacement);
+        CatalogueTuner.create(cataloguePlacement);
         CatalogueTuner.getInstance().updateCatalogue();
     }
 

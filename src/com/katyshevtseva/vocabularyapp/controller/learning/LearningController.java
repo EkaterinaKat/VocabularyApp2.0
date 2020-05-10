@@ -3,12 +3,11 @@ package com.katyshevtseva.vocabularyapp.controller.learning;
 import com.katyshevtseva.vocabularyapp.controller.MainController;
 import com.katyshevtseva.vocabularyapp.controller.MessageController;
 import com.katyshevtseva.vocabularyapp.model.Entry;
+import com.katyshevtseva.vocabularyapp.utils.Utils;
 import com.katyshevtseva.vocabularyapp.utils.WindowCreator;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
-import javafx.scene.image.Image;
-import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
 
 import java.util.Collections;
@@ -30,9 +29,9 @@ public class LearningController {
     @FXML
     private Label levelLabel;
     @FXML
-    private Button okBtn;
+    private Button okButton;
     @FXML
-    private Button notOkBtn;
+    private Button notOkButton;
     @FXML
     private Button helpButton;
     @FXML
@@ -48,21 +47,8 @@ public class LearningController {
         Collections.shuffle(entries);
         wordCount = -1;
         nextWord();
-        addImagesOnButtons();
-    }
-
-    private void addImagesOnButtons() {  //todo Utils?
-        Image image = new Image(IMAGES_PATH + TICK_IMAGE_NAME);
-        ImageView imageView = new ImageView(image);
-        imageView.setFitHeight(LEARNING_BUTTONS_IMAGE_SIZE);
-        imageView.setFitWidth(LEARNING_BUTTONS_IMAGE_SIZE);
-        okBtn.graphicProperty().setValue(imageView);
-
-        Image image1 = new Image(IMAGES_PATH + RED_CROSS_IMAGE_NAME);
-        ImageView imageView1 = new ImageView(image1);
-        imageView1.setFitHeight(LEARNING_BUTTONS_IMAGE_SIZE);
-        imageView1.setFitWidth(LEARNING_BUTTONS_IMAGE_SIZE);
-        notOkBtn.graphicProperty().setValue(imageView1);
+        Utils.setImageOnButton(TICK_IMAGE_NAME, okButton, LEARNING_BUTTONS_IMAGE_SIZE);
+        Utils.setImageOnButton(RED_CROSS_IMAGE_NAME, notOkButton, LEARNING_BUTTONS_IMAGE_SIZE);
     }
 
     private void nextWord() {
@@ -86,13 +72,13 @@ public class LearningController {
 
     private void tuneButtonsForNextWord() {
         showTranslationButton.setDisable(false);
-        if ((entries.get(wordCount).getHelp() == null) || (entries.get(wordCount).getLevel() > 3)) { //todo над этим подумать
+        if ((entries.get(wordCount).getHelp() == null) || (entries.get(wordCount).getLevel() > 3)) {
             helpButton.setDisable(true);
         } else {
             helpButton.setDisable(false);
         }
-        okBtn.setDisable(true);
-        notOkBtn.setDisable(true);
+        okButton.setDisable(true);
+        notOkButton.setDisable(true);
     }
 
     private void finishLearning() {
@@ -109,8 +95,8 @@ public class LearningController {
     public void showTranslationButtonListener() {
         translationLabel.setText(entries.get(wordCount).getTranslation());
         showTranslationButton.setDisable(true);
-        okBtn.setDisable(false);
-        notOkBtn.setDisable(false);
+        okButton.setDisable(false);
+        notOkButton.setDisable(false);
     }
 
     public void okButtonListener() {
