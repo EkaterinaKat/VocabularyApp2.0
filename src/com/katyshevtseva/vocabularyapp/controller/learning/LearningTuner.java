@@ -12,7 +12,6 @@ public class LearningTuner {
     private LearningMode chosenMode;
     private LearningTunerHelper helper;
     private List<String> chosenLists;
-    private List<Integer> chosenLevels;
 
     public LearningTuner() {
         helper = new LearningTunerHelper(MainController.getDataBase());
@@ -39,8 +38,7 @@ public class LearningTuner {
     }
 
     void finishLevelsChoosing(List<Integer> chosenLevels) {
-        this.chosenLevels = chosenLevels;
         List<Entry> entriesToLearn = helper.getEntries(chosenLists, chosenLevels);
-        //todo передаем контроллеру изучения
+        LearningController.startLearning(entriesToLearn);
     }
 }

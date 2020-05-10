@@ -20,4 +20,6 @@ public interface DataBase {
 
     void editHelp(Entry entry, String help);
 
+    void changeEntryLevel(Entry entry, int newLevel);
+
 }

@@ -73,6 +73,16 @@ public class WindowCreator {
                 LEVELS_CHOICE_WINDOW_TITLE, CHOICE_WINDOW_WIDTH, CHOICE_WINDOW_HEIGHT, false);
     }
 
+    public void createWordsLearningWindow() {
+        createModalWindow("words_learning.fxml",
+                WORDS_LEARNING_WINDOW_TITLE, WORDS_LEARNING_WINDOW_WIDTH, WORDS_LEARNING_WINDOW_HEIGHT, false);
+    }
+
+    public void createMessageWindow() {
+        createModalWindow("message.fxml",
+                MESSAGE_WINDOW_TITLE, MESSAGE_WINDOW_WIDTH, MESSAGE_WINDOW_HEIGHT, false);
+    }
+
     private void createModalWindow(String fxmlName, String title, int width, int height, boolean stretchable) {
         Stage stage = getStage(fxmlName, title, width, height, stretchable);
         stage.initModality(Modality.APPLICATION_MODAL);

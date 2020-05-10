@@ -73,7 +73,7 @@ class CatalogueTuner {
     }
 
     private ImageView getListDeletionIcon() {  //todo мб когда-нибудь вынесем это в утилитные методы
-        Image image = new Image(IMAGES_PATH + LIST_DELETION_IMAGE_NAME);
+        Image image = new Image(IMAGES_PATH + RED_CROSS_IMAGE_NAME);
         ImageView imageViewWithRedCross = new ImageView(image);
         imageViewWithRedCross.setFitHeight(BUTTON_IMAGE_SIZE);
         imageViewWithRedCross.setFitWidth(BUTTON_IMAGE_SIZE);

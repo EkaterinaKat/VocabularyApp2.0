@@ -179,7 +179,8 @@ public class JDBCDataBase implements DataBase { //todo переименоват�
         }
     }
 
-    public void changeLevel(Entry entry, int newLevel) {
+    @Override
+    public void changeEntryLevel(Entry entry, int newLevel) {
         String tableName = getTableNameByListName(entry.getListName());
         String sql = String.format("UPDATE %s \n" +
                 "\t   SET level = \"%d\" \n" +

@@ -14,11 +14,11 @@
         <URL value="@/com/katyshevtseva/vocabularyapp/res/css/style.css"/>
     </stylesheets>
 
-    <Button text="Russian To English" fx:id="button" onMouseClicked="#rusToEngButtonListener" prefWidth="120"
+    <Button text="Russian To English" fx:id="button" onMouseClicked="#rusToEngButtonListener" prefWidth="160"
             GridPane.rowIndex="0"/>
     <Pane prefHeight="12" GridPane.rowIndex="1"/>
-    <Button text="English To Russian" onMouseClicked="#engToRusButtonListener" prefWidth="120" GridPane.rowIndex="2"/>
+    <Button text="English To Russian" onMouseClicked="#engToRusButtonListener" prefWidth="160" GridPane.rowIndex="2"/>
     <Pane prefHeight="12" GridPane.rowIndex="3"/>
-    <Button text="Spelling" onMouseClicked="#spellingButtonListener" prefWidth="120" GridPane.rowIndex="4"/>
+    <Button text="Spelling" onMouseClicked="#spellingButtonListener" prefWidth="160" GridPane.rowIndex="4"/>
 
 </GridPane>
