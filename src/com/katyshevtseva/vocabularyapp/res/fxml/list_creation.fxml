@@ -20,6 +20,6 @@
     </HBox>
 
 
-    <Button fx:id="okButton" text="OK" onMouseClicked="#okButtonListener" AnchorPane.rightAnchor="10"
+    <Button fx:id="createButton" text="Create" onMouseClicked="#okButtonListener" AnchorPane.rightAnchor="10"
             AnchorPane.bottomAnchor="10"/>
 </AnchorPane>

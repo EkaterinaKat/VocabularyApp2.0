@@ -8,7 +8,6 @@ import com.katyshevtseva.vocabularyapp.utils.WindowCreator;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
-import javafx.stage.Stage;
 
 import java.util.Collections;
 import java.util.List;
@@ -83,8 +82,7 @@ public class LearningController {
 
     private void finishLearning() {
         MessageController.showMessage("Learning is completed!");
-        Stage stage = (Stage) wordLabel.getScene().getWindow();
-        stage.close();
+        Utils.closeWindowThatContains(wordLabel);
     }
 
     public void helpButtonListener() {

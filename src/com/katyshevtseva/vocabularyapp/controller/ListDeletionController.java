@@ -1,11 +1,10 @@
 package com.katyshevtseva.vocabularyapp.controller;
 
+import com.katyshevtseva.vocabularyapp.utils.Utils;
 import com.katyshevtseva.vocabularyapp.utils.WindowCreator;
 import javafx.fxml.FXML;
-import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
-import javafx.stage.Stage;
 
 import static com.katyshevtseva.vocabularyapp.utils.Constants.IMAGES_PATH;
 import static com.katyshevtseva.vocabularyapp.utils.Constants.QUESTION_IMAGE_NAME;
@@ -29,12 +28,10 @@ public class ListDeletionController {
     public void deleteButtonListener() {
         MainController.getDataBase().deleteList(listToDelete);
         CatalogueTuner.getInstance().updateCatalogue();
-        Stage stage = (Stage) imageView.getScene().getWindow();  //todo было бы здорово создать утилитный закрывающий метод
-        stage.close();
+        Utils.closeWindowThatContains(imageView);
     }
 
     public void cancelButtonListener() {
-        Stage stage = (Stage) imageView.getScene().getWindow();
-        stage.close();
+        Utils.closeWindowThatContains(imageView);
     }
 }

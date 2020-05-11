@@ -1,12 +1,12 @@
 package com.katyshevtseva.vocabularyapp.controller.learning;
 
+import com.katyshevtseva.vocabularyapp.utils.Utils;
 import com.katyshevtseva.vocabularyapp.utils.WindowCreator;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.CheckBox;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.layout.GridPane;
-import javafx.stage.Stage;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -64,8 +64,7 @@ public class ListsChoiceController {
 
     public void doneButtonListener() {
         learningTuner.finishListsChoosing(getChosenItems());
-        Stage stage = (Stage) scrollPane.getScene().getWindow();
-        stage.close();
+        Utils.closeWindowThatContains(scrollPane);
     }
 
     private List<String> getChosenItems() {

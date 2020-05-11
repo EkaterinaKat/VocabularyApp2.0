@@ -4,6 +4,7 @@ import javafx.scene.Node;
 import javafx.scene.control.Button;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.stage.Stage;
 
 import static com.katyshevtseva.vocabularyapp.utils.Constants.IMAGES_PATH;
 
@@ -21,7 +22,8 @@ public class Utils {
     }
 
     public static void closeWindowThatContains(Node node) {
-
+        Stage stage = (Stage) node.getScene().getWindow();
+        stage.close();
     }
 
 }

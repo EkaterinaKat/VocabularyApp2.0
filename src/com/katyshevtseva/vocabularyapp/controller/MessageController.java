@@ -1,9 +1,9 @@
 package com.katyshevtseva.vocabularyapp.controller;
 
+import com.katyshevtseva.vocabularyapp.utils.Utils;
 import com.katyshevtseva.vocabularyapp.utils.WindowCreator;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
-import javafx.stage.Stage;
 
 public class MessageController {
     private static String message;
@@ -21,7 +21,6 @@ public class MessageController {
     }
 
     public void okButtonListener() {
-        Stage stage = (Stage) messageLabel.getScene().getWindow();
-        stage.close();
+        Utils.closeWindowThatContains(messageLabel);
     }
 }

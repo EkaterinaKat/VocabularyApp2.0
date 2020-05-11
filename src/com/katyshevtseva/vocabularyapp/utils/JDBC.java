@@ -7,16 +7,16 @@ import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
-public class JDBCDataBase implements DataBase { //todo переименовать в jdbc
-    private static final JDBCDataBase instance = new JDBCDataBase();
+public class JDBC implements DataBase {
+    private static final JDBC instance = new JDBC();
     private Connection connection;
     private Statement stmt;
 
-    private JDBCDataBase() {
+    private JDBC() {
         connect();
     }
 
-    public static JDBCDataBase getInstance() {
+    public static JDBC getInstance() {
         return instance;
     }
 

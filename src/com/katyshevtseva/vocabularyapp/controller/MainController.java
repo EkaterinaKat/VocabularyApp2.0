@@ -2,7 +2,7 @@ package com.katyshevtseva.vocabularyapp.controller;
 
 import com.katyshevtseva.vocabularyapp.controller.learning.LearningTuner;
 import com.katyshevtseva.vocabularyapp.model.DataBase;
-import com.katyshevtseva.vocabularyapp.utils.JDBCDataBase;
+import com.katyshevtseva.vocabularyapp.utils.JDBC;
 import com.katyshevtseva.vocabularyapp.utils.WindowCreator;
 import javafx.application.Application;
 import javafx.fxml.FXML;
@@ -22,12 +22,12 @@ public class MainController extends Application {
     @Override
     public void stop() throws Exception {
         super.stop();
-        JDBCDataBase.getInstance().disconnect();
+        JDBC.getInstance().disconnect();
     }
 
     @FXML
     public void initialize() {
-        dataBase = JDBCDataBase.getInstance();
+        dataBase = JDBC.getInstance();
         CatalogueTuner.create(cataloguePlacement);
         CatalogueTuner.getInstance().updateCatalogue();
     }

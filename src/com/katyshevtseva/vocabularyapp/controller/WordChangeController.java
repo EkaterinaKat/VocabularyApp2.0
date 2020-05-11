@@ -2,6 +2,7 @@ package com.katyshevtseva.vocabularyapp.controller;
 
 import com.katyshevtseva.vocabularyapp.model.Entry;
 import com.katyshevtseva.vocabularyapp.utils.Translator;
+import com.katyshevtseva.vocabularyapp.utils.Utils;
 import com.katyshevtseva.vocabularyapp.utils.WindowCreator;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
@@ -56,8 +57,7 @@ public class WordChangeController {
         MainController.getDataBase().editHelp(entry, helpTextArea.getText().trim());
         MainController.getDataBase().editEntry(entry, wordTextField.getText().trim(), translationTextField.getText().trim());
         listController.updateTable();
-        Stage stage = (Stage) wordTextField.getScene().getWindow();
-        stage.close();
+        Utils.closeWindowThatContains(wordTextField);
     }
 
     void deleteWord() {
