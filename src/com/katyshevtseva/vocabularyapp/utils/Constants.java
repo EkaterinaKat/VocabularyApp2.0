@@ -21,7 +21,6 @@ public class Constants {
     public static final String WORD_SEARCH_WINDOW_TITLE = "Word Search";
     public static final String ABOUT_WINDOW_TITLE = "About";
     public static final String LIST_DELETION_WINDOW_TITLE = "Delete word list";
-    public static final String WARNING_WINDOW_TITLE = "Warning";
     public static final String WORDS_LEARNING_WINDOW_TITLE = "Words learning";
     public static final String WORD_INPUT_WINDOW_TITLE = "Add word";
     public static final String WORD_DELETION_WINDOW_TITLE = "Delete word";
@@ -62,5 +61,5 @@ public class Constants {
     public static final int BIG_LOGO_SIZE = 130;
 
     public static final String ABOUT_TEXT = " Developer: Katyshevtseva Ekaterina\n Programming language: Java SE 8" +
-            " \n IDE: IntelliJ IDEA 2019.1 (Community Edition) \n Version: 1.0 \n Built on August 28, 2019";
+            " \n IDE: IntelliJ IDEA 2019.1 (Community Edition) \n Version: 2.0 \n Built on  .., 2020";
 }

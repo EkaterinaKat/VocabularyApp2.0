@@ -193,6 +193,7 @@ public class JDBC implements DataBase {
         }
     }
 
+    @Override
     public List<Entry> getEntriesForSearch(String inputString) {
         List<Entry> resultList = new ArrayList<>();
 

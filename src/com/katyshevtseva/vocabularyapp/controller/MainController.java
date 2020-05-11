@@ -45,8 +45,10 @@ public class MainController extends Application {
     }
 
     public void searchWord() {
+        WordSearchController.startWordSearch();
     }
 
     public void about() {
+        AboutController.showAbout();
     }
 }

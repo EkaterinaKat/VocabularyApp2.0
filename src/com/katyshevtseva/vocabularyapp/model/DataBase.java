@@ -22,4 +22,5 @@ public interface DataBase {
 
     void changeEntryLevel(Entry entry, int newLevel);
 
+    List<Entry> getEntriesForSearch(String inputString);
 }

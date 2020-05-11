@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?scenebuilder-stylesheet /css/style?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.VBox?>
+<?import java.net.URL?>
+<VBox xmlns="http://javafx.com/javafx"
+      xmlns:fx="http://javafx.com/fxml"
+      fx:controller="com.katyshevtseva.vocabularyapp.controller.WordSearchController"
+      prefHeight="400.0" prefWidth="600.0">
+
+    <stylesheets>
+        <URL value="@/com/katyshevtseva/vocabularyapp/res/css/style.css"/>
+    </stylesheets>
+
+    <TextField fx:id="textField"/>
+
+    <TableView prefHeight="950" fx:id="table">
+        <columns>
+            <TableColumn prefWidth="200" text="Word" fx:id="wordColumn"/>
+            <TableColumn prefWidth="280" text="Translation" fx:id="translationColumn"/>
+            <TableColumn prefWidth="70" text="Level" fx:id="levelColumn"/>
+            <TableColumn prefWidth="250" text="List name" fx:id="listNameColumn"/>
+        </columns>
+    </TableView>
+
+</VBox>

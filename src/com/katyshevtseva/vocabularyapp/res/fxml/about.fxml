@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?scenebuilder-stylesheet /css/style?>
+
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
+<?import java.net.URL?>
+<HBox xmlns="http://javafx.com/javafx"
+      xmlns:fx="http://javafx.com/fxml"
+      fx:controller="com.katyshevtseva.vocabularyapp.controller.AboutController"
+      prefHeight="400.0" prefWidth="600.0"
+      alignment="CENTER">
+
+    <stylesheets>
+        <URL value="@/com/katyshevtseva/vocabularyapp/res/css/style.css"/>
+    </stylesheets>
+
+    <ImageView fx:id="imageView"/>
+    <Pane prefWidth="20"/>
+    <Label fx:id="label" maxWidth="400" wrapText="true"/>
+
+</HBox>

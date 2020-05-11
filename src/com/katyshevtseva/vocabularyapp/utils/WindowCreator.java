@@ -83,6 +83,16 @@ public class WindowCreator {
                 MESSAGE_WINDOW_TITLE, MESSAGE_WINDOW_WIDTH, MESSAGE_WINDOW_HEIGHT, false);
     }
 
+    public void createAboutWindow() {
+        createModalWindow("about.fxml",
+                ABOUT_WINDOW_TITLE, ABOUT_WINDOW_WIDTH, ABOUT_WINDOW_HEIGHT, false);
+    }
+
+    public void createWordSearchWindow() {
+        createModalWindow("word_search.fxml",
+                WORD_SEARCH_WINDOW_TITLE, WORD_SEARCH_WINDOW_WIDTH, WORD_SEARCH_WINDOW_HEIGHT, false);
+    }
+
     private void createModalWindow(String fxmlName, String title, int width, int height, boolean stretchable) {
         Stage stage = getStage(fxmlName, title, width, height, stretchable);
         stage.initModality(Modality.APPLICATION_MODAL);
