@@ -12,7 +12,7 @@
         <URL value="@/com/katyshevtseva/vocabularyapp/res/css/style.css"/>
     </stylesheets>
 
-    <Pane prefHeight="40"/>
+    <Pane prefHeight="20"/>
 
     <GridPane alignment="CENTER">
         <Label text="Word: " GridPane.rowIndex="0" GridPane.columnIndex="0"/>
@@ -20,12 +20,9 @@
         <Pane GridPane.columnIndex="1" GridPane.rowIndex="1" prefHeight="10" prefWidth="10"/>
         <Label text="Translation: " GridPane.rowIndex="2" GridPane.columnIndex="0"/>
         <TextField fx:id="translationTextField" GridPane.rowIndex="2" GridPane.columnIndex="2"/>
-        <Pane GridPane.columnIndex="1" GridPane.rowIndex="3" prefHeight="10" prefWidth="10"/>
-        <Label text="Help: " GridPane.rowIndex="4" GridPane.columnIndex="0" GridPane.valignment="TOP"/>
-        <TextArea fx:id="helpTextArea" prefWidth="250" GridPane.rowIndex="4" GridPane.columnIndex="2"/>
     </GridPane>
 
-    <Pane prefHeight="40"/>
+    <Pane prefHeight="20"/>
 
     <GridPane alignment="CENTER">
         <Button text="Delete word" fx:id="wordDeletionButton" onMouseClicked="#deleteButtonListener" prefWidth="130"
@@ -35,6 +32,6 @@
                 GridPane.rowIndex="0" GridPane.columnIndex="2"/>
     </GridPane>
 
-    <Pane prefHeight="40"/>
+    <Pane prefHeight="20"/>
 
 </VBox>

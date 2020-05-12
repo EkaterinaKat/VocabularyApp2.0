@@ -5,14 +5,12 @@ public class Entry {
     private String translation;
     private Integer level;
     private String listName;
-    private String help;
 
-    public Entry(String word, String translation, Integer level, String listName, String help) {
+    public Entry(String word, String translation, Integer level, String listName) {
         this.word = word;
         this.translation = translation;
         this.level = level;
         this.listName = listName;
-        this.help = help;
     }
 
     public String getWord() {
@@ -29,9 +27,5 @@ public class Entry {
 
     public String getListName() {
         return listName;
-    }
-
-    public String getHelp() {
-        return help;
     }
 }

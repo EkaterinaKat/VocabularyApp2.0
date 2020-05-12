@@ -15,15 +15,13 @@
         <URL value="@/com/katyshevtseva/vocabularyapp/res/css/style.css"/>
     </stylesheets>
 
-    <Pane prefHeight="60"/>
+    <Pane prefHeight="50"/>
     <Label text=" " fx:id="wordLabel"/>
-    <Pane prefHeight="15"/>
-    <Button text="Get help" onMouseClicked="#helpButtonListener" fx:id="helpButton"/>
-    <Label fx:id="helpLabel" maxWidth="380" wrapText="true" prefHeight="70" alignment="CENTER"/>
+    <Pane prefHeight="20"/>
     <Button text="Show translation" onMouseClicked="#showTranslationButtonListener" fx:id="showTranslationButton"/>
-    <Pane prefHeight="7"/>
+    <Pane prefHeight="20"/>
     <Label text=" " fx:id="translationLabel"/>
-    <Pane prefHeight="7"/>
+    <Pane prefHeight="20"/>
 
     <HBox alignment="CENTER">
         <Button fx:id="okButton" onMouseClicked="#okButtonListener">

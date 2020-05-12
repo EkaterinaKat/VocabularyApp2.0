@@ -87,16 +87,15 @@ public class JDBC implements DataBase {
     public List<Entry> getEntriesByListName(String listName) {
         String tableName = getTableNameByListName(listName);
         List<Entry> listOfEntries = new ArrayList<>();
-        String sql2 = String.format("SELECT word, translation, level, help FROM %s", tableName);
+        String sql2 = String.format("SELECT word, translation, level FROM %s", tableName);  //todo дублирование
         ResultSet rs;
         try {
             rs = stmt.executeQuery(sql2);
-            while (rs.next()) { //листаем строчки таблички
-                String n = rs.getString(1);
-                String t = rs.getString(2);
-                Integer l = rs.getInt(3);
-                String h = rs.getString(4);
-                listOfEntries.add(new Entry(n, t, l, listName, h));
+            while (rs.next()) {
+                String word = rs.getString(1);
+                String translation = rs.getString(2);
+                Integer level = rs.getInt(3);
+                listOfEntries.add(new Entry(word, translation, level, listName));
             }
         } catch (SQLException e) {
             e.printStackTrace();
@@ -204,7 +203,7 @@ public class JDBC implements DataBase {
         //для каждого списка находим имя таблицы и если в ней есть слово начинающееся с входящей строки то кладем это слово в лист
         for (String listName : listNames) {
             String tableName = getTableNameByListName(listName);
-            String sql = String.format("SELECT word, translation, level, help FROM %s", tableName);
+            String sql = String.format("SELECT word, translation, level FROM %s", tableName);  //todo дублирование
             try {
                 ResultSet rs = stmt.executeQuery(sql);
                 while (rs.next()) {
@@ -212,8 +211,7 @@ public class JDBC implements DataBase {
                         String word = rs.getString(1);
                         String translation = rs.getString(2);
                         Integer level = rs.getInt(3);
-                        String help = rs.getString(4);
-                        resultList.add(new Entry(word, translation, level, listName, help));
+                        resultList.add(new Entry(word, translation, level, listName));
                     }
                 }
             } catch (SQLException e) {
@@ -241,19 +239,6 @@ public class JDBC implements DataBase {
         String tableName = getTableNameByListName(entry.getListName());
         String sql = String.format("DELETE FROM %s WHERE word=\"%s\" AND translation = \"%s\" " +
                 "AND level = \"%d\"", tableName, entry.getWord(), entry.getTranslation(), entry.getLevel());
-        try {
-            stmt.executeUpdate(sql);
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-    }
-
-    @Override
-    public void editHelp(Entry entry, String newHelp) {
-        String tableName = getTableNameByListName(entry.getListName());
-        String sql = String.format("UPDATE %s \n" +
-                "\t   SET help = \"%s\" \n" +
-                "\t   WHERE word = \"%s\"", tableName, newHelp, entry.getWord());
         try {
             stmt.executeUpdate(sql);
         } catch (SQLException e) {

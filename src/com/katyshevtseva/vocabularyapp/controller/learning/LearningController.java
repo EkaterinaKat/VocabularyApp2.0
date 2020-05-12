@@ -33,10 +33,6 @@ public class LearningController {
     private Button okButton;
     @FXML
     private Button notOkButton;
-    @FXML
-    private Button helpButton;
-    @FXML
-    private Label helpLabel;
 
     static void startLearning(List<Entry> entriesToLearn, LearningMode learningMode) {
         entries = entriesToLearn;
@@ -67,7 +63,6 @@ public class LearningController {
         mode.setWordLabelText(wordLabel, getCurrentEntry());
         countLabel.setText(String.format("%s/%s", wordCount + 1, entries.size()));
         levelLabel.setText("Word level: " + getCurrentEntry().getLevel());
-        helpLabel.setText("");
         translationLabel.setText("");
     }
 
@@ -77,11 +72,6 @@ public class LearningController {
 
     private void tuneButtonsForNextWord() {
         showTranslationButton.setDisable(false);
-        if ((getCurrentEntry().getHelp() == null) || (getCurrentEntry().getLevel() > 3)) {
-            helpButton.setDisable(true);
-        } else {
-            helpButton.setDisable(false);
-        }
         okButton.setDisable(true);
         notOkButton.setDisable(true);
     }
@@ -89,11 +79,6 @@ public class LearningController {
     private void finishLearning() {
         MessageController.showMessage("Learning is completed!");
         Utils.closeWindowThatContains(wordLabel);
-    }
-
-    public void helpButtonListener() {
-        helpLabel.setText(getCurrentEntry().getHelp());
-        helpButton.setDisable(true);
     }
 
     public void showTranslationButtonListener() {

@@ -6,7 +6,6 @@ import com.katyshevtseva.vocabularyapp.utils.Utils;
 import com.katyshevtseva.vocabularyapp.utils.WindowCreator;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
-import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
@@ -17,8 +16,6 @@ public class WordChangeController {
     private TextField wordTextField;
     @FXML
     private TextField translationTextField;
-    @FXML
-    private TextArea helpTextArea;
     @FXML
     private Button doneButton;
 
@@ -32,7 +29,6 @@ public class WordChangeController {
     public void initialize() {
         wordTextField.setText(entry.getWord());
         translationTextField.setText(entry.getTranslation());
-        helpTextArea.setText(entry.getHelp());
         wordTextField.textProperty().addListener((observable, oldValue, newValue) -> {
             wordTextField.setText(Translator.translateToEng(newValue));
             doneButton.setDisable(wordOrTranslationFieldIsEmpty());
@@ -52,7 +48,6 @@ public class WordChangeController {
     }
 
     public void doneButtonListener() {
-        MainController.getDataBase().editHelp(entry, helpTextArea.getText().trim());
         MainController.getDataBase().editEntry(entry, wordTextField.getText().trim(), translationTextField.getText().trim());
         listController.updateTable();
         Utils.closeWindowThatContains(wordTextField);

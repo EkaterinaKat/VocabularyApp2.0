@@ -31,8 +31,6 @@ public class ListController {
     @FXML
     private TableColumn<Entry, Integer> levelColumn;
     @FXML
-    private TableColumn<Entry, Integer> helpColumn;
-    @FXML
     private Button addWordButton;
 
     static void showWordList(String listToShow) {
@@ -53,7 +51,6 @@ public class ListController {
         wordColumn.setCellValueFactory(new PropertyValueFactory<>("word"));
         translationColumn.setCellValueFactory(new PropertyValueFactory<>("translation"));
         levelColumn.setCellValueFactory(new PropertyValueFactory<>("level"));
-        helpColumn.setCellValueFactory(new PropertyValueFactory<>("help"));
     }
 
     private void setRowClickListener() {
