@@ -52,8 +52,6 @@ public class WordChangeController {
     }
 
     public void doneButtonListener() {
-        //todo эта строка должна быть первее второй иначе хелп может не сохраниться. надо над этим подумать
-        //todo будь у записи id всё было бы лучше
         MainController.getDataBase().editHelp(entry, helpTextArea.getText().trim());
         MainController.getDataBase().editEntry(entry, wordTextField.getText().trim(), translationTextField.getText().trim());
         listController.updateTable();

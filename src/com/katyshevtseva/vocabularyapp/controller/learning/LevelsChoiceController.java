@@ -18,9 +18,9 @@ public class LevelsChoiceController {
     private List<CheckBox> checkBoxes = new ArrayList<>();
     private GridPane placementForCheckBoxes = new GridPane();
     @FXML
-    public ScrollPane scrollPane;
+    private ScrollPane scrollPane;
     @FXML
-    public Button doneButton;
+    private Button doneButton;
 
     static void startChoosing(LearningTuner tuner, Set<Integer> levels) {
         learningTuner = tuner;

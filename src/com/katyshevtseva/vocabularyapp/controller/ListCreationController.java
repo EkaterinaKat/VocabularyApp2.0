@@ -8,7 +8,7 @@ import javafx.scene.control.TextField;
 
 public class ListCreationController {
     @FXML
-    public Button createButton;
+    private Button createButton;
     @FXML
     private TextField nameInputField;
 

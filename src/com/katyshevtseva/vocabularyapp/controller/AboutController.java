@@ -10,9 +10,9 @@ import static com.katyshevtseva.vocabularyapp.utils.Constants.*;
 
 public class AboutController {
     @FXML
-    public ImageView imageView;
+    private ImageView imageView;
     @FXML
-    public Label label;
+    private Label label;
 
     static void showAbout() {
         WindowCreator.getInstance().createAboutWindow();

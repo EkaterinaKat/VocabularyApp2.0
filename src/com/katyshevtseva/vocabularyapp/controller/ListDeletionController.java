@@ -12,7 +12,7 @@ import static com.katyshevtseva.vocabularyapp.utils.Constants.QUESTION_IMAGE_NAM
 public class ListDeletionController {
     private static String listToDelete;
     @FXML
-    public ImageView imageView;
+    private ImageView imageView;
 
     public static void deleteWordList(String listName) {
         listToDelete = listName;

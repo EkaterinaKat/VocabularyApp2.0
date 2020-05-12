@@ -21,19 +21,19 @@ import static com.katyshevtseva.vocabularyapp.utils.Constants.PLUS_IMAGE_NAME;
 public class ListController {
     private static String listName;
     @FXML
-    public TableView<Entry> table;
+    private TableView<Entry> table;
     @FXML
-    public TableColumn<Entry, String> wordColumn;
+    private TableColumn<Entry, String> wordColumn;
     @FXML
-    public TableColumn<Entry, String> translationColumn;
+    private TableColumn<Entry, String> translationColumn;
     @FXML
-    public TableColumn<Entry, Number> countColumn;
+    private TableColumn<Entry, Number> countColumn;
     @FXML
-    public TableColumn<Entry, Integer> levelColumn;
+    private TableColumn<Entry, Integer> levelColumn;
     @FXML
-    public TableColumn<Entry, Integer> helpColumn;
+    private TableColumn<Entry, Integer> helpColumn;
     @FXML
-    public Button addWordButton;
+    private Button addWordButton;
 
     static void showWordList(String listToShow) {
         listName = listToShow;

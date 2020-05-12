@@ -35,7 +35,7 @@ public class WindowCreator {
 
     public void createListDeletionWindow() {
         createModalWindow("list_deletion.fxml",
-                LIST_DELETION_WINDOW_TITLE, LIST_DELETION_WINDOW_WIDTH, LIST_DELETION_WINDOW_HEIGHT, false);
+                LIST_DELETION_WINDOW_TITLE, QUESTION_WINDOW_WIDTH, QUESTION_WINDOW_HEIGHT, false);
     }
 
     public void createListWindow(String listName) {
@@ -55,7 +55,7 @@ public class WindowCreator {
 
     public void createWordDeletionWindow() {
         createModalWindow("word_deletion.fxml",
-                WORD_DELETION_WINDOW_TITLE, WORD_DELETION_WINDOW_WIDTH, WORD_DELETION_WINDOW_HEIGHT, false);
+                WORD_DELETION_WINDOW_TITLE, QUESTION_WINDOW_WIDTH, QUESTION_WINDOW_HEIGHT, false);
     }
 
     public void createLearningModeChoiceWindow() {

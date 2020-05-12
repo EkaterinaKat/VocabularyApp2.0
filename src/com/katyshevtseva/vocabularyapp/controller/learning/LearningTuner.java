@@ -26,7 +26,7 @@ public class LearningTuner {
     }
 
     void finishModeChoosing(LearningMode learningMode) {
-        chosenMode = LearningMode.RUS_TO_ENG;  //todo затычка
+        chosenMode = LearningMode.RUS_TO_ENG;
         Map<String, Boolean> listsToChooseFrom = helper.getListsToChooseFrom();
         ListsChoiceController.startChoosing(this, listsToChooseFrom);
     }

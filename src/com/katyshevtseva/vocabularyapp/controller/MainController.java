@@ -12,7 +12,7 @@ import javafx.stage.Stage;
 public class MainController extends Application {
     private static DataBase dataBase;
     @FXML
-    public ScrollPane cataloguePlacement;
+    private ScrollPane cataloguePlacement;
 
     @Override
     public void start(Stage primaryStage) {

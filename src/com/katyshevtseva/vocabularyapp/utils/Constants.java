@@ -29,8 +29,8 @@ public class Constants {
 
     public static final int MAIN_WINDOW_HEIGHT = 500;
     public static final int MAIN_WINDOW_WIDTH = 550;
-    public static final int LIST_DELETION_WINDOW_HEIGHT = 200;  //todo мб объеденить это с WORD_DELETION_WINDOW_HEIGHT
-    public static final int LIST_DELETION_WINDOW_WIDTH = 450;
+    public static final int QUESTION_WINDOW_HEIGHT = 200;
+    public static final int QUESTION_WINDOW_WIDTH = 450;
     public static final int WORD_LIST_WINDOW_HEIGHT = 900;
     public static final int WORD_LIST_WINDOW_WIDTH = 1330;
     public static final int LIST_CREATION_WINDOW_HEIGHT = 150;
@@ -47,8 +47,6 @@ public class Constants {
     public static final int WORD_INPUT_WINDOW_WIDTH = 350;
     public static final int WORD_CHANGE_WINDOW_HEIGHT = 450;
     public static final int WORD_CHANGE_WINDOW_WIDTH = 400;
-    public static final int WORD_DELETION_WINDOW_HEIGHT = 200;
-    public static final int WORD_DELETION_WINDOW_WIDTH = 450;
     public static final int MODE_CHOICE_WINDOW_HEIGHT = 220;
     public static final int MODE_CHOICE_WINDOW_WIDTH = 350;
     public static final int MESSAGE_WINDOW_HEIGHT = 200;

@@ -13,7 +13,7 @@ public class WordAddingController {
     @FXML
     private TextField wordTextField;
     @FXML
-    private TextField translationTextField; //todo здесь и везде они должны быть private
+    private TextField translationTextField;
 
     static void addWord(ListController controller) {
         listController = controller;
