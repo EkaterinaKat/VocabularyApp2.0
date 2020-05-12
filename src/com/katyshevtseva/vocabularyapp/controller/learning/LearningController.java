@@ -65,9 +65,8 @@ public class LearningController {
 
     private void tuneLabelsForNewWord() {
         mode.setWordLabelText(wordLabel, getCurrentEntry());
-        String s = String.format("%s/%s", wordCount + 1, entries.size());
-        countLabel.setText(s);
-        levelLabel.setText("Word level: " + entries.get(wordCount).getLevel());
+        countLabel.setText(String.format("%s/%s", wordCount + 1, entries.size()));
+        levelLabel.setText("Word level: " + getCurrentEntry().getLevel());
         helpLabel.setText("");
         translationLabel.setText("");
     }
@@ -78,7 +77,7 @@ public class LearningController {
 
     private void tuneButtonsForNextWord() {
         showTranslationButton.setDisable(false);
-        if ((entries.get(wordCount).getHelp() == null) || (entries.get(wordCount).getLevel() > 3)) {
+        if ((getCurrentEntry().getHelp() == null) || (getCurrentEntry().getLevel() > 3)) {
             helpButton.setDisable(true);
         } else {
             helpButton.setDisable(false);
@@ -93,7 +92,7 @@ public class LearningController {
     }
 
     public void helpButtonListener() {
-        helpLabel.setText(entries.get(wordCount).getHelp());
+        helpLabel.setText(getCurrentEntry().getHelp());
         helpButton.setDisable(true);
     }
 
@@ -105,15 +104,15 @@ public class LearningController {
     }
 
     public void okButtonListener() {
-        int currentLevel = entries.get(wordCount).getLevel();
-        MainController.getDataBase().changeEntryLevel(entries.get(wordCount), currentLevel + 1);
+        int currentLevel = getCurrentEntry().getLevel();
+        MainController.getDataBase().changeEntryLevel(getCurrentEntry(), currentLevel + 1);
         nextWord();
     }
 
     public void notOkButtonListener() {
-        int currentLevel = entries.get(wordCount).getLevel();
+        int currentLevel = getCurrentEntry().getLevel();
         if (currentLevel != 0) {
-            MainController.getDataBase().changeEntryLevel(entries.get(wordCount), currentLevel - 1);
+            MainController.getDataBase().changeEntryLevel(getCurrentEntry(), currentLevel - 1);
         }
         nextWord();
     }

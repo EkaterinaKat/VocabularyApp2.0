@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?scenebuilder-stylesheet /css/style?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import java.net.URL?>
+<VBox xmlns="http://javafx.com/javafx"
+      xmlns:fx="http://javafx.com/fxml"
+      fx:controller="com.katyshevtseva.vocabularyapp.controller.learning.SpellingLearningController"
+      alignment="CENTER">
+
+
+    <stylesheets>
+        <URL value="@/com/katyshevtseva/vocabularyapp/res/css/style.css"/>
+    </stylesheets>
+
+    <Pane prefHeight="50"/>
+    <Label text=" " fx:id="wordLabel"/>
+    <Pane prefHeight="20"/>
+    <TextField fx:id="answerField" onAction="#enterInTextFieldListener" maxWidth="300" alignment="CENTER"/>
+    <Pane prefHeight="20"/>
+    <Button text="Done" onMouseClicked="#doneButtonListener" fx:id="doneButton"/>
+    <Pane prefHeight="20"/>
+    <Label text=" " fx:id="resultLabel"/>
+    <Pane prefHeight="20"/>
+    <Button text="Next word" onMouseClicked="#nextButtonListener" fx:id="nextButton"/>
+    <Pane prefHeight="20"/>
+    <Label fx:id="levelLabel"/>
+    <Label fx:id="countLabel"/>
+
+</VBox>

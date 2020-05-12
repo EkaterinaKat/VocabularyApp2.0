@@ -75,12 +75,12 @@ public class WindowCreator {
 
     public void createLearningWindow() {
         createModalWindow("learning.fxml",
-                WORDS_LEARNING_WINDOW_TITLE, WORDS_LEARNING_WINDOW_WIDTH, WORDS_LEARNING_WINDOW_HEIGHT, false);
+                LEARNING_WINDOW_TITLE, LEARNING_WINDOW_WIDTH, LEARNING_WINDOW_HEIGHT, false);
     }
 
     public void createSpellingLearningWindow() {
-        createModalWindow("spelling learning.fxml",
-                WORDS_LEARNING_WINDOW_TITLE, WORDS_LEARNING_WINDOW_WIDTH, WORDS_LEARNING_WINDOW_HEIGHT, false);
+        createModalWindow("spelling_learning.fxml",
+                LEARNING_WINDOW_TITLE, LEARNING_WINDOW_WIDTH, LEARNING_WINDOW_HEIGHT, false);
     }
 
     public void createMessageWindow() {

@@ -55,6 +55,7 @@ public class LearningTuner {
                 LearningController.startLearning(entriesToLearn, new RusToEngMode());
                 break;
             case SPELLING:
+                SpellingLearningController.startLearning(entriesToLearn);
         }
     }
 }

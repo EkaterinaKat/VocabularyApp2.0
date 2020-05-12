@@ -21,7 +21,7 @@ public class Constants {
     public static final String WORD_SEARCH_WINDOW_TITLE = "Word Search";
     public static final String ABOUT_WINDOW_TITLE = "About";
     public static final String LIST_DELETION_WINDOW_TITLE = "Delete word list";
-    public static final String WORDS_LEARNING_WINDOW_TITLE = "Words learning";
+    public static final String LEARNING_WINDOW_TITLE = "Words learning";
     public static final String WORD_INPUT_WINDOW_TITLE = "Add word";
     public static final String WORD_DELETION_WINDOW_TITLE = "Delete word";
     public static final String MODE_CHOICE_WINDOW_TITLE = "Choose learning mode";
@@ -41,8 +41,8 @@ public class Constants {
     public static final int WORD_SEARCH_WINDOW_WIDTH = 820;
     public static final int ABOUT_WINDOW_HEIGHT = 300;
     public static final int ABOUT_WINDOW_WIDTH = 570;
-    public static final int WORDS_LEARNING_WINDOW_HEIGHT = 500;
-    public static final int WORDS_LEARNING_WINDOW_WIDTH = 550;
+    public static final int LEARNING_WINDOW_HEIGHT = 500;
+    public static final int LEARNING_WINDOW_WIDTH = 550;
     public static final int WORD_INPUT_WINDOW_HEIGHT = 200;
     public static final int WORD_INPUT_WINDOW_WIDTH = 350;
     public static final int WORD_CHANGE_WINDOW_HEIGHT = 450;
