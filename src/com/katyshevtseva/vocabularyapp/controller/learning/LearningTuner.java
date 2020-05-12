@@ -1,6 +1,8 @@
 package com.katyshevtseva.vocabularyapp.controller.learning;
 
 import com.katyshevtseva.vocabularyapp.controller.MainController;
+import com.katyshevtseva.vocabularyapp.controller.learning.modes.EngToRusMode;
+import com.katyshevtseva.vocabularyapp.controller.learning.modes.RusToEngMode;
 import com.katyshevtseva.vocabularyapp.model.Entry;
 import com.katyshevtseva.vocabularyapp.model.LearningTunerHelper;
 
@@ -9,15 +11,16 @@ import java.util.Map;
 import java.util.Set;
 
 public class LearningTuner {
-    private LearningMode chosenMode;
     private LearningTunerHelper helper;
+    private Mode chosenMode;
     private List<String> chosenLists;
+    private List<Integer> chosenLevels;
 
     public LearningTuner() {
         helper = new LearningTunerHelper(MainController.getDataBase());
     }
 
-    enum LearningMode {
+    enum Mode {
         RUS_TO_ENG, ENG_TO_RUS, SPELLING
     }
 
@@ -25,8 +28,8 @@ public class LearningTuner {
         LearningModeChoiceController.startChoosing(this);
     }
 
-    void finishModeChoosing(LearningMode learningMode) {
-        chosenMode = LearningMode.RUS_TO_ENG;
+    void finishModeChoosing(Mode mode) {
+        chosenMode = mode;
         Map<String, Boolean> listsToChooseFrom = helper.getListsToChooseFrom();
         ListsChoiceController.startChoosing(this, listsToChooseFrom);
     }
@@ -38,7 +41,20 @@ public class LearningTuner {
     }
 
     void finishLevelsChoosing(List<Integer> chosenLevels) {
+        this.chosenLevels = chosenLevels;
+        startLearningInChosenMode();
+    }
+
+    private void startLearningInChosenMode() {
         List<Entry> entriesToLearn = helper.getEntries(chosenLists, chosenLevels);
-        LearningController.startLearning(entriesToLearn);
+        switch (chosenMode) {
+            case ENG_TO_RUS:
+                LearningController.startLearning(entriesToLearn, new EngToRusMode());
+                break;
+            case RUS_TO_ENG:
+                LearningController.startLearning(entriesToLearn, new RusToEngMode());
+                break;
+            case SPELLING:
+        }
     }
 }

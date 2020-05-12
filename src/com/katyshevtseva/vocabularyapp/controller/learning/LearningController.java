@@ -2,6 +2,7 @@ package com.katyshevtseva.vocabularyapp.controller.learning;
 
 import com.katyshevtseva.vocabularyapp.controller.MainController;
 import com.katyshevtseva.vocabularyapp.controller.MessageController;
+import com.katyshevtseva.vocabularyapp.controller.learning.modes.LearningMode;
 import com.katyshevtseva.vocabularyapp.model.Entry;
 import com.katyshevtseva.vocabularyapp.utils.Utils;
 import com.katyshevtseva.vocabularyapp.utils.WindowCreator;
@@ -15,6 +16,7 @@ import java.util.List;
 import static com.katyshevtseva.vocabularyapp.utils.Constants.*;
 
 public class LearningController {
+    private static LearningMode mode;
     private static List<Entry> entries;
     private int wordCount;
     @FXML
@@ -36,9 +38,10 @@ public class LearningController {
     @FXML
     private Label helpLabel;
 
-    static void startLearning(List<Entry> entriesToLearn) {
+    static void startLearning(List<Entry> entriesToLearn, LearningMode learningMode) {
         entries = entriesToLearn;
-        WindowCreator.getInstance().createWordsLearningWindow();
+        mode = learningMode;
+        WindowCreator.getInstance().createLearningWindow();
     }
 
     @FXML
@@ -61,12 +64,16 @@ public class LearningController {
     }
 
     private void tuneLabelsForNewWord() {
-        wordLabel.setText(entries.get(wordCount).getWord());
+        mode.setWordLabelText(wordLabel, getCurrentEntry());
         String s = String.format("%s/%s", wordCount + 1, entries.size());
         countLabel.setText(s);
         levelLabel.setText("Word level: " + entries.get(wordCount).getLevel());
         helpLabel.setText("");
         translationLabel.setText("");
+    }
+
+    private Entry getCurrentEntry() {
+        return entries.get(wordCount);
     }
 
     private void tuneButtonsForNextWord() {
@@ -91,7 +98,7 @@ public class LearningController {
     }
 
     public void showTranslationButtonListener() {
-        translationLabel.setText(entries.get(wordCount).getTranslation());
+        mode.setTranslationLabelText(translationLabel, getCurrentEntry());
         showTranslationButton.setDisable(true);
         okButton.setDisable(false);
         notOkButton.setDisable(false);

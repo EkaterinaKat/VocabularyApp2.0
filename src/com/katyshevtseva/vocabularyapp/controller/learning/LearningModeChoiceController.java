@@ -16,17 +16,17 @@ public class LearningModeChoiceController {
     }
 
     public void engToRusButtonListener() {
-        learningTuner.finishModeChoosing(LearningTuner.LearningMode.ENG_TO_RUS);
+        learningTuner.finishModeChoosing(LearningTuner.Mode.ENG_TO_RUS);
         Utils.closeWindowThatContains(button);
     }
 
     public void rusToEngButtonListener() {
-        learningTuner.finishModeChoosing(LearningTuner.LearningMode.RUS_TO_ENG);
+        learningTuner.finishModeChoosing(LearningTuner.Mode.RUS_TO_ENG);
         Utils.closeWindowThatContains(button);
     }
 
     public void spellingButtonListener() {
-        learningTuner.finishModeChoosing(LearningTuner.LearningMode.SPELLING);
+        learningTuner.finishModeChoosing(LearningTuner.Mode.SPELLING);
         Utils.closeWindowThatContains(button);
     }
 }

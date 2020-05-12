@@ -73,8 +73,13 @@ public class WindowCreator {
                 LEVELS_CHOICE_WINDOW_TITLE, CHOICE_WINDOW_WIDTH, CHOICE_WINDOW_HEIGHT, false);
     }
 
-    public void createWordsLearningWindow() {
-        createModalWindow("words_learning.fxml",
+    public void createLearningWindow() {
+        createModalWindow("learning.fxml",
+                WORDS_LEARNING_WINDOW_TITLE, WORDS_LEARNING_WINDOW_WIDTH, WORDS_LEARNING_WINDOW_HEIGHT, false);
+    }
+
+    public void createSpellingLearningWindow() {
+        createModalWindow("spelling learning.fxml",
                 WORDS_LEARNING_WINDOW_TITLE, WORDS_LEARNING_WINDOW_WIDTH, WORDS_LEARNING_WINDOW_HEIGHT, false);
     }
 
