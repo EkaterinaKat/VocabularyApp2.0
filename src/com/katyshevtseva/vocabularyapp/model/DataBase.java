@@ -12,9 +12,9 @@ public interface DataBase {
 
     List<Entry> getEntriesByListName(String listName);
 
-    void addWord(String listName, String word, String translation);
+    void addEntry(String listName, String word, String translation);
 
-    void deleteWord(Entry entry);
+    void deleteEntry(Entry entry);
 
     void editEntry(Entry entry, String word, String translation);
 

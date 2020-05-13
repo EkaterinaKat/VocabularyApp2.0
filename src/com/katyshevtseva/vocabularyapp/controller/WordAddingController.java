@@ -50,7 +50,7 @@ public class WordAddingController {
     }
 
     private void confirmAdding() {
-        MainController.getDataBase().addWord(listController.getListName(),
+        MainController.getDataBase().addEntry(listController.getListName(),
                 wordTextField.getText().trim(), translationTextField.getText().trim());
         wordTextField.clear();
         translationTextField.clear();

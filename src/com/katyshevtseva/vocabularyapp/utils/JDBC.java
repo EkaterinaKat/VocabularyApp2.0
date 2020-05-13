@@ -28,7 +28,6 @@ public class JDBC implements DataBase {
         } catch (ClassNotFoundException | SQLException e) {
             e.printStackTrace();
         }
-
     }
 
     public void disconnect() {
@@ -104,7 +103,7 @@ public class JDBC implements DataBase {
     }
 
     @Override
-    public void addWord(String listName, String word, String translation) {
+    public void addEntry(String listName, String word, String translation) {
         String tableName = getTableNameByListName(listName);
         String sql = String.format("INSERT INTO %s (word, translation, level)\n" +
                 "VALUES (\"%s\", \"%s\", 0)", tableName, word, translation);
@@ -117,45 +116,43 @@ public class JDBC implements DataBase {
 
     @Override
     public void createList(String listName) {
-        //добавляем в каталог строчку с именем списка
-        String sql1 = String.format("INSERT INTO catalogue (listName)\n" +
+        addListNameToCatalogue(listName);
+        int id = getListIdByListName(listName);
+        createTableForListWithId(id);
+        saveTableNameWithListName(id);
+    }
+
+    private void addListNameToCatalogue(String listName) {
+        String sql = String.format("INSERT INTO catalogue (listName)\n" +
                 "VALUES(\"%s\")", listName);
         try {
-            stmt.executeUpdate(sql1);
+            stmt.executeUpdate(sql);
         } catch (SQLException e) {
             e.printStackTrace();
         }
+    }
 
-        //достаем из каталога автосгенерированный айди
-        String sql2 = String.format("SELECT id FROM catalogue\n" +
+    private int getListIdByListName(String listName) {
+        String sql = String.format("SELECT id FROM catalogue\n" +
                 "WHERE listName = \"%s\"", listName);
         ResultSet rs;
         int id = 0;
         try {
-            rs = stmt.executeQuery(sql2);
+            rs = stmt.executeQuery(sql);
             rs.next();
             id = rs.getInt(1);
         } catch (SQLException e) {
             e.printStackTrace();
         }
+        return id;
+    }
 
-        //добавляем в строку с именем нового списка имя таблицы, в которой этот список будет храниться, ипользуя айди
-        String sql3 = String.format("UPDATE catalogue \n" +
-                "\t   SET tableName = \"table%d\" \n" +
-                "\t   WHERE id = \"%d\"", id, id);
-        try {
-            stmt.executeUpdate(sql3);
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-
-        //создаем таблицу
+    private void createTableForListWithId(int id) {
         String sql4 = String.format("CREATE TABLE table%d (\n" +
                 "id INTEGER PRIMARY KEY AUTOINCREMENT,\n" +
                 "word STRING,\n" +
                 "translation STRING,\n" +
-                "level INTEGER, \n" +
-                "help STRING \n" +
+                "level INTEGER \n" +
                 ");\n", id);
         try {
             stmt.executeUpdate(sql4);
@@ -164,12 +161,23 @@ public class JDBC implements DataBase {
         }
     }
 
+    private void saveTableNameWithListName(int id) {
+        String sql3 = String.format("UPDATE catalogue \n" +
+                "\t   SET tableName = \"table%d\" \n" +
+                "\t   WHERE id = \"%d\"", id, id);
+        try {
+            stmt.executeUpdate(sql3);
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+
     @Override
     public void deleteList(String listName) {
         String tableName = getTableNameByListName(listName);
-        String sql1 = String.format("DROP TABLE %s", tableName); //удаление таблицы
+        String sql1 = String.format("DROP TABLE %s", tableName);
         String sql2 = String.format("DELETE FROM catalogue\n" +
-                "WHERE listName=\"%s\"", listName); //удаление строки из каталога
+                "WHERE listName=\"%s\"", listName);
         try {
             stmt.executeUpdate(sql1);
             stmt.executeUpdate(sql2);
@@ -196,11 +204,9 @@ public class JDBC implements DataBase {
     public List<Entry> getEntriesForSearch(String inputString) {
         List<Entry> resultList = new ArrayList<>();
 
-        //достаем из каталога имена списков
         List<String> listNames = null;
         listNames = getCatalogue();
 
-        //для каждого списка находим имя таблицы и если в ней есть слово начинающееся с входящей строки то кладем это слово в лист
         for (String listName : listNames) {
             String tableName = getTableNameByListName(listName);
             String sql = String.format("SELECT word, translation, level FROM %s", tableName);  //todo дублирование
@@ -235,7 +241,7 @@ public class JDBC implements DataBase {
     }
 
     @Override
-    public void deleteWord(Entry entry) {
+    public void deleteEntry(Entry entry) {
         String tableName = getTableNameByListName(entry.getListName());
         String sql = String.format("DELETE FROM %s WHERE word=\"%s\" AND translation = \"%s\" " +
                 "AND level = \"%d\"", tableName, entry.getWord(), entry.getTranslation(), entry.getLevel());

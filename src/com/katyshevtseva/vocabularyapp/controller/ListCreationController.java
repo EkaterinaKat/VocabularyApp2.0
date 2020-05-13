@@ -6,13 +6,15 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 
+import java.util.List;
+
 public class ListCreationController {
     @FXML
     private Button createButton;
     @FXML
     private TextField nameInputField;
 
-    public static void createWordList() {
+    static void createWordList() {
         WindowCreator.getInstance().createListCreationWindow();
     }
 
@@ -23,14 +25,23 @@ public class ListCreationController {
                 createButton.setDisable(nameInputFieldIsEmpty()));
     }
 
-    public void okButtonListener() {
-        MainController.getDataBase().createList(nameInputField.getText().trim());
-        CatalogueTuner.getInstance().updateCatalogue();
-        nameInputField.clear();
-        Utils.closeWindowThatContains(createButton);
-    }
-
     private boolean nameInputFieldIsEmpty() {
         return nameInputField.getText().trim().equals("") || nameInputField.getText() == null;
+    }
+
+    public void okButtonListener() {
+        if (listWithThisNameExists()) {
+            MessageController.showMessage("List with this name already exists");
+        } else {
+            MainController.getDataBase().createList(nameInputField.getText().trim());
+            CatalogueTuner.getInstance().updateCatalogue();
+            nameInputField.clear();
+            Utils.closeWindowThatContains(createButton);
+        }
+    }
+
+    private boolean listWithThisNameExists() {
+        List<String> listNames = MainController.getDataBase().getCatalogue();
+        return listNames.contains(nameInputField.getText().trim());
     }
 }

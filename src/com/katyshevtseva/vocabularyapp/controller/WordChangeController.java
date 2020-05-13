@@ -54,7 +54,7 @@ public class WordChangeController {
     }
 
     void deleteWord() {
-        MainController.getDataBase().deleteWord(entry);
+        MainController.getDataBase().deleteEntry(entry);
         listController.updateTable();
         Stage stage = (Stage) wordTextField.getScene().getWindow();
         stage.close();
