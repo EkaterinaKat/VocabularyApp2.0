@@ -16,11 +16,11 @@
     </stylesheets>
 
     <Pane prefHeight="50"/>
-    <Label text=" " fx:id="wordLabel"/>
+    <Label text=" " fx:id="wordLabel" wrapText="true"/>
     <Pane prefHeight="20"/>
     <Button text="Show translation" onMouseClicked="#showTranslationButtonListener" fx:id="showTranslationButton"/>
     <Pane prefHeight="20"/>
-    <Label text=" " fx:id="translationLabel"/>
+    <Label text=" " fx:id="translationLabel" wrapText="true"/>
     <Pane prefHeight="20"/>
 
     <HBox alignment="CENTER">

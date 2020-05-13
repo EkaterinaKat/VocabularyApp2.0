@@ -54,7 +54,7 @@
 
 #wordLabel{
     -fx-font-weight: bold;
-    -fx-font-size: 40 px;
+    -fx-font-size: 32 px;
 }
 
 .table-view .column-header {

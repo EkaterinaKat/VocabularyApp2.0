@@ -15,7 +15,7 @@
     </stylesheets>
 
     <Pane prefHeight="50"/>
-    <Label text=" " fx:id="wordLabel"/>
+    <Label text=" " fx:id="wordLabel" wrapText="true"/>
     <Pane prefHeight="20"/>
     <TextField fx:id="answerField" onAction="#enterInTextFieldListener" maxWidth="300" alignment="CENTER"/>
     <Pane prefHeight="20"/>

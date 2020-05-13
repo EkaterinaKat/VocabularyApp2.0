@@ -17,8 +17,8 @@
             <columns>
                 <TableColumn prefWidth="60" text="№" fx:id="countColumn"/>
                 <TableColumn prefWidth="200" text="word" fx:id="wordColumn"/>
-                <TableColumn prefWidth="360" text="translation" fx:id="translationColumn"/>
-                <TableColumn text="level" fx:id="levelColumn"/>
+                <TableColumn prefWidth="340" text="translation" fx:id="translationColumn"/>
+                <TableColumn prefWidth="90" text="level" fx:id="levelColumn"/>
             </columns>
         </TableView>
     </center>
