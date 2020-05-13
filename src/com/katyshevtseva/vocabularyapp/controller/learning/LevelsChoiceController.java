@@ -5,7 +5,6 @@ import com.katyshevtseva.vocabularyapp.utils.WindowCreator;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.CheckBox;
-import javafx.scene.control.ScrollPane;
 import javafx.scene.layout.GridPane;
 
 import java.util.ArrayList;
@@ -16,11 +15,10 @@ public class LevelsChoiceController {
     private static LearningTuner learningTuner;
     private static Set<Integer> levelsToChooseFrom;
     private List<CheckBox> checkBoxes = new ArrayList<>();
-    private GridPane placementForCheckBoxes = new GridPane();
-    @FXML
-    private ScrollPane scrollPane;
     @FXML
     private Button doneButton;
+    @FXML
+    private GridPane placementForCheckBoxes;
 
     static void startChoosing(LearningTuner tuner, Set<Integer> levels) {
         learningTuner = tuner;
@@ -32,16 +30,19 @@ public class LevelsChoiceController {
     public void initialize() {
         doneButton.setDisable(true);
         tunePlacementForCheckBoxes();
+        placeCheckBoxes();
+    }
+
+    private void tunePlacementForCheckBoxes() {
+        placementForCheckBoxes.setVgap(10);
+    }
+
+    private void placeCheckBoxes() {
         int rowCount = 0;
         for (Integer level : levelsToChooseFrom) {
             placementForCheckBoxes.add(getCheckBox(level), 0, rowCount);
             rowCount++;
         }
-    }
-
-    private void tunePlacementForCheckBoxes() {
-        scrollPane.setContent(placementForCheckBoxes);
-        placementForCheckBoxes.setVgap(10);
     }
 
     private CheckBox getCheckBox(Integer level) {
@@ -63,7 +64,7 @@ public class LevelsChoiceController {
 
     public void doneButtonListener() {
         learningTuner.finishLevelsChoosing(getChosenItems());
-        Utils.closeWindowThatContains(scrollPane);
+        Utils.closeWindowThatContains(doneButton);
     }
 
     private List<Integer> getChosenItems() {

@@ -5,7 +5,6 @@ import com.katyshevtseva.vocabularyapp.utils.WindowCreator;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.CheckBox;
-import javafx.scene.control.ScrollPane;
 import javafx.scene.layout.GridPane;
 
 import java.util.ArrayList;
@@ -16,9 +15,8 @@ public class ListsChoiceController {
     private static LearningTuner learningTuner;
     private static Map<String, Boolean> listsToChooseFrom;
     private List<CheckBox> checkBoxes = new ArrayList<>();
-    private GridPane placementForCheckBoxes = new GridPane();
     @FXML
-    private ScrollPane scrollPane;
+    public GridPane placementForCheckBoxes;
     @FXML
     private Button doneButton;
 
@@ -32,16 +30,19 @@ public class ListsChoiceController {
     public void initialize() {
         doneButton.setDisable(true);
         tunePlacementForCheckBoxes();
+        placeCheckBoxes();
+    }
+
+    private void tunePlacementForCheckBoxes() {
+        placementForCheckBoxes.setVgap(10);
+    }
+
+    private void placeCheckBoxes() {
         int rowCount = 0;
         for (Map.Entry list : listsToChooseFrom.entrySet()) {
             placementForCheckBoxes.add(getCheckBox(list), 0, rowCount);
             rowCount++;
         }
-    }
-
-    private void tunePlacementForCheckBoxes() {
-        scrollPane.setContent(placementForCheckBoxes);
-        placementForCheckBoxes.setVgap(10);
     }
 
     private CheckBox getCheckBox(Map.Entry list) {
@@ -64,7 +65,7 @@ public class ListsChoiceController {
 
     public void doneButtonListener() {
         learningTuner.finishListsChoosing(getChosenItems());
-        Utils.closeWindowThatContains(scrollPane);
+        Utils.closeWindowThatContains(doneButton);
     }
 
     private List<String> getChosenItems() {

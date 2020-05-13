@@ -24,12 +24,14 @@
     </left>
 
     <right>
-        <Pane prefWidth="15"/>
+        <Pane prefWidth="25"/>
     </right>
 
     <center>
-        <ScrollPane fx:id="scrollPane" styleClass="edge-to-edge">
+        <ScrollPane styleClass="edge-to-edge">
+            <GridPane fx:id="placementForCheckBoxes">
 
+            </GridPane>
         </ScrollPane>
     </center>
 
