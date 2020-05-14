@@ -1,6 +1,6 @@
 package com.katyshevtseva.vocabularyapp.controller;
 
-import com.katyshevtseva.vocabularyapp.utils.Translator;
+import com.katyshevtseva.vocabularyapp.utils.KeyboardLayoutManager;
 import com.katyshevtseva.vocabularyapp.utils.WindowCreator;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
@@ -24,11 +24,11 @@ public class WordAddingController {
     public void initialize() {
         addButton.setDisable(true);
         wordTextField.textProperty().addListener((observable, oldValue, newValue) -> {
-            wordTextField.setText(Translator.translateToEng(newValue));
+            wordTextField.setText(KeyboardLayoutManager.changeToEng(newValue));
             addButton.setDisable(oneOfFieldIsEmpty());
         });
         translationTextField.textProperty().addListener((observable, oldValue, newValue) -> {
-            translationTextField.setText(Translator.translateToRus(newValue));
+            translationTextField.setText(KeyboardLayoutManager.changeToRus(newValue));
             addButton.setDisable(oneOfFieldIsEmpty());
         });
     }
