@@ -11,7 +11,8 @@
 
 
     <stylesheets>
-        <URL value="@/com/katyshevtseva/vocabularyapp/res/css/style.css"/>
+        <URL value="@/com/katyshevtseva/vocabularyapp/res/css/general_style.css"/>
+        <URL value="@/com/katyshevtseva/vocabularyapp/res/css/learning_window_style.css"/>
     </stylesheets>
 
     <Pane prefHeight="50"/>

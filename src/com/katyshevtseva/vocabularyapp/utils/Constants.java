@@ -32,7 +32,7 @@ public class Constants {
     public static final int QUESTION_WINDOW_HEIGHT = 200;
     public static final int QUESTION_WINDOW_WIDTH = 450;
     public static final int WORD_LIST_WINDOW_HEIGHT = 900;
-    public static final int WORD_LIST_WINDOW_WIDTH = 680;
+    public static final int WORD_LIST_WINDOW_WIDTH = 690;
     public static final int LIST_CREATION_WINDOW_HEIGHT = 150;
     public static final int LIST_CREATION_WINDOW_WIDTH = 410;
     public static final int CHOICE_WINDOW_HEIGHT = 450;

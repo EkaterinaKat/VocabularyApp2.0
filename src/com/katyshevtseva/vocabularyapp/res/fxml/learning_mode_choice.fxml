@@ -11,7 +11,7 @@
           prefHeight="400.0" prefWidth="600.0">
 
     <stylesheets>
-        <URL value="@/com/katyshevtseva/vocabularyapp/res/css/style.css"/>
+        <URL value="@/com/katyshevtseva/vocabularyapp/res/css/general_style.css"/>
     </stylesheets>
 
     <Button text="Russian To English" fx:id="button" onMouseClicked="#rusToEngButtonListener" prefWidth="160"

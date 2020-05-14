@@ -11,7 +11,7 @@
             fx:controller="com.katyshevtseva.vocabularyapp.controller.ListCreationController">
 
     <stylesheets>
-        <URL value="@/com/katyshevtseva/vocabularyapp/res/css/style.css"/>
+        <URL value="@/com/katyshevtseva/vocabularyapp/res/css/general_style.css"/>
     </stylesheets>
 
     <HBox AnchorPane.leftAnchor="10" AnchorPane.rightAnchor="10" AnchorPane.topAnchor="10">

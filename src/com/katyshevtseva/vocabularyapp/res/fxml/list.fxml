@@ -5,7 +5,8 @@
 <BorderPane fx:controller="com.katyshevtseva.vocabularyapp.controller.ListController" xmlns:fx="http://javafx.com/fxml">
 
     <stylesheets>
-        <URL value="@/com/katyshevtseva/vocabularyapp/res/css/style.css"/>
+        <URL value="@/com/katyshevtseva/vocabularyapp/res/css/general_style.css"/>
+        <URL value="@/com/katyshevtseva/vocabularyapp/res/css/table_style.css"/>
     </stylesheets>
 
     <top>

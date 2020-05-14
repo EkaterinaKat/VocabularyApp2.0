@@ -1,20 +1,3 @@
-.root{
-    -fx-background-color: #CCFF99;
-}
-
-.scroll-pane{
-    -fx-background: #CCFF99;
-}
-
-.scroll-bar .track-background {
- -fx-background-color: #006400;
- -fx-background-radius: 2em;
-}
-
-.scroll-bar .thumb {
- -fx-background-color: #CCFF99;
-}
-
 .button {
 -fx-background-color: #CCFF99
 }
@@ -49,11 +32,8 @@
     -fx-background-color: #CCFF99;
     -fx-text-fill: #006400;
     -fx-font-weight: bold;
-}
 
-.increment-button, .decrement-button {
-    -fx-background-color: transparent;
-    -fx-border-color: transparent;
+    /*  всё что выше оно мэйн   */
 }
 
 

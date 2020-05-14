@@ -14,7 +14,7 @@
       alignment="CENTER">
 
     <stylesheets>
-        <URL value="@/com/katyshevtseva/vocabularyapp/res/css/style.css"/>
+        <URL value="@/com/katyshevtseva/vocabularyapp/res/css/general_style.css"/>
     </stylesheets>
 
     <ImageView fx:id="imageView"/>

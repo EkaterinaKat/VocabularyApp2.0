@@ -11,7 +11,8 @@
             fx:controller="com.katyshevtseva.vocabularyapp.controller.MainController">
 
     <stylesheets>
-        <URL value="@/com/katyshevtseva/vocabularyapp/res/css/main_style.css"/>
+        <URL value="@/com/katyshevtseva/vocabularyapp/res/css/general_style.css"/>
+        <URL value="@/com/katyshevtseva/vocabularyapp/res/css/main_window_style.css"/>
     </stylesheets>
 
     <top>

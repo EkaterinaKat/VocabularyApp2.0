@@ -9,7 +9,7 @@
       fx:controller="com.katyshevtseva.vocabularyapp.controller.WordChangeController">
 
     <stylesheets>
-        <URL value="@/com/katyshevtseva/vocabularyapp/res/css/style.css"/>
+        <URL value="@/com/katyshevtseva/vocabularyapp/res/css/general_style.css"/>
     </stylesheets>
 
     <Pane prefHeight="20"/>

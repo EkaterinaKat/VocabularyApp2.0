@@ -11,7 +11,8 @@
       prefHeight="400.0" prefWidth="600.0">
 
     <stylesheets>
-        <URL value="@/com/katyshevtseva/vocabularyapp/res/css/style.css"/>
+        <URL value="@/com/katyshevtseva/vocabularyapp/res/css/general_style.css"/>
+        <URL value="@/com/katyshevtseva/vocabularyapp/res/css/table_style.css"/>
     </stylesheets>
 
     <TextField fx:id="textField"/>
