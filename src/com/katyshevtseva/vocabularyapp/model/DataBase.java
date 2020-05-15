@@ -19,6 +19,4 @@ public interface DataBase {
     void editEntry(Entry entry, String word, String translation);
 
     void changeEntryLevel(Entry entry, int newLevel);
-
-    List<Entry> getEntriesForSearch(String inputString);
 }

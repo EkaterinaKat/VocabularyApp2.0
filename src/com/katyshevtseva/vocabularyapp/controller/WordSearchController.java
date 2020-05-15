@@ -2,6 +2,7 @@ package com.katyshevtseva.vocabularyapp.controller;
 
 
 import com.katyshevtseva.vocabularyapp.model.Entry;
+import com.katyshevtseva.vocabularyapp.model.SearchHelper;
 import com.katyshevtseva.vocabularyapp.utils.WindowCreator;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -14,6 +15,7 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import java.util.List;
 
 public class WordSearchController {
+    private SearchHelper helper;
     @FXML
     private TextField textField;
     @FXML
@@ -34,6 +36,7 @@ public class WordSearchController {
     @FXML
     private void initialize() {
         tuneTable();
+        helper = new SearchHelper();
         fillTable(textField.getText());
         textField.textProperty().addListener((observable, oldValue, newValue) -> fillTable(textField.getText()));
     }
@@ -46,7 +49,7 @@ public class WordSearchController {
     }
 
     private void fillTable(String inputString) {
-        List<Entry> list = MainController.getDataBase().getEntriesForSearch(inputString);
+        List<Entry> list = helper.searchForEntries(inputString);
         ObservableList<Entry> observableList = FXCollections.observableArrayList();
         observableList.addAll(list);
         table.setItems(observableList);

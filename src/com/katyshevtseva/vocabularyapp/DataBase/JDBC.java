@@ -164,12 +164,6 @@ public class JDBC implements DataBase {
     }
 
     @Override
-    public List<Entry> getEntriesForSearch(String inputString) {
-        //todo это мы поручим другому классу
-        return new ArrayList<>();
-    }
-
-    @Override
     public void editEntry(Entry entry, String newWord, String newTranslation) {
         String query = String.format("UPDATE entries \n" +
                 "\t   SET word = \"%s\", translation = \"%s\" \n" +
