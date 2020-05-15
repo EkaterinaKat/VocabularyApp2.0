@@ -1,16 +1,22 @@
 package com.katyshevtseva.vocabularyapp.model;
 
 public class Entry {
+    private int id;
     private String word;
     private String translation;
-    private Integer level;
     private String listName;
+    private int level;
 
-    public Entry(String word, String translation, Integer level, String listName) {
+    public Entry(int id, String word, String translation, int level, String listName) {
+        this.id = id;
         this.word = word;
         this.translation = translation;
         this.level = level;
         this.listName = listName;
+    }
+
+    public int getId() {
+        return id;
     }
 
     public String getWord() {
