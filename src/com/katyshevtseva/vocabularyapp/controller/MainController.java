@@ -2,7 +2,7 @@ package com.katyshevtseva.vocabularyapp.controller;
 
 import com.katyshevtseva.vocabularyapp.controller.learning.LearningTuner;
 import com.katyshevtseva.vocabularyapp.model.DataBase;
-import com.katyshevtseva.vocabularyapp.utils.JDBC;
+import com.katyshevtseva.vocabularyapp.DataBase.JDBC;
 import com.katyshevtseva.vocabularyapp.utils.WindowCreator;
 import javafx.application.Application;
 import javafx.fxml.FXML;

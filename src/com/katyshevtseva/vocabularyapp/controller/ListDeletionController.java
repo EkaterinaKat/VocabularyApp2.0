@@ -14,7 +14,7 @@ public class ListDeletionController {
     @FXML
     private ImageView imageView;
 
-    public static void deleteWordList(String listName) {
+    static void deleteWordList(String listName) {
         listToDelete = listName;
         WindowCreator.getInstance().createListDeletionWindow();
     }

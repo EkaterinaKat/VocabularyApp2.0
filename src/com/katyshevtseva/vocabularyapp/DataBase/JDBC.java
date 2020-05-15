@@ -1,4 +1,4 @@
-package com.katyshevtseva.vocabularyapp.utils;
+package com.katyshevtseva.vocabularyapp.DataBase;
 
 import com.katyshevtseva.vocabularyapp.model.DataBase;
 import com.katyshevtseva.vocabularyapp.model.Entry;
@@ -10,7 +10,7 @@ import java.util.List;
 public class JDBC implements DataBase {
     private static final JDBC instance = new JDBC();
     private Connection connection;
-    private Statement stmt;
+    private Statement statement;
 
     private JDBC() {
         connect();
@@ -24,7 +24,7 @@ public class JDBC implements DataBase {
         try {
             Class.forName("org.sqlite.JDBC");
             connection = DriverManager.getConnection("jdbc:sqlite:Vocabulary_DB.db");
-            stmt = connection.createStatement();
+            statement = connection.createStatement();
         } catch (ClassNotFoundException | SQLException e) {
             e.printStackTrace();
         }
@@ -38,35 +38,52 @@ public class JDBC implements DataBase {
         }
     }
 
+    @Override
+    public List<String> getCatalogue() {
+        if (!catalogueExists()) {
+            createCatalogue();
+        }
+        List<String> catalogue = new ArrayList<>();
+        String query = "SELECT * FROM catalogue";
+        try {
+            ResultSet resultSet = statement.executeQuery(query);
+            while (resultSet.next()) {
+                String listName = resultSet.getString(1);
+                catalogue.add(listName);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return catalogue;
+    }
+
+    private boolean catalogueExists() {
+        String query = "SELECT name FROM sqlite_master WHERE type = \"table\"";
+        try {
+            ResultSet resultSet = statement.executeQuery(query);
+            while (resultSet.next()) {
+                String tableName = resultSet.getString(1);
+                if (tableName.equals("catalogue"))
+                    return true;
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return false;
+    }
+
     private String getTableNameByListName(String listName) {
         String tableName = "";
         String sql1 = String.format("SELECT tableName FROM catalogue\n" +
                 "WHERE listName = \"%s\"", listName);
         try {
-            ResultSet rs = stmt.executeQuery(sql1);
+            ResultSet rs = statement.executeQuery(sql1);
             rs.next();
             tableName = rs.getString(1);
         } catch (SQLException e) {
             e.printStackTrace();
         }
         return tableName;
-    }
-
-    @Override
-    public List<String> getCatalogue() {
-        List<String> catalogue = new ArrayList<>();
-        String sql = "SELECT * FROM catalogue";
-        ResultSet rs;
-        try {
-            rs = stmt.executeQuery(sql);
-            while (rs.next()) {
-                String s = rs.getString(1);
-                catalogue.add(s);
-            }
-        } catch (SQLException e) {
-            createCatalogue();
-        }
-        return catalogue;
     }
 
     private void createCatalogue() {
@@ -76,7 +93,7 @@ public class JDBC implements DataBase {
                 "tableName STRING\n" +
                 ");\n";
         try {
-            stmt.executeUpdate(sql);
+            statement.executeUpdate(sql);
         } catch (SQLException e) {
             e.printStackTrace();
         }
@@ -89,7 +106,7 @@ public class JDBC implements DataBase {
         String sql2 = String.format("SELECT word, translation, level FROM %s", tableName);  //todo дублирование
         ResultSet rs;
         try {
-            rs = stmt.executeQuery(sql2);
+            rs = statement.executeQuery(sql2);
             while (rs.next()) {
                 String word = rs.getString(1);
                 String translation = rs.getString(2);
@@ -108,7 +125,7 @@ public class JDBC implements DataBase {
         String sql = String.format("INSERT INTO %s (word, translation, level)\n" +
                 "VALUES (\"%s\", \"%s\", 0)", tableName, word, translation);
         try {
-            stmt.executeUpdate(sql);
+            statement.executeUpdate(sql);
         } catch (SQLException e) {
             e.printStackTrace();
         }
@@ -126,7 +143,7 @@ public class JDBC implements DataBase {
         String sql = String.format("INSERT INTO catalogue (listName)\n" +
                 "VALUES(\"%s\")", listName);
         try {
-            stmt.executeUpdate(sql);
+            statement.executeUpdate(sql);
         } catch (SQLException e) {
             e.printStackTrace();
         }
@@ -138,7 +155,7 @@ public class JDBC implements DataBase {
         ResultSet rs;
         int id = 0;
         try {
-            rs = stmt.executeQuery(sql);
+            rs = statement.executeQuery(sql);
             rs.next();
             id = rs.getInt(1);
         } catch (SQLException e) {
@@ -155,7 +172,7 @@ public class JDBC implements DataBase {
                 "level INTEGER \n" +
                 ");\n", id);
         try {
-            stmt.executeUpdate(sql4);
+            statement.executeUpdate(sql4);
         } catch (SQLException e) {
             e.printStackTrace();
         }
@@ -166,7 +183,7 @@ public class JDBC implements DataBase {
                 "\t   SET tableName = \"table%d\" \n" +
                 "\t   WHERE id = \"%d\"", id, id);
         try {
-            stmt.executeUpdate(sql3);
+            statement.executeUpdate(sql3);
         } catch (SQLException e) {
             e.printStackTrace();
         }
@@ -179,8 +196,8 @@ public class JDBC implements DataBase {
         String sql2 = String.format("DELETE FROM catalogue\n" +
                 "WHERE listName=\"%s\"", listName);
         try {
-            stmt.executeUpdate(sql1);
-            stmt.executeUpdate(sql2);
+            statement.executeUpdate(sql1);
+            statement.executeUpdate(sql2);
         } catch (SQLException e) {
             e.printStackTrace();
         }
@@ -194,7 +211,7 @@ public class JDBC implements DataBase {
                 "\t   WHERE word = " +
                 "\"%s\" ", tableName, newLevel, entry.getWord());
         try {
-            stmt.executeUpdate(sql);
+            statement.executeUpdate(sql);
         } catch (SQLException e) {
             e.printStackTrace();
         }
@@ -204,14 +221,13 @@ public class JDBC implements DataBase {
     public List<Entry> getEntriesForSearch(String inputString) {
         List<Entry> resultList = new ArrayList<>();
 
-        List<String> listNames = null;
-        listNames = getCatalogue();
+        List<String> listNames = getCatalogue();
 
         for (String listName : listNames) {
             String tableName = getTableNameByListName(listName);
             String sql = String.format("SELECT word, translation, level FROM %s", tableName);  //todo дублирование
             try {
-                ResultSet rs = stmt.executeQuery(sql);
+                ResultSet rs = statement.executeQuery(sql);
                 while (rs.next()) {
                     if (rs.getString(1).startsWith(inputString)) {
                         String word = rs.getString(1);
@@ -234,7 +250,7 @@ public class JDBC implements DataBase {
                 "\t   SET word = \"%s\", translation = \"%s\" \n" +
                 "\t   WHERE word = \"%s\"", tableName, newWord, newTranslation, entry.getWord());
         try {
-            stmt.executeUpdate(sql);
+            statement.executeUpdate(sql);
         } catch (SQLException e) {
             e.printStackTrace();
         }
@@ -246,7 +262,7 @@ public class JDBC implements DataBase {
         String sql = String.format("DELETE FROM %s WHERE word=\"%s\" AND translation = \"%s\" " +
                 "AND level = \"%d\"", tableName, entry.getWord(), entry.getTranslation(), entry.getLevel());
         try {
-            stmt.executeUpdate(sql);
+            statement.executeUpdate(sql);
         } catch (SQLException e) {
             e.printStackTrace();
         }
