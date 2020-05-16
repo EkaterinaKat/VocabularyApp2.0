@@ -8,13 +8,12 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class JDBC implements DataBase {
-    private static final JDBC instance = new JDBC();
+    private static JDBC instance;
     private Connection connection;
     private Statement statement;
 
-    private JDBC() {
+    private JDBC() throws ClassNotFoundException {
         connect();
-        System.out.println();
         if (!catalogueTableExists()) {
             createCatalogueTable();
         }
@@ -23,16 +22,19 @@ public class JDBC implements DataBase {
         }
     }
 
-    public static JDBC getInstance() {
+    public static JDBC getInstance() throws ClassNotFoundException {
+        if (instance == null) {
+            instance = new JDBC();
+        }
         return instance;
     }
 
-    private void connect() {
+    private void connect() throws ClassNotFoundException {
         try {
             Class.forName("org.sqlite.JDBC");
             connection = DriverManager.getConnection("jdbc:sqlite:Vocabulary_DB.db");
             statement = connection.createStatement();
-        } catch (ClassNotFoundException | SQLException e) {
+        } catch (SQLException e) {
             e.printStackTrace();
         }
     }

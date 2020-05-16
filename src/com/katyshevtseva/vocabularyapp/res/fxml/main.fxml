@@ -18,19 +18,20 @@
     <top>
         <HBox>
 
-            <Button text="Add word list" onMouseClicked="#createWordList" styleClass="topBtn">
+            <Button fx:id="listCreationButton" text="Add word list" onMouseClicked="#createWordList"
+                    styleClass="topBtn">
                 <HBox.margin>
                     <Insets bottom="25" left="40" right="10" top="20"/>
                 </HBox.margin>
             </Button>
 
-            <Button text="Learn words" onMouseClicked="#learnWords" styleClass="topBtn">
+            <Button fx:id="learningButton" text="Learn words" onMouseClicked="#learnWords" styleClass="topBtn">
                 <HBox.margin>
                     <Insets bottom="25" left="10" right="10" top="20"/>
                 </HBox.margin>
             </Button>
 
-            <Button text="Search word" onMouseClicked="#searchWord" styleClass="topBtn">
+            <Button fx:id="searchButton" text="Search word" onMouseClicked="#searchWord" styleClass="topBtn">
                 <HBox.margin>
                     <Insets bottom="25" left="10" right="10" top="20"/>
                 </HBox.margin>
