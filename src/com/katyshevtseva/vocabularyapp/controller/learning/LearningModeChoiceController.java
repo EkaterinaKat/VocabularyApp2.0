@@ -1,9 +1,10 @@
 package com.katyshevtseva.vocabularyapp.controller.learning;
 
-import com.katyshevtseva.vocabularyapp.utils.Utils;
 import com.katyshevtseva.vocabularyapp.utils.WindowCreator;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
+
+import static com.katyshevtseva.vocabularyapp.utils.Utils.closeWindowThatContains;
 
 public class LearningModeChoiceController {
     private static LearningTuner learningTuner;
@@ -15,18 +16,21 @@ public class LearningModeChoiceController {
         WindowCreator.getInstance().createLearningModeChoiceWindow();
     }
 
-    public void engToRusButtonListener() {
+    @FXML
+    private void engToRusButtonListener() {
         learningTuner.finishModeChoosing(LearningTuner.Mode.ENG_TO_RUS);
-        Utils.closeWindowThatContains(button);
+        closeWindowThatContains(button);
     }
 
-    public void rusToEngButtonListener() {
+    @FXML
+    private void rusToEngButtonListener() {
         learningTuner.finishModeChoosing(LearningTuner.Mode.RUS_TO_ENG);
-        Utils.closeWindowThatContains(button);
+        closeWindowThatContains(button);
     }
 
-    public void spellingButtonListener() {
+    @FXML
+    private void spellingButtonListener() {
         learningTuner.finishModeChoosing(LearningTuner.Mode.SPELLING);
-        Utils.closeWindowThatContains(button);
+        closeWindowThatContains(button);
     }
 }

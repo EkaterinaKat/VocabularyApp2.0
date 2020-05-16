@@ -1,9 +1,10 @@
 package com.katyshevtseva.vocabularyapp.controller;
 
-import com.katyshevtseva.vocabularyapp.utils.Utils;
 import com.katyshevtseva.vocabularyapp.utils.WindowCreator;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
+
+import static com.katyshevtseva.vocabularyapp.utils.Utils.closeWindowThatContains;
 
 public class MessageController {
     private static String message;
@@ -16,11 +17,12 @@ public class MessageController {
     }
 
     @FXML
-    public void initialize() {
+    private void initialize() {
         messageLabel.setText(message);
     }
 
-    public void okButtonListener() {
-        Utils.closeWindowThatContains(messageLabel);
+    @FXML
+    private void okButtonListener() {
+        closeWindowThatContains(messageLabel);
     }
 }

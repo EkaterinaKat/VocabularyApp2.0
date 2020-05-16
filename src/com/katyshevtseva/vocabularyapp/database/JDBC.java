@@ -1,4 +1,4 @@
-package com.katyshevtseva.vocabularyapp.DataBase;
+package com.katyshevtseva.vocabularyapp.database;
 
 import com.katyshevtseva.vocabularyapp.model.DataBase;
 import com.katyshevtseva.vocabularyapp.model.Entry;
@@ -176,6 +176,26 @@ public class JDBC implements DataBase {
     @Override
     public void deleteEntry(Entry entry) {
         String query = String.format("DELETE FROM entries WHERE id=\"%s\" ", entry.getId());
+        executeUpdate(query);
+    }
+
+    @Override
+    public void renameList(String oldName, String newName) {
+        renameListInCatalogue(oldName, newName);
+        renameListInEntries(oldName, newName);
+    }
+
+    private void renameListInCatalogue(String oldName, String newName) {
+        String query = String.format("UPDATE catalogue \n" +
+                "\t   SET listName = \"%s\" \n" +
+                "\t   WHERE listName = \"%s\" ", newName, oldName);
+        executeUpdate(query);
+    }
+
+    private void renameListInEntries(String oldName, String newName) {
+        String query = String.format("UPDATE entries \n" +
+                "\t   SET listName = \"%s\" \n" +
+                "\t   WHERE listName = \"%s\" ", newName, oldName);
         executeUpdate(query);
     }
 }

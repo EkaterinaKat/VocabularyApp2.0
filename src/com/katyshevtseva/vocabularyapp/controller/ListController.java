@@ -1,7 +1,6 @@
 package com.katyshevtseva.vocabularyapp.controller;
 
 import com.katyshevtseva.vocabularyapp.model.Entry;
-import com.katyshevtseva.vocabularyapp.utils.Utils;
 import com.katyshevtseva.vocabularyapp.utils.WindowCreator;
 import javafx.beans.property.ReadOnlyObjectWrapper;
 import javafx.collections.FXCollections;
@@ -17,6 +16,7 @@ import java.util.List;
 
 import static com.katyshevtseva.vocabularyapp.utils.Constants.BUTTON_IMAGE_SIZE;
 import static com.katyshevtseva.vocabularyapp.utils.Constants.PLUS_IMAGE_NAME;
+import static com.katyshevtseva.vocabularyapp.utils.Utils.setImageOnButton;
 
 public class ListController {
     private static String listName;
@@ -43,7 +43,7 @@ public class ListController {
         tuneTable();
         setRowClickListener();
         updateTable();
-        Utils.setImageOnButton(PLUS_IMAGE_NAME, addWordButton, BUTTON_IMAGE_SIZE);
+        setImageOnButton(PLUS_IMAGE_NAME, addWordButton, BUTTON_IMAGE_SIZE);
     }
 
     private void tuneTable() {
@@ -73,11 +73,21 @@ public class ListController {
         table.setItems(words);
     }
 
-    public void addWordButtonListener() {
+    @FXML
+    private void addWordButtonListener() {
         WordAddingController.addWord(this);
+    }
+
+    @FXML
+    private void renameButtonListener() {
+        ListRenameController.renameList(this);
     }
 
     String getListName() {
         return listName;
+    }
+
+    TableView<Entry> getTable() {
+        return table;
     }
 }

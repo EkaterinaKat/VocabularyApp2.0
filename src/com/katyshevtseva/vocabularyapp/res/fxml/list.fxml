@@ -1,6 +1,7 @@
 <?scenebuilder-stylesheet /css/style?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
 <?import java.net.URL?>
 <BorderPane fx:controller="com.katyshevtseva.vocabularyapp.controller.ListController" xmlns:fx="http://javafx.com/fxml">
 
@@ -10,7 +11,10 @@
     </stylesheets>
 
     <top>
-        <Button text="Add word" onMouseClicked="#addWordButtonListener" fx:id="addWordButton"/>
+        <HBox>
+            <Button fx:id="addWordButton" text="Add word" onMouseClicked="#addWordButtonListener"/>
+            <Button text="Rename list" onMouseClicked="#renameButtonListener"/>
+        </HBox>
     </top>
 
     <center>

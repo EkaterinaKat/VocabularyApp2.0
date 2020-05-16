@@ -1,6 +1,5 @@
 package com.katyshevtseva.vocabularyapp.controller;
 
-import com.katyshevtseva.vocabularyapp.utils.Utils;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.ScrollPane;
@@ -12,6 +11,7 @@ import javafx.scene.layout.GridPane;
 import java.util.List;
 
 import static com.katyshevtseva.vocabularyapp.utils.Constants.*;
+import static com.katyshevtseva.vocabularyapp.utils.Utils.setImageOnButton;
 
 class CatalogueTuner {
     private static CatalogueTuner instance;
@@ -61,7 +61,7 @@ class CatalogueTuner {
     private void tuneCatalogueTableRow(int listIndex) {
         Label label = new Label(catalogue.get(listIndex));
         Button deleteButton = new Button();
-        Utils.setImageOnButton(RED_CROSS_IMAGE_NAME, deleteButton, BUTTON_IMAGE_SIZE);
+        setImageOnButton(RED_CROSS_IMAGE_NAME, deleteButton, BUTTON_IMAGE_SIZE);
         deleteButton.setTooltip(new Tooltip("delete list"));
         label.addEventHandler(MouseEvent.MOUSE_CLICKED, mouseEvent -> openWordList(listIndex));
         deleteButton.addEventHandler(MouseEvent.MOUSE_CLICKED, mouseEvent -> deleteList(listIndex));

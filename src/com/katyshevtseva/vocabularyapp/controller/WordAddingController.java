@@ -21,7 +21,7 @@ public class WordAddingController {
     }
 
     @FXML
-    public void initialize() {
+    private void initialize() {
         addButton.setDisable(true);
         wordTextField.textProperty().addListener((observable, oldValue, newValue) -> {
             wordTextField.setText(KeyboardLayoutManager.changeToEng(newValue));
@@ -45,7 +45,8 @@ public class WordAddingController {
         return translationTextField.getText().trim().equals("");
     }
 
-    public void addButtonListener() {
+    @FXML
+    private void addButtonListener() {
         confirmAdding();
     }
 
@@ -58,12 +59,14 @@ public class WordAddingController {
         wordTextField.requestFocus();
     }
 
-    public void enterInWordFieldListener() {
+    @FXML
+    private void enterInWordFieldListener() {
         if (!wordTextFieldIsEmpty())
             translationTextField.requestFocus();
     }
 
-    public void enterInTranslationFieldListener() {
+    @FXML
+    private void enterInTranslationFieldListener() {
         if (!oneOfFieldIsEmpty())
             confirmAdding();
     }

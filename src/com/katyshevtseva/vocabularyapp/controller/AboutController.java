@@ -19,7 +19,7 @@ public class AboutController {
     }
 
     @FXML
-    public void initialize() {
+    private void initialize() {
         imageView.setImage(new Image(IMAGES_PATH + LOGO_IMAGE_NAME));
         imageView.setFitHeight(BIG_LOGO_SIZE);
         imageView.setFitWidth(BIG_LOGO_SIZE);

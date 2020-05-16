@@ -2,12 +2,13 @@ package com.katyshevtseva.vocabularyapp.controller;
 
 import com.katyshevtseva.vocabularyapp.model.Entry;
 import com.katyshevtseva.vocabularyapp.utils.KeyboardLayoutManager;
-import com.katyshevtseva.vocabularyapp.utils.Utils;
 import com.katyshevtseva.vocabularyapp.utils.WindowCreator;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
+
+import static com.katyshevtseva.vocabularyapp.utils.Utils.closeWindowThatContains;
 
 public class WordChangeController {
     private static Entry entry;
@@ -26,7 +27,7 @@ public class WordChangeController {
     }
 
     @FXML
-    public void initialize() {
+    private void initialize() {
         wordTextField.setText(entry.getWord());
         translationTextField.setText(entry.getTranslation());
         wordTextField.textProperty().addListener((observable, oldValue, newValue) -> {
@@ -43,14 +44,16 @@ public class WordChangeController {
         return wordTextField.getText().trim().equals("") || translationTextField.getText().trim().equals("");
     }
 
-    public void deleteButtonListener() {
+    @FXML
+    private void deleteButtonListener() {
         WordDeletionController.deleteWord(this);
     }
 
-    public void doneButtonListener() {
+    @FXML
+    private void doneButtonListener() {
         MainController.getDataBase().editEntry(entry, wordTextField.getText().trim(), translationTextField.getText().trim());
         listController.updateTable();
-        Utils.closeWindowThatContains(wordTextField);
+        closeWindowThatContains(wordTextField);
     }
 
     void deleteWord() {

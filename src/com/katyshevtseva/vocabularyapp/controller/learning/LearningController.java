@@ -4,7 +4,6 @@ import com.katyshevtseva.vocabularyapp.controller.MainController;
 import com.katyshevtseva.vocabularyapp.controller.MessageController;
 import com.katyshevtseva.vocabularyapp.controller.learning.modes.LearningMode;
 import com.katyshevtseva.vocabularyapp.model.Entry;
-import com.katyshevtseva.vocabularyapp.utils.Utils;
 import com.katyshevtseva.vocabularyapp.utils.WindowCreator;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
@@ -14,6 +13,8 @@ import java.util.Collections;
 import java.util.List;
 
 import static com.katyshevtseva.vocabularyapp.utils.Constants.*;
+import static com.katyshevtseva.vocabularyapp.utils.Utils.closeWindowThatContains;
+import static com.katyshevtseva.vocabularyapp.utils.Utils.setImageOnButton;
 
 public class LearningController {
     private static LearningMode mode;
@@ -41,12 +42,12 @@ public class LearningController {
     }
 
     @FXML
-    void initialize() {
+    private void initialize() {
         Collections.shuffle(entries);
         wordCount = -1;
         nextWord();
-        Utils.setImageOnButton(TICK_IMAGE_NAME, okButton, LEARNING_BUTTONS_IMAGE_SIZE);
-        Utils.setImageOnButton(RED_CROSS_IMAGE_NAME, notOkButton, LEARNING_BUTTONS_IMAGE_SIZE);
+        setImageOnButton(TICK_IMAGE_NAME, okButton, LEARNING_BUTTONS_IMAGE_SIZE);
+        setImageOnButton(RED_CROSS_IMAGE_NAME, notOkButton, LEARNING_BUTTONS_IMAGE_SIZE);
     }
 
     private void nextWord() {
@@ -78,23 +79,26 @@ public class LearningController {
 
     private void finishLearning() {
         MessageController.showMessage("Learning is completed!");
-        Utils.closeWindowThatContains(wordLabel);
+        closeWindowThatContains(wordLabel);
     }
 
-    public void showTranslationButtonListener() {
+    @FXML
+    private void showTranslationButtonListener() {
         mode.setTranslationLabelText(translationLabel, getCurrentEntry());
         showTranslationButton.setDisable(true);
         okButton.setDisable(false);
         notOkButton.setDisable(false);
     }
 
-    public void okButtonListener() {
+    @FXML
+    private void okButtonListener() {
         int currentLevel = getCurrentEntry().getLevel();
         MainController.getDataBase().changeEntryLevel(getCurrentEntry(), currentLevel + 1);
         nextWord();
     }
 
-    public void notOkButtonListener() {
+    @FXML
+    private void notOkButtonListener() {
         int currentLevel = getCurrentEntry().getLevel();
         if (currentLevel != 0) {
             MainController.getDataBase().changeEntryLevel(getCurrentEntry(), currentLevel - 1);

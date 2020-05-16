@@ -1,6 +1,5 @@
 package com.katyshevtseva.vocabularyapp.controller.learning;
 
-import com.katyshevtseva.vocabularyapp.utils.Utils;
 import com.katyshevtseva.vocabularyapp.utils.WindowCreator;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
@@ -10,6 +9,8 @@ import javafx.scene.layout.GridPane;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Set;
+
+import static com.katyshevtseva.vocabularyapp.utils.Utils.closeWindowThatContains;
 
 public class LevelsChoiceController {
     private static LearningTuner learningTuner;
@@ -27,7 +28,7 @@ public class LevelsChoiceController {
     }
 
     @FXML
-    public void initialize() {
+    private void initialize() {
         doneButton.setDisable(true);
         tunePlacementForCheckBoxes();
         placeCheckBoxes();
@@ -62,9 +63,10 @@ public class LevelsChoiceController {
         return true;
     }
 
-    public void doneButtonListener() {
+    @FXML
+    private void doneButtonListener() {
         learningTuner.finishLevelsChoosing(getChosenItems());
-        Utils.closeWindowThatContains(doneButton);
+        closeWindowThatContains(doneButton);
     }
 
     private List<Integer> getChosenItems() {

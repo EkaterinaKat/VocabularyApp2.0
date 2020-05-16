@@ -3,7 +3,6 @@ package com.katyshevtseva.vocabularyapp.controller.learning;
 import com.katyshevtseva.vocabularyapp.controller.MainController;
 import com.katyshevtseva.vocabularyapp.controller.MessageController;
 import com.katyshevtseva.vocabularyapp.model.Entry;
-import com.katyshevtseva.vocabularyapp.utils.Utils;
 import com.katyshevtseva.vocabularyapp.utils.WindowCreator;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
@@ -12,6 +11,8 @@ import javafx.scene.control.TextField;
 
 import java.util.Collections;
 import java.util.List;
+
+import static com.katyshevtseva.vocabularyapp.utils.Utils.closeWindowThatContains;
 
 public class SpellingLearningController {
     private static List<Entry> entries;
@@ -38,7 +39,7 @@ public class SpellingLearningController {
     }
 
     @FXML
-    void initialize() {
+    private void initialize() {
         helper = new StyleHelper();
         answerField.textProperty().addListener((observable, oldValue, newValue) ->
                 doneButton.setDisable(textFieldIsEmpty()));
@@ -83,14 +84,16 @@ public class SpellingLearningController {
 
     private void finishLearning() {
         MessageController.showMessage("Learning is completed!");
-        Utils.closeWindowThatContains(wordLabel);
+        closeWindowThatContains(wordLabel);
     }
 
-    public void enterInTextFieldListener() {
+    @FXML
+    private void enterInTextFieldListener() {
         processAnswer();
     }
 
-    public void doneButtonListener() {
+    @FXML
+    private void doneButtonListener() {
         processAnswer();
     }
 
@@ -126,7 +129,8 @@ public class SpellingLearningController {
         resultLabel.setText("Correct spelling: " + getCurrentEntry().getWord());
     }
 
-    public void nextButtonListener() {
+    @FXML
+    private void nextButtonListener() {
         nextWord();
     }
 

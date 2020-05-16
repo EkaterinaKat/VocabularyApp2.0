@@ -1,7 +1,7 @@
 package com.katyshevtseva.vocabularyapp.controller;
 
-import com.katyshevtseva.vocabularyapp.DataBase.JDBC;
 import com.katyshevtseva.vocabularyapp.controller.learning.LearningTuner;
+import com.katyshevtseva.vocabularyapp.database.JDBC;
 import com.katyshevtseva.vocabularyapp.model.DataBase;
 import com.katyshevtseva.vocabularyapp.utils.WindowCreator;
 import javafx.application.Application;
@@ -37,7 +37,7 @@ public class MainController extends Application {
     }
 
     @FXML
-    public void initialize() {
+    private void initialize() {
         try {
             dataBase = JDBC.getInstance();
             CatalogueTuner.create(cataloguePlacement);
@@ -59,19 +59,23 @@ public class MainController extends Application {
         return dataBase;
     }
 
-    public void createWordList() {
+    @FXML
+    private void createListButtonListener() {
         ListCreationController.createWordList();
     }
 
-    public void learnWords() {
+    @FXML
+    private void learnButtonListener() {
         new LearningTuner().startTuning();
     }
 
-    public void searchWord() {
+    @FXML
+    private void searchButtonListener() {
         WordSearchController.startWordSearch();
     }
 
-    public void about() {
+    @FXML
+    private void aboutButtonListener() {
         AboutController.showAbout();
     }
 }

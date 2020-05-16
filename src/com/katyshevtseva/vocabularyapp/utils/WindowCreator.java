@@ -30,7 +30,12 @@ public class WindowCreator {
 
     public void createListCreationWindow() {
         createModalWindow("list_creation.fxml",
-                LIST_CREATION_WINDOW_TITLE, LIST_CREATION_WINDOW_WIDTH, LIST_CREATION_WINDOW_HEIGHT, false);
+                LIST_CREATION_WINDOW_TITLE, LIST_NAME_INPUT_WINDOW_WIDTH, LIST_NAME_INPUT_WINDOW_HEIGHT, false);
+    }
+
+    public void createListRenameWindow() {
+        createModalWindow("list_rename.fxml",
+                LIST_RENAME_WINDOW_TITLE, LIST_NAME_INPUT_WINDOW_WIDTH, LIST_NAME_INPUT_WINDOW_HEIGHT, false);
     }
 
     public void createListDeletionWindow() {

@@ -1,6 +1,5 @@
 package com.katyshevtseva.vocabularyapp.controller;
 
-import com.katyshevtseva.vocabularyapp.utils.Utils;
 import com.katyshevtseva.vocabularyapp.utils.WindowCreator;
 import javafx.fxml.FXML;
 import javafx.scene.image.Image;
@@ -8,6 +7,7 @@ import javafx.scene.image.ImageView;
 
 import static com.katyshevtseva.vocabularyapp.utils.Constants.IMAGES_PATH;
 import static com.katyshevtseva.vocabularyapp.utils.Constants.QUESTION_IMAGE_NAME;
+import static com.katyshevtseva.vocabularyapp.utils.Utils.closeWindowThatContains;
 
 public class WordDeletionController {
     private static WordChangeController wordChangeController;
@@ -20,17 +20,19 @@ public class WordDeletionController {
     }
 
     @FXML
-    public void initialize() {
+    private void initialize() {
         Image image = new Image(IMAGES_PATH + QUESTION_IMAGE_NAME);
         imageView.setImage(image);
     }
 
-    public void deleteButtonListener() {
+    @FXML
+    private void deleteButtonListener() {
         wordChangeController.deleteWord();
-        Utils.closeWindowThatContains(imageView);
+        closeWindowThatContains(imageView);
     }
 
-    public void cancelButtonListener() {
-        Utils.closeWindowThatContains(imageView);
+    @FXML
+    private void cancelButtonListener() {
+        closeWindowThatContains(imageView);
     }
 }
