@@ -1,39 +1,20 @@
 package com.katyshevtseva.vocabularyapp.controller;
 
-import com.katyshevtseva.vocabularyapp.utils.WindowCreator;
-import javafx.fxml.FXML;
-import javafx.scene.image.Image;
-import javafx.scene.image.ImageView;
+class ListDeletionController implements AnswerReceiver {
+    private String listToDelete;
 
-import static com.katyshevtseva.vocabularyapp.utils.Constants.IMAGES_PATH;
-import static com.katyshevtseva.vocabularyapp.utils.Constants.QUESTION_IMAGE_NAME;
-import static com.katyshevtseva.vocabularyapp.utils.Utils.closeWindowThatContains;
-
-public class ListDeletionController {
-    private static String listToDelete;
-    @FXML
-    private ImageView imageView;
-
-    static void deleteWordList(String listName) {
-        listToDelete = listName;
-        WindowCreator.getInstance().createListDeletionWindow();
+    void deleteList(String listToDelete) {
+        this.listToDelete = listToDelete;
+        QuestionController.askQuestion("Are you sure you want to delete the list?", this);
     }
 
-    @FXML
-    private void initialize() {
-        Image image = new Image(IMAGES_PATH + QUESTION_IMAGE_NAME);
-        imageView.setImage(image);
+    @Override
+    public void receivePositiveAnswer() {
+        deleteList();
     }
 
-    @FXML
-    private void deleteButtonListener() {
+    private void deleteList() {
         MainController.getDataBase().deleteList(listToDelete);
         CatalogueTuner.getInstance().updateCatalogue();
-        closeWindowThatContains(imageView);
-    }
-
-    @FXML
-    private void cancelButtonListener() {
-        closeWindowThatContains(imageView);
     }
 }

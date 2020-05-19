@@ -10,7 +10,7 @@ import javafx.stage.Stage;
 
 import static com.katyshevtseva.vocabularyapp.utils.Utils.closeWindowThatContains;
 
-public class WordChangeController {
+public class WordChangeController implements AnswerReceiver {
     private static Entry entry;
     private static ListController listController;
     @FXML
@@ -46,7 +46,12 @@ public class WordChangeController {
 
     @FXML
     private void deleteButtonListener() {
-        WordDeletionController.deleteWord(this);
+        QuestionController.askQuestion("Are you sure you want to delete the word?", this);
+    }
+
+    @Override
+    public void receivePositiveAnswer() {
+        deleteWord();
     }
 
     @FXML
@@ -56,7 +61,7 @@ public class WordChangeController {
         closeWindowThatContains(wordTextField);
     }
 
-    void deleteWord() {
+    private void deleteWord() {
         MainController.getDataBase().deleteEntry(entry);
         listController.updateTable();
         Stage stage = (Stage) wordTextField.getScene().getWindow();

@@ -22,7 +22,7 @@ import static com.katyshevtseva.vocabularyapp.utils.Constants.BUTTON_IMAGE_SIZE;
 import static com.katyshevtseva.vocabularyapp.utils.Constants.PLUS_IMAGE_NAME;
 import static com.katyshevtseva.vocabularyapp.utils.Utils.setImageOnButton;
 
-public class ListController {
+public class ListController implements AnswerReceiver {
     private static String listName;
     private List<SelectableEntry> selectableEntries;
     @FXML
@@ -55,9 +55,13 @@ public class ListController {
         table.setEditable(true);
         setRowClickListener();
         setImageOnButton(PLUS_IMAGE_NAME, addWordButton, BUTTON_IMAGE_SIZE);
+        hideWordManipulationButton();
+        updateTable();
+    }
+
+    private void hideWordManipulationButton(){
         moveButton.setVisible(false);
         deleteButton.setVisible(false);
-        updateTable();
     }
 
     private void tuneColumns() {
@@ -136,6 +140,29 @@ public class ListController {
 
     @FXML
     private void deleteButtonListener() {
+        QuestionController.askQuestion("Are you sure you want to delete the words?", this);
+    }
+
+    @Override
+    public void receivePositiveAnswer() {
+        deleteSelectedWord();
+    }
+
+    private void deleteSelectedWord(){
+        for (SelectableEntry selectableEntry: getSelectedEntries()){
+            MainController.getDataBase().deleteEntry(selectableEntry.getEntry());
+        }
+        updateTable();
+        hideWordManipulationButton();
+    }
+
+    private List<SelectableEntry> getSelectedEntries() {
+        List<SelectableEntry> selectedEntries = new ArrayList<>();
+        for (SelectableEntry entry : selectableEntries) {
+            if (entry.isSelected())
+                selectedEntries.add(entry);
+        }
+        return selectedEntries;
     }
 
     String getListName() {

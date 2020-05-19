@@ -71,7 +71,7 @@ class CatalogueTuner {
 
     private void deleteList(int listIndex) {
         String listToDelete = catalogue.get(listIndex);
-        ListDeletionController.deleteWordList(listToDelete);
+        new ListDeletionController().deleteList(listToDelete);
     }
 
     private void openWordList(int listIndex) {

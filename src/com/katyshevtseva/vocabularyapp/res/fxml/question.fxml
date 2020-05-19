@@ -9,7 +9,7 @@
 <?import java.net.URL?>
 <BorderPane xmlns="http://javafx.com/javafx"
             xmlns:fx="http://javafx.com/fxml"
-            fx:controller="com.katyshevtseva.vocabularyapp.controller.WordDeletionController"
+            fx:controller="com.katyshevtseva.vocabularyapp.controller.QuestionController"
             prefHeight="400.0" prefWidth="600.0">
 
     <stylesheets>
@@ -24,19 +24,19 @@
         <HBox alignment="CENTER">
             <ImageView fx:id="imageView" fitWidth="50" fitHeight="50"/>
             <Pane prefWidth="10"/>
-            <Label text="Are you sure you want to delete the word?"/>
+            <Label fx:id="label"/>
         </HBox>
     </center>
 
     <bottom>
         <AnchorPane>
             <HBox AnchorPane.rightAnchor="120" AnchorPane.leftAnchor="120">
-                <Button text="Yes" onMouseClicked="#deleteButtonListener">
+                <Button text="Yes" onMouseClicked="#yesButtonListener">
                     <HBox.margin>
                         <Insets bottom="25" left="20" right="20" top="20"/>
                     </HBox.margin>
                 </Button>
-                <Button text="No" onMouseClicked="#cancelButtonListener">
+                <Button text="No" onMouseClicked="#noButtonListener">
                     <HBox.margin>
                         <Insets bottom="25" left="20" right="20" top="20"/>
                     </HBox.margin>

@@ -38,11 +38,6 @@ public class WindowCreator {
                 LIST_RENAME_WINDOW_TITLE, LIST_NAME_INPUT_WINDOW_WIDTH, LIST_NAME_INPUT_WINDOW_HEIGHT, false);
     }
 
-    public void createListDeletionWindow() {
-        createModalWindow("list_deletion.fxml",
-                LIST_DELETION_WINDOW_TITLE, QUESTION_WINDOW_WIDTH, QUESTION_WINDOW_HEIGHT, false);
-    }
-
     public void createListWindow(String listName) {
         createModalWindow("list.fxml",
                 listName, WORD_LIST_WINDOW_WIDTH, WORD_LIST_WINDOW_HEIGHT, true);
@@ -58,8 +53,8 @@ public class WindowCreator {
                 word, WORD_CHANGE_WINDOW_WIDTH, WORD_CHANGE_WINDOW_HEIGHT, false);
     }
 
-    public void createWordDeletionWindow() {
-        createModalWindow("word_deletion.fxml",
+    public void questionWindow() {
+        createModalWindow("question.fxml",
                 WORD_DELETION_WINDOW_TITLE, QUESTION_WINDOW_WIDTH, QUESTION_WINDOW_HEIGHT, false);
     }
 
