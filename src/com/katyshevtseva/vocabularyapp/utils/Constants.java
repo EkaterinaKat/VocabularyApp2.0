@@ -33,7 +33,7 @@ public class Constants {
     static final int QUESTION_WINDOW_HEIGHT = 200;
     static final int QUESTION_WINDOW_WIDTH = 450;
     static final int WORD_LIST_WINDOW_HEIGHT = 900;
-    static final int WORD_LIST_WINDOW_WIDTH = 770;
+    static final int WORD_LIST_WINDOW_WIDTH = 780;
     static final int LIST_NAME_INPUT_WINDOW_HEIGHT = 150;
     static final int LIST_NAME_INPUT_WINDOW_WIDTH = 410;
     static final int CHOICE_WINDOW_HEIGHT = 450;

@@ -1,7 +1,6 @@
 <?scenebuilder-stylesheet /css/style?>
 <?import javafx.scene.control.*?>
-<?import javafx.scene.layout.BorderPane?>
-<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.*?>
 <?import java.net.URL?>
 <BorderPane fx:controller="com.katyshevtseva.vocabularyapp.controller.ListController" xmlns:fx="http://javafx.com/fxml">
 
@@ -13,7 +12,13 @@
     <top>
         <HBox>
             <Button fx:id="addWordButton" text="Add word" onMouseClicked="#addWordButtonListener"/>
+            <Pane prefWidth="10"/>
             <Button text="Rename list" onMouseClicked="#renameButtonListener"/>
+            <Pane prefWidth="10"/>
+            <Button fx:id="moveButton" text="Move" onMouseClicked="#moveButtonListener"/>
+            <Pane prefWidth="10"/>
+            <Button fx:id="deleteButton" text="Delete" onMouseClicked="#deleteButtonListener"
+                    styleClass="deletionButton"/>
         </HBox>
     </top>
 
@@ -24,7 +29,7 @@
                 <TableColumn prefWidth="200" text="word" fx:id="wordColumn"/>
                 <TableColumn prefWidth="340" text="translation" fx:id="translationColumn"/>
                 <TableColumn prefWidth="90" text="level" fx:id="levelColumn"/>
-                <TableColumn prefWidth="80" fx:id="checkBoxColumn"/>
+                <TableColumn prefWidth="90" fx:id="checkBoxColumn"/>
             </columns>
         </TableView>
     </center>

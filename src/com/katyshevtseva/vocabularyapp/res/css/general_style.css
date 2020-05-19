@@ -41,7 +41,7 @@
     -fx-font-weight: bold;
 }
 
-#wordDeletionButton:hover{
+.deletionButton:hover{
     -fx-background-color: #C14242;
     -fx-text-fill: #FFFFFF;
 }
