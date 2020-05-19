@@ -5,7 +5,8 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 
-import static com.katyshevtseva.vocabularyapp.model.DataManager.listWithThisNameExists;
+import java.util.List;
+
 import static com.katyshevtseva.vocabularyapp.utils.Utils.closeWindowThatContains;
 
 public class ListCreationController {
@@ -31,7 +32,7 @@ public class ListCreationController {
 
     @FXML
     private void okButtonListener() {
-        if (listWithThisNameExists(nameInputField.getText().trim())) { //todo поправить если надо будет
+        if (listWithThisNameExists(nameInputField.getText().trim())) {
             MessageController.showMessage("List with this name already exists");
         } else {
             MainController.getDataBase().createList(nameInputField.getText().trim());
@@ -40,4 +41,10 @@ public class ListCreationController {
             closeWindowThatContains(createButton);
         }
     }
+
+    private boolean listWithThisNameExists(String listName) {
+        List<String> listNames = MainController.getDataBase().getCatalogue();
+        return listNames.contains(listName);
+    }
+
 }

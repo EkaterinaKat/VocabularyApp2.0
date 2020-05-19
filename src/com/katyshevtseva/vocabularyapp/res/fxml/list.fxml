@@ -24,6 +24,7 @@
                 <TableColumn prefWidth="200" text="word" fx:id="wordColumn"/>
                 <TableColumn prefWidth="340" text="translation" fx:id="translationColumn"/>
                 <TableColumn prefWidth="90" text="level" fx:id="levelColumn"/>
+                <TableColumn prefWidth="80" fx:id="checkBoxColumn"/>
             </columns>
         </TableView>
     </center>
