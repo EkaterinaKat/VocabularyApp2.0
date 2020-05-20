@@ -21,4 +21,6 @@ public interface DataBase {
     void changeEntryLevel(Entry entry, int newLevel);
 
     void renameList(String oldName, String newName);
+
+    void moveEntry(Entry entry, String newList);
 }

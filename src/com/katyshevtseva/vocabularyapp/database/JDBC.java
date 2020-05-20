@@ -185,6 +185,20 @@ public class JDBC implements DataBase {
         renameListInEntries(oldName, newName);
     }
 
+    @Override
+    public void moveEntry(Entry entry, String list) {
+        if (!entry.getListName().equals(list)) {
+            deleteEntry(entry);
+            addExistingEntryToAnotherList(entry, list);
+        }
+    }
+
+    private void addExistingEntryToAnotherList(Entry entry, String list) {
+        String query = String.format("INSERT INTO entries (word, translation, level, listName)\n" +
+                "VALUES (\"%s\", \"%s\", \"%d\", \"%s\")", entry.getWord(), entry.getTranslation(), entry.getLevel(), list);
+        executeUpdate(query);
+    }
+
     private void renameListInCatalogue(String oldName, String newName) {
         String query = String.format("UPDATE catalogue \n" +
                 "\t   SET listName = \"%s\" \n" +

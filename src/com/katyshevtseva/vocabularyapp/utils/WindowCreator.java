@@ -55,7 +55,7 @@ public class WindowCreator {
 
     public void questionWindow() {
         createModalWindow("question.fxml",
-                WORD_DELETION_WINDOW_TITLE, QUESTION_WINDOW_WIDTH, QUESTION_WINDOW_HEIGHT, false);
+                QUESTION_WINDOW_TITLE, QUESTION_WINDOW_WIDTH, QUESTION_WINDOW_HEIGHT, false);
     }
 
     public void createLearningModeChoiceWindow() {
@@ -71,6 +71,11 @@ public class WindowCreator {
     public void createLevelsChoiceWindow() {
         createModalWindow("levels_choice.fxml",
                 LEVELS_CHOICE_WINDOW_TITLE, CHOICE_WINDOW_WIDTH, CHOICE_WINDOW_HEIGHT, false);
+    }
+
+    public void createEntryMoveWindow() {
+        createModalWindow("move.fxml",
+                ENTRY_MOVE_WINDOW_TITLE, CHOICE_WINDOW_WIDTH, CHOICE_WINDOW_HEIGHT, false);
     }
 
     public void createLearningWindow() {

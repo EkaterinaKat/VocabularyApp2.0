@@ -20,13 +20,13 @@ public class Constants {
     static final String LEVELS_CHOICE_WINDOW_TITLE = "Choose levels to learn";
     static final String WORD_SEARCH_WINDOW_TITLE = "Word Search";
     static final String ABOUT_WINDOW_TITLE = "About";
-    static final String LIST_DELETION_WINDOW_TITLE = "Delete word list";
     static final String LEARNING_WINDOW_TITLE = "Words learning";
     static final String WORD_INPUT_WINDOW_TITLE = "Add word";
-    static final String WORD_DELETION_WINDOW_TITLE = "Delete word";
+    static final String QUESTION_WINDOW_TITLE = "";
     static final String MODE_CHOICE_WINDOW_TITLE = "Choose learning mode";
     static final String MESSAGE_WINDOW_TITLE = "Message";
     static final String LIST_RENAME_WINDOW_TITLE = "Rename list";
+    static final String ENTRY_MOVE_WINDOW_TITLE = "Choose list";
 
     static final int MAIN_WINDOW_HEIGHT = 500;
     static final int MAIN_WINDOW_WIDTH = 550;

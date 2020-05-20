@@ -59,7 +59,7 @@ public class ListController implements AnswerReceiver {
         updateTable();
     }
 
-    private void hideWordManipulationButton(){
+    void hideWordManipulationButton() {
         moveButton.setVisible(false);
         deleteButton.setVisible(false);
     }
@@ -136,6 +136,7 @@ public class ListController implements AnswerReceiver {
 
     @FXML
     private void moveButtonListener() {
+        EntriesMoveController.chooseListAndMove(getSelectedEntries(), this);
     }
 
     @FXML
@@ -148,19 +149,19 @@ public class ListController implements AnswerReceiver {
         deleteSelectedWord();
     }
 
-    private void deleteSelectedWord(){
-        for (SelectableEntry selectableEntry: getSelectedEntries()){
-            MainController.getDataBase().deleteEntry(selectableEntry.getEntry());
+    private void deleteSelectedWord() {
+        for (Entry entry : getSelectedEntries()) {
+            MainController.getDataBase().deleteEntry(entry);
         }
         updateTable();
         hideWordManipulationButton();
     }
 
-    private List<SelectableEntry> getSelectedEntries() {
-        List<SelectableEntry> selectedEntries = new ArrayList<>();
+    private List<Entry> getSelectedEntries() {
+        List<Entry> selectedEntries = new ArrayList<>();
         for (SelectableEntry entry : selectableEntries) {
             if (entry.isSelected())
-                selectedEntries.add(entry);
+                selectedEntries.add(entry.getEntry());
         }
         return selectedEntries;
     }
