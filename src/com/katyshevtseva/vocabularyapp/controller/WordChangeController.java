@@ -6,11 +6,10 @@ import com.katyshevtseva.vocabularyapp.utils.WindowCreator;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
-import javafx.stage.Stage;
 
 import static com.katyshevtseva.vocabularyapp.utils.Utils.closeWindowThatContains;
 
-public class WordChangeController implements AnswerReceiver {
+public class WordChangeController {
     private static Entry entry;
     private static ListController listController;
     @FXML
@@ -32,39 +31,23 @@ public class WordChangeController implements AnswerReceiver {
         translationTextField.setText(entry.getTranslation());
         wordTextField.textProperty().addListener((observable, oldValue, newValue) -> {
             wordTextField.setText(KeyboardLayoutManager.changeToEng(newValue));
-            doneButton.setDisable(wordOrTranslationFieldIsEmpty());
+            doneButton.setDisable(oneOfFieldsIsEmpty());
         });
         translationTextField.textProperty().addListener((observable, oldValue, newValue) -> {
             translationTextField.setText(KeyboardLayoutManager.changeToRus(newValue));
-            doneButton.setDisable(wordOrTranslationFieldIsEmpty());
+            doneButton.setDisable(oneOfFieldsIsEmpty());
         });
     }
 
-    private boolean wordOrTranslationFieldIsEmpty() {
+    private boolean oneOfFieldsIsEmpty() {
         return wordTextField.getText().trim().equals("") || translationTextField.getText().trim().equals("");
-    }
-
-    @FXML
-    private void deleteButtonListener() {
-        QuestionController.askQuestion("Are you sure you want to delete the word?", this);
-    }
-
-    @Override
-    public void receivePositiveAnswer() {
-        deleteWord();
     }
 
     @FXML
     private void doneButtonListener() {
         MainController.getDataBase().editEntry(entry, wordTextField.getText().trim(), translationTextField.getText().trim());
         listController.updateTable();
+        listController.hideWordManipulationButton();
         closeWindowThatContains(wordTextField);
-    }
-
-    private void deleteWord() {
-        MainController.getDataBase().deleteEntry(entry);
-        listController.updateTable();
-        Stage stage = (Stage) wordTextField.getScene().getWindow();
-        stage.close();
     }
 }

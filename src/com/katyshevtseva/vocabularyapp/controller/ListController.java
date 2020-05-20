@@ -10,7 +10,6 @@ import javafx.fxml.FXML;
 import javafx.geometry.Pos;
 import javafx.scene.control.Button;
 import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableRow;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.CheckBoxTableCell;
 import javafx.scene.control.cell.PropertyValueFactory;
@@ -43,6 +42,8 @@ public class ListController implements AnswerReceiver {
     private TableColumn<SelectableEntry, Boolean> checkBoxColumn;
     @FXML
     private Button addWordButton;
+    @FXML
+    private Button editButton;
 
     static void showWordList(String listToShow) {
         listName = listToShow;
@@ -53,7 +54,6 @@ public class ListController implements AnswerReceiver {
     private void initialize() {
         tuneColumns();
         table.setEditable(true);
-        setRowClickListener();
         setImageOnButton(PLUS_IMAGE_NAME, addWordButton, BUTTON_IMAGE_SIZE);
         hideWordManipulationButton();
         updateTable();
@@ -62,6 +62,7 @@ public class ListController implements AnswerReceiver {
     void hideWordManipulationButton() {
         moveButton.setVisible(false);
         deleteButton.setVisible(false);
+        editButton.setVisible(false);
     }
 
     private void tuneColumns() {
@@ -77,6 +78,7 @@ public class ListController implements AnswerReceiver {
                 selectableEntry.setSelected(newValue);
                 moveButton.setVisible(atLeastOneWordSelected());
                 deleteButton.setVisible(atLeastOneWordSelected());
+                editButton.setVisible(oneWordSelected());
             });
             return booleanProperty;
         });
@@ -95,17 +97,17 @@ public class ListController implements AnswerReceiver {
         return false;
     }
 
-    private void setRowClickListener() {
-        table.setRowFactory(tv -> {
-            TableRow<SelectableEntry> row = new TableRow<>();
-            row.setOnMouseClicked(event -> {
-                if (event.getClickCount() == 2 && (!row.isEmpty())) {
-                    SelectableEntry chosenEntry = row.getItem();
-                    WordChangeController.changeWord(chosenEntry.getEntry(), this);
-                }
-            });
-            return row;
-        });
+    private boolean oneWordSelected() {
+        return getSelectedEntries().size() == 1;
+    }
+
+    private List<Entry> getSelectedEntries() {
+        List<Entry> selectedEntries = new ArrayList<>();
+        for (SelectableEntry entry : selectableEntries) {
+            if (entry.isSelected())
+                selectedEntries.add(entry.getEntry());
+        }
+        return selectedEntries;
     }
 
     void updateTable() {
@@ -135,6 +137,11 @@ public class ListController implements AnswerReceiver {
     }
 
     @FXML
+    private void editButtonListener() {
+        WordChangeController.changeWord(getSelectedEntries().get(0), this);
+    }
+
+    @FXML
     private void moveButtonListener() {
         EntriesMoveController.chooseListAndMove(getSelectedEntries(), this);
     }
@@ -155,15 +162,6 @@ public class ListController implements AnswerReceiver {
         }
         updateTable();
         hideWordManipulationButton();
-    }
-
-    private List<Entry> getSelectedEntries() {
-        List<Entry> selectedEntries = new ArrayList<>();
-        for (SelectableEntry entry : selectableEntries) {
-            if (entry.isSelected())
-                selectedEntries.add(entry.getEntry());
-        }
-        return selectedEntries;
     }
 
     String getListName() {

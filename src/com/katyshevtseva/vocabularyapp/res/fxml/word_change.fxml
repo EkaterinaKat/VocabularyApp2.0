@@ -5,33 +5,34 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 <?import java.net.URL?>
-<VBox xmlns:fx="http://javafx.com/fxml"
-      fx:controller="com.katyshevtseva.vocabularyapp.controller.WordChangeController">
+<BorderPane xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml"
+            fx:controller="com.katyshevtseva.vocabularyapp.controller.WordChangeController">
 
     <stylesheets>
         <URL value="@/com/katyshevtseva/vocabularyapp/res/css/general_style.css"/>
     </stylesheets>
 
-    <Pane prefHeight="20"/>
+    <top>
+        <Pane prefHeight="8"/>
+    </top>
 
-    <GridPane alignment="CENTER">
-        <Label text="Word: " GridPane.rowIndex="0" GridPane.columnIndex="0"/>
-        <TextField fx:id="wordTextField" GridPane.rowIndex="0" GridPane.columnIndex="2"/>
-        <Pane GridPane.columnIndex="1" GridPane.rowIndex="1" prefHeight="10" prefWidth="10"/>
-        <Label text="Translation: " GridPane.rowIndex="2" GridPane.columnIndex="0"/>
-        <TextField fx:id="translationTextField" GridPane.rowIndex="2" GridPane.columnIndex="2"/>
-    </GridPane>
+    <center>
+        <GridPane alignment="CENTER">
+            <Label text="Word: " GridPane.rowIndex="0" GridPane.columnIndex="0"/>
+            <TextField fx:id="wordTextField" GridPane.rowIndex="0" GridPane.columnIndex="2"/>
+            <Pane GridPane.columnIndex="1" GridPane.rowIndex="1" prefHeight="10" prefWidth="10"/>
+            <Label text="Translation: " GridPane.rowIndex="2" GridPane.columnIndex="0"/>
+            <TextField fx:id="translationTextField" GridPane.rowIndex="2"
+                       GridPane.columnIndex="2"/>
+        </GridPane>
+    </center>
 
-    <Pane prefHeight="20"/>
+    <bottom>
+        <GridPane alignment="CENTER">
+            <Button text="Done" fx:id="doneButton" onMouseClicked="#doneButtonListener" GridPane.rowIndex="0"
+                    GridPane.columnIndex="0"/>
+            <Pane GridPane.columnIndex="0" GridPane.rowIndex="1" prefHeight="13"/>
+        </GridPane>
+    </bottom>
 
-    <GridPane alignment="CENTER">
-        <Button text="Delete word" onMouseClicked="#deleteButtonListener" prefWidth="130"
-                GridPane.rowIndex="0" GridPane.columnIndex="0" styleClass="deletionButton"/>
-        <Pane GridPane.columnIndex="1" GridPane.rowIndex="0" prefWidth="50"/>
-        <Button text="Done" fx:id="doneButton" onMouseClicked="#doneButtonListener" prefWidth="130"
-                GridPane.rowIndex="0" GridPane.columnIndex="2"/>
-    </GridPane>
-
-    <Pane prefHeight="20"/>
-
-</VBox>
+</BorderPane>
