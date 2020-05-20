@@ -60,5 +60,5 @@ public class Constants {
     public static final int BIG_LOGO_SIZE = 130;
 
     public static final String ABOUT_TEXT = " Developer: Katyshevtseva Ekaterina\n Programming language: Java SE 8" +
-            " \n IDE: IntelliJ IDEA 2019.1 (Community Edition) \n Version: 2.0 \n Built on  .., 2020";
+            " \n IDE: IntelliJ IDEA 2019.1 (Community Edition) \n Version: 2.0 \n Built on May 21, 2020";
 }
