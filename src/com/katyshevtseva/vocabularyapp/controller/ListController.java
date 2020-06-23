@@ -15,6 +15,7 @@ import javafx.scene.control.cell.CheckBoxTableCell;
 import javafx.scene.control.cell.PropertyValueFactory;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 import static com.katyshevtseva.vocabularyapp.utils.Constants.BUTTON_IMAGE_SIZE;
@@ -112,6 +113,7 @@ public class ListController implements AnswerReceiver {
 
     void updateTable() {
         List<Entry> entries = MainController.getDataBase().getEntriesByListName(listName);
+        Collections.reverse(entries);
         ObservableList<SelectableEntry> words = FXCollections.observableArrayList();
         selectableEntries = convertEntriesToSelectableEntries(entries);
         words.addAll(selectableEntries);

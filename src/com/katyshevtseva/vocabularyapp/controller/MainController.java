@@ -22,6 +22,10 @@ public class MainController extends Application {
     @FXML
     private ScrollPane cataloguePlacement;
 
+    public static void main(String[] args) {
+        launch(args);
+    }
+
     @Override
     public void start(Stage primaryStage) {
         WindowCreator.getInstance().createMainWindow();

@@ -8,6 +8,7 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.ColumnConstraints;
 import javafx.scene.layout.GridPane;
 
+import java.util.Collections;
 import java.util.List;
 
 import static com.katyshevtseva.vocabularyapp.utils.Constants.*;
@@ -52,6 +53,7 @@ class CatalogueTuner {
 
     private void updateCatalogueTable() {
         catalogue = MainController.getDataBase().getCatalogue();
+        Collections.reverse(catalogue);
         catalogueTable.getChildren().clear();
         for (int listIndex = 0; listIndex < catalogue.size(); listIndex++) {
             tuneCatalogueTableRow(listIndex);
