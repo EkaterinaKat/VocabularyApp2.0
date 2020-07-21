@@ -148,6 +148,34 @@ public class JDBC implements DataBase {
 
     @Override
     public void deleteList(String listName) {
+        saveEntriesToArchiveTable(listName);
+        deleteListFromCatalogueAndEntries(listName);
+    }
+
+    private void saveEntriesToArchiveTable(String listName) {
+        if (!tableExists("archive"))
+            createArchiveTable();
+        List<Entry> entries = getEntriesByListName(listName);
+        for (Entry entry : entries) {
+            String query = String.format("INSERT INTO archive (word, translation, level, listName)\n" +
+                            "VALUES (\"%s\", \"%s\", \"%d\", \"%s\")", entry.getWord(), entry.getTranslation(),
+                    entry.getLevel(), entry.getListName());
+            executeUpdate(query);
+        }
+    }
+
+    private void createArchiveTable() {
+        String query = "CREATE TABLE archive (\n" +
+                "id INTEGER PRIMARY KEY AUTOINCREMENT, \n" +
+                "word STRING, \n" +
+                "translation STRING, \n" +
+                "level STRING, \n" +
+                "listName STRING \n" +
+                ");\n";
+        executeUpdate(query);
+    }
+
+    private void deleteListFromCatalogueAndEntries(String listName) {
         String query = String.format("DELETE FROM catalogue\n" +
                 "WHERE listName=\"%s\"", listName);
         executeUpdate(query);
