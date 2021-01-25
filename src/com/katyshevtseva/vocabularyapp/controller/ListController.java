@@ -14,6 +14,7 @@ import javafx.scene.control.TableView;
 import javafx.scene.control.cell.CheckBoxTableCell;
 import javafx.scene.control.cell.PropertyValueFactory;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
@@ -41,6 +42,8 @@ public class ListController implements AnswerReceiver {
     private TableColumn<SelectableEntry, Integer> levelColumn;
     @FXML
     private TableColumn<SelectableEntry, Boolean> checkBoxColumn;
+    @FXML
+    private TableColumn<SelectableEntry, String> dateColumn;
     @FXML
     private Button addWordButton;
     @FXML
@@ -72,6 +75,7 @@ public class ListController implements AnswerReceiver {
         wordColumn.setCellValueFactory(new PropertyValueFactory<>("word"));
         translationColumn.setCellValueFactory(new PropertyValueFactory<>("translation"));
         levelColumn.setCellValueFactory(new PropertyValueFactory<>("level"));
+        dateColumn.setCellValueFactory(new PropertyValueFactory<>("lastRepeat"));
         checkBoxColumn.setCellValueFactory(param -> {
             SelectableEntry selectableEntry = param.getValue();
             SimpleBooleanProperty booleanProperty = new SimpleBooleanProperty(selectableEntry.isSelected());
@@ -205,6 +209,10 @@ public class ListController implements AnswerReceiver {
 
         public int getLevel() {
             return entry.getLevel();
+        }
+
+        public String getLastRepeat() {
+            return new SimpleDateFormat("dd.MM.yyyy").format(entry.getLastRepeat());
         }
     }
 }

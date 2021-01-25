@@ -4,10 +4,15 @@ import com.katyshevtseva.vocabularyapp.model.DataBase;
 import com.katyshevtseva.vocabularyapp.model.Entry;
 
 import java.sql.*;
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.List;
 
 public class JDBC implements DataBase {
+    private static final DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
     private static JDBC instance;
     private Connection connection;
     private Statement statement;
@@ -99,7 +104,8 @@ public class JDBC implements DataBase {
                 "word STRING, \n" +
                 "translation STRING, \n" +
                 "level STRING, \n" +
-                "listName STRING \n" +
+                "listName STRING, \n" +
+                "lastRepeat DATE \n" +
                 ");\n";
         executeUpdate(query);
     }
@@ -129,7 +135,7 @@ public class JDBC implements DataBase {
     @Override
     public List<Entry> getEntriesByListName(String listName) {
         List<Entry> listOfEntries = new ArrayList<>();
-        String query = String.format("SELECT id, word, translation, level FROM entries\n" +
+        String query = String.format("SELECT id, word, translation, level, lastRepeat FROM entries\n" +
                 "WHERE listName = \"%s\"", listName);
         try {
             ResultSet resultSet = statement.executeQuery(query);
@@ -138,7 +144,12 @@ public class JDBC implements DataBase {
                 String word = resultSet.getString(2);
                 String translation = resultSet.getString(3);
                 int level = resultSet.getInt(4);
-                listOfEntries.add(new Entry(id, word, translation, level, listName));
+                String lastRepeatString = resultSet.getString(5);
+                try {
+                    listOfEntries.add(new Entry(id, word, translation, level, listName, dateFormat.parse(lastRepeatString)));
+                } catch (ParseException e) {
+                    e.printStackTrace();
+                }
             }
         } catch (SQLException e) {
             e.printStackTrace();
@@ -187,9 +198,9 @@ public class JDBC implements DataBase {
     @Override
     public void changeEntryLevel(Entry entry, int newLevel) {
         String query = String.format("UPDATE entries \n" +
-                "\t   SET level = \"%d\" \n" +
-                "\t   WHERE id = " +
-                "\"%s\" ", newLevel, entry.getId());
+                        "\t   SET level = \"%d\", lastRepeat = \"%s\" \n" +
+                        "\t   WHERE id = \"%s\" ", newLevel,
+                dateFormat.format(Calendar.getInstance().getTime()), entry.getId());
         executeUpdate(query);
     }
 
@@ -222,8 +233,9 @@ public class JDBC implements DataBase {
     }
 
     private void addExistingEntryToAnotherList(Entry entry, String list) {
-        String query = String.format("INSERT INTO entries (word, translation, level, listName)\n" +
-                "VALUES (\"%s\", \"%s\", \"%d\", \"%s\")", entry.getWord(), entry.getTranslation(), entry.getLevel(), list);
+        String query = String.format("INSERT INTO entries (word, translation, level, listName, lastRepeat)\n" +
+                        "VALUES (\"%s\", \"%s\", \"%d\", \"%s\", \"%s\")", entry.getWord(), entry.getTranslation(),
+                entry.getLevel(), list, dateFormat.format(entry.getLastRepeat()));
         executeUpdate(query);
     }
 
