@@ -29,7 +29,7 @@ public class ListsChoiceController {
 
     @FXML
     private void initialize() {
-        doneButton.setDisable(true);
+        doneButton.setDisable(!listsToChooseFrom.values().contains(Boolean.TRUE));
         tunePlacementForCheckBoxes();
         placeCheckBoxes();
     }
@@ -48,6 +48,7 @@ public class ListsChoiceController {
 
     private CheckBox getCheckBox(Map.Entry list) {
         CheckBox checkBox = new CheckBox(list.getKey().toString());
+        checkBox.setSelected(true);
         checkBox.setDisable(!(boolean) list.getValue());
         checkBox.selectedProperty().addListener((observable, oldValue, newValue) ->
                 doneButton.setDisable(noneOfCheckBoxesAreSelected()));

@@ -13,6 +13,7 @@ import java.util.Set;
 import static com.katyshevtseva.vocabularyapp.utils.Utils.closeWindowThatContains;
 
 public class LevelsChoiceController {
+    private static final int FINISH_LEVEL = 8;
     private static LearningTuner learningTuner;
     private static Set<Integer> levelsToChooseFrom;
     private List<CheckBox> checkBoxes = new ArrayList<>();
@@ -41,6 +42,8 @@ public class LevelsChoiceController {
     private void placeCheckBoxes() {
         int rowCount = 0;
         for (Integer level : levelsToChooseFrom) {
+            if (level < FINISH_LEVEL)
+                doneButton.setDisable(false);
             placementForCheckBoxes.add(getCheckBox(level), 0, rowCount);
             rowCount++;
         }
@@ -48,6 +51,7 @@ public class LevelsChoiceController {
 
     private CheckBox getCheckBox(Integer level) {
         CheckBox checkBox = new CheckBox(level.toString());
+        checkBox.setSelected(level < FINISH_LEVEL);
         checkBox.selectedProperty().addListener((observable, oldValue, newValue) ->
                 doneButton.setDisable(noneOfCheckBoxesAreSelected()));
         checkBoxes.add(checkBox);
