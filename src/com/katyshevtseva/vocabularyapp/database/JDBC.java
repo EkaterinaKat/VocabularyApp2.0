@@ -127,8 +127,9 @@ public class JDBC implements DataBase {
 
     @Override
     public void addEntry(String word, String translation, String listName) {
-        String query = String.format("INSERT INTO entries (word, translation, level, listName)\n" +
-                "VALUES (\"%s\", \"%s\", 0, \"%s\")", word, translation, listName);
+        String query = String.format("INSERT INTO entries (word, translation, level, listName, lastRepeat)\n" +
+                "VALUES (\"%s\", \"%s\", 0, \"%s\", \"%s\")",
+                word, translation, listName, dateFormat.format(Calendar.getInstance().getTime()));
         executeUpdate(query);
     }
 
