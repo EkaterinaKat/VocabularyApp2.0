@@ -9,6 +9,7 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 
+import java.text.SimpleDateFormat;
 import java.util.Collections;
 import java.util.List;
 
@@ -63,7 +64,10 @@ public class LearningController {
     private void tuneLabelsForNewWord() {
         mode.setWordLabelText(wordLabel, getCurrentEntry());
         countLabel.setText(String.format("%s/%s", wordCount + 1, entries.size()));
-        levelLabel.setText("Word level: " + getCurrentEntry().getLevel());
+        String desc = String.format("Level: %s\nList: %s\nLast repeat: %s", getCurrentEntry().getLevel(),
+                getCurrentEntry().getListName(),
+                new SimpleDateFormat("dd.MM.yyyy").format(getCurrentEntry().getLastRepeat()));
+        levelLabel.setText(desc);
         translationLabel.setText("");
     }
 

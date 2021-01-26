@@ -39,7 +39,7 @@
 
     <Pane prefHeight="20"/>
 
-    <Label fx:id="levelLabel"/>
+    <Label fx:id="levelLabel" textAlignment="CENTER"/>
     <Label fx:id="countLabel"/>
 
 </VBox>
