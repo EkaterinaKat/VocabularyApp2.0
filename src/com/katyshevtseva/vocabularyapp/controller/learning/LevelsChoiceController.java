@@ -13,7 +13,7 @@ import java.util.Set;
 import static com.katyshevtseva.vocabularyapp.utils.Utils.closeWindowThatContains;
 
 public class LevelsChoiceController {
-    private static final int FINISH_LEVEL = 8;
+    public static final int FINISH_LEVEL = 8;
     private static LearningTuner learningTuner;
     private static Set<Integer> levelsToChooseFrom;
     private List<CheckBox> checkBoxes = new ArrayList<>();

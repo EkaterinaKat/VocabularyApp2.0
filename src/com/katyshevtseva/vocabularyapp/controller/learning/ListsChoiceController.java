@@ -48,8 +48,9 @@ public class ListsChoiceController {
 
     private CheckBox getCheckBox(Map.Entry list) {
         CheckBox checkBox = new CheckBox(list.getKey().toString());
-        checkBox.setSelected(true);
-        checkBox.setDisable(!(boolean) list.getValue());
+        boolean listContainRipeEntries = (boolean) list.getValue();
+        checkBox.setSelected(listContainRipeEntries);
+        checkBox.setDisable(!listContainRipeEntries);
         checkBox.selectedProperty().addListener((observable, oldValue, newValue) ->
                 doneButton.setDisable(noneOfCheckBoxesAreSelected()));
         checkBoxes.add(checkBox);

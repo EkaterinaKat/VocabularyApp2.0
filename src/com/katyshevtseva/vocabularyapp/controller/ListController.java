@@ -1,6 +1,7 @@
 package com.katyshevtseva.vocabularyapp.controller;
 
 import com.katyshevtseva.vocabularyapp.model.Entry;
+import com.katyshevtseva.vocabularyapp.model.LearningTunerHelper;
 import com.katyshevtseva.vocabularyapp.utils.WindowCreator;
 import javafx.beans.property.ReadOnlyObjectWrapper;
 import javafx.beans.property.SimpleBooleanProperty;
@@ -212,7 +213,8 @@ public class ListController implements AnswerReceiver {
         }
 
         public String getLastRepeat() {
-            return new SimpleDateFormat("dd.MM.yyyy").format(entry.getLastRepeat());
+            return new SimpleDateFormat("dd.MM.yyyy").format(entry.getLastRepeat()) +
+                    String.format(" (%s)", LearningTunerHelper.entryIsRipe(entry));
         }
     }
 }
