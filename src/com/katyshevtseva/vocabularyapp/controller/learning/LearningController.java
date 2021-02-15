@@ -4,14 +4,14 @@ import com.katyshevtseva.vocabularyapp.controller.MainController;
 import com.katyshevtseva.vocabularyapp.controller.MessageController;
 import com.katyshevtseva.vocabularyapp.controller.learning.modes.LearningMode;
 import com.katyshevtseva.vocabularyapp.model.Entry;
+import com.katyshevtseva.vocabularyapp.model.Statistics;
 import com.katyshevtseva.vocabularyapp.utils.WindowCreator;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 
 import java.text.SimpleDateFormat;
-import java.util.Collections;
-import java.util.List;
+import java.util.*;
 
 import static com.katyshevtseva.vocabularyapp.utils.Constants.*;
 import static com.katyshevtseva.vocabularyapp.utils.Utils.closeWindowThatContains;
@@ -21,6 +21,7 @@ public class LearningController {
     private static LearningMode mode;
     private static List<Entry> entries;
     private int wordCount;
+    private Map<Integer, Statistics> statisticsMap = new HashMap<>();
     @FXML
     private Label wordLabel;
     @FXML
@@ -45,6 +46,7 @@ public class LearningController {
     @FXML
     private void initialize() {
         Collections.shuffle(entries);
+        entries.sort(Comparator.comparing(Entry::getLevel));
         wordCount = -1;
         nextWord();
         setImageOnButton(TICK_IMAGE_NAME, okButton, LEARNING_BUTTONS_IMAGE_SIZE);
@@ -82,8 +84,17 @@ public class LearningController {
     }
 
     private void finishLearning() {
-        MessageController.showMessage("Learning is completed!");
+        MainController.getDataBase().saveStatistics(new ArrayList<>(statisticsMap.values()));
+        MessageController.showMessage("Learning is completed!\n\n" + getStatisticsReport());
         closeWindowThatContains(wordLabel);
+    }
+
+    private String getStatisticsReport() {
+        String report = "Statistics:\n";
+        for (Statistics statistics : statisticsMap.values()) {
+            report += String.format("%s: %s/%s \n", statistics.getLevel(), statistics.getFalseNum(), statistics.getAllNum());
+        }
+        return report;
     }
 
     @FXML
@@ -97,6 +108,7 @@ public class LearningController {
     @FXML
     private void okButtonListener() {
         int currentLevel = getCurrentEntry().getLevel();
+        addStatistics(true, currentLevel);
         MainController.getDataBase().changeEntryLevel(getCurrentEntry(), currentLevel + 1);
         nextWord();
     }
@@ -104,9 +116,21 @@ public class LearningController {
     @FXML
     private void notOkButtonListener() {
         int currentLevel = getCurrentEntry().getLevel();
+        addStatistics(false, currentLevel);
         if (currentLevel != 0) {
             MainController.getDataBase().changeEntryLevel(getCurrentEntry(), currentLevel - 1);
         }
         nextWord();
+    }
+
+    private void addStatistics(boolean correctAnswer, int currentLevel) {
+        Statistics statistics = statisticsMap.get(currentLevel);
+        if (statistics == null) {
+            statistics = new Statistics(currentLevel);
+            statisticsMap.put(currentLevel, statistics);
+        }
+        statistics.incrementAllNum();
+        if (!correctAnswer)
+            statistics.incrementFalseNum();
     }
 }

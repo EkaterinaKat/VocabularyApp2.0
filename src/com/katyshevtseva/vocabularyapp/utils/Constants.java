@@ -50,7 +50,7 @@ public class Constants {
     static final int WORD_CHANGE_WINDOW_WIDTH = 400;
     static final int MODE_CHOICE_WINDOW_HEIGHT = 220;
     static final int MODE_CHOICE_WINDOW_WIDTH = 350;
-    static final int MESSAGE_WINDOW_HEIGHT = 200;
+    static final int MESSAGE_WINDOW_HEIGHT = 450;
     static final int MESSAGE_WINDOW_WIDTH = 350;
 
     public static final int CATALOGUE_TABLE_WIDTH = 440;

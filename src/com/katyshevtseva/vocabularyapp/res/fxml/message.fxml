@@ -16,7 +16,7 @@
     <center>
         <VBox alignment="CENTER">
             <HBox alignment="CENTER">
-                <Label fx:id="messageLabel"/>
+                <Label fx:id="messageLabel" textAlignment="CENTER"/>
             </HBox>
         </VBox>
     </center>

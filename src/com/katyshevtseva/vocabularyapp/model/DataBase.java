@@ -23,4 +23,6 @@ public interface DataBase {
     void renameList(String oldName, String newName);
 
     void moveEntry(Entry entry, String newList);
+
+    void saveStatistics(List<Statistics> statistics);
 }

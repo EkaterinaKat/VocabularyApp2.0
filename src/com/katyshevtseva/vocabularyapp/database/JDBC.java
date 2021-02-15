@@ -2,13 +2,14 @@ package com.katyshevtseva.vocabularyapp.database;
 
 import com.katyshevtseva.vocabularyapp.model.DataBase;
 import com.katyshevtseva.vocabularyapp.model.Entry;
+import com.katyshevtseva.vocabularyapp.model.Statistics;
+import com.katyshevtseva.vocabularyapp.utils.Utils;
 
 import java.sql.*;
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Calendar;
 import java.util.List;
 
 public class JDBC implements DataBase {
@@ -24,6 +25,9 @@ public class JDBC implements DataBase {
         }
         if (!entriesTableExists()) {
             createEntriesTable();
+        }
+        if (!statisticsTableExists()) {
+            createStatisticsTable();
         }
     }
 
@@ -76,6 +80,10 @@ public class JDBC implements DataBase {
         return tableExists("catalogue");
     }
 
+    private boolean statisticsTableExists() {
+        return tableExists("statistics");
+    }
+
     private boolean tableExists(String tableToFind) {
         String query = "SELECT name FROM sqlite_master WHERE type = \"table\"";
         try {
@@ -110,6 +118,17 @@ public class JDBC implements DataBase {
         executeUpdate(query);
     }
 
+    private void createStatisticsTable() {
+        String query = "CREATE TABLE statistics (\n" +
+                "id INTEGER PRIMARY KEY AUTOINCREMENT, \n" +
+                "level INTEGER, \n" +
+                "allNum INTEGER, \n" +
+                "falseNum INTEGER, \n" +
+                "dateOfLearning DATE \n" +
+                ");\n";
+        executeUpdate(query);
+    }
+
     private void executeUpdate(String query) {
         try {
             statement.executeUpdate(query);
@@ -128,8 +147,8 @@ public class JDBC implements DataBase {
     @Override
     public void addEntry(String word, String translation, String listName) {
         String query = String.format("INSERT INTO entries (word, translation, level, listName, lastRepeat)\n" +
-                "VALUES (\"%s\", \"%s\", 0, \"%s\", \"%s\")",
-                word, translation, listName, dateFormat.format(Calendar.getInstance().getTime()));
+                        "VALUES (\"%s\", \"%s\", 0, \"%s\", \"%s\")",
+                word, translation, listName, dateFormat.format(Utils.getProperDate()));
         executeUpdate(query);
     }
 
@@ -201,7 +220,7 @@ public class JDBC implements DataBase {
         String query = String.format("UPDATE entries \n" +
                         "\t   SET level = \"%d\", lastRepeat = \"%s\" \n" +
                         "\t   WHERE id = \"%s\" ", newLevel,
-                dateFormat.format(Calendar.getInstance().getTime()), entry.getId());
+                dateFormat.format(Utils.getProperDate()), entry.getId());
         executeUpdate(query);
     }
 
@@ -230,6 +249,16 @@ public class JDBC implements DataBase {
         if (!entry.getListName().equals(list)) {
             deleteEntry(entry);
             addExistingEntryToAnotherList(entry, list);
+        }
+    }
+
+    @Override
+    public void saveStatistics(List<Statistics> statisticsList) {
+        for (Statistics statistics : statisticsList) {
+            String query = String.format("INSERT INTO statistics (level, allNum, falseNum, dateOfLearning)\n" +
+                            "VALUES (\"%s\", \"%s\", \"%s\", \"%s\")",
+                    statistics.getLevel(), statistics.getAllNum(), statistics.getFalseNum(), dateFormat.format(statistics.getDate()));
+            executeUpdate(query);
         }
     }
 
