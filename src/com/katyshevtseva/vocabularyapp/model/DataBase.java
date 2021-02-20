@@ -25,4 +25,6 @@ public interface DataBase {
     void moveEntry(Entry entry, String newList);
 
     void saveStatistics(List<Statistics> statistics);
+
+    void incrementTodayAddingStatistics();
 }

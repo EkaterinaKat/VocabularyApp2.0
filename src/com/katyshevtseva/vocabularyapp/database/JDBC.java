@@ -29,6 +29,9 @@ public class JDBC implements DataBase {
         if (!statisticsTableExists()) {
             createStatisticsTable();
         }
+        if (!addingStatisticsTableExists()) {
+            createAddingStatisticsTable();
+        }
     }
 
     public static JDBC getInstance() throws ClassNotFoundException {
@@ -84,6 +87,10 @@ public class JDBC implements DataBase {
         return tableExists("statistics");
     }
 
+    private boolean addingStatisticsTableExists() {
+        return tableExists("addingStatistics");
+    }
+
     private boolean tableExists(String tableToFind) {
         String query = "SELECT name FROM sqlite_master WHERE type = \"table\"";
         try {
@@ -125,6 +132,15 @@ public class JDBC implements DataBase {
                 "allNum INTEGER, \n" +
                 "falseNum INTEGER, \n" +
                 "dateOfLearning DATE \n" +
+                ");\n";
+        executeUpdate(query);
+    }
+
+    private void createAddingStatisticsTable() {
+        String query = "CREATE TABLE addingStatistics (\n" +
+                "id INTEGER PRIMARY KEY AUTOINCREMENT, \n" +
+                "dateOfAdding DATE, \n" +
+                "numOfAddedEntries INTEGER \n" +
                 ");\n";
         executeUpdate(query);
     }
@@ -259,6 +275,28 @@ public class JDBC implements DataBase {
                             "VALUES (\"%s\", \"%s\", \"%s\", \"%s\")",
                     statistics.getLevel(), statistics.getAllNum(), statistics.getFalseNum(), dateFormat.format(statistics.getDate()));
             executeUpdate(query);
+        }
+    }
+
+    @Override
+    public void incrementTodayAddingStatistics() {
+        String todayString = dateFormat.format(Utils.getProperDate());
+        String query = String.format("SELECT numOfAddedEntries FROM addingStatistics\n" +
+                "WHERE dateOfAdding = \"%s\"", todayString);
+        try {
+            ResultSet resultSet = statement.executeQuery(query);
+            if (resultSet.next()) {
+                int numOfAddedEntries = resultSet.getInt(1);
+                String query1 = String.format("UPDATE addingStatistics SET numOfAddedEntries = \"%s\" " +
+                        "WHERE dateOfAdding = \"%s\" ", numOfAddedEntries + 1, todayString);
+                executeUpdate(query1);
+            } else {
+                String query2 = String.format("INSERT INTO addingStatistics (dateOfAdding, numOfAddedEntries) " +
+                        " VALUES (\"%s\", 1)", todayString);
+                executeUpdate(query2);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
         }
     }
 

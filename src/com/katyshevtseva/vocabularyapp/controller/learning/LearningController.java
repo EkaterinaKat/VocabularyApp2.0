@@ -46,7 +46,7 @@ public class LearningController {
     @FXML
     private void initialize() {
         Collections.shuffle(entries);
-        entries.sort(Comparator.comparing(Entry::getLevel));
+        entries.sort(Comparator.comparing(Entry::getLevel).thenComparing(Entry::getListName));
         wordCount = -1;
         nextWord();
         setImageOnButton(TICK_IMAGE_NAME, okButton, LEARNING_BUTTONS_IMAGE_SIZE);

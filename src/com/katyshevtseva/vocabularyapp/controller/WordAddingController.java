@@ -53,6 +53,7 @@ public class WordAddingController {
     private void confirmAdding() {
         MainController.getDataBase().addEntry(wordTextField.getText().trim(),
                 translationTextField.getText().trim(), listController.getListName());
+        MainController.getDataBase().incrementTodayAddingStatistics();
         wordTextField.clear();
         translationTextField.clear();
         listController.updateTable();
